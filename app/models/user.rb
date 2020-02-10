@@ -17,9 +17,9 @@ class User < ApplicationRecord
     validates :username, :email, :password_digest, :session_token, presence: true
     validates :password, length: { minimum: 6, allow_nil: true }
 
-    has_many :checkins
-    has_many :comments
-    has_many :toasts
+    has_many :checkins, dependent: :destroy
+    has_many :comments, dependent: :destroy
+    has_many :toasts, dependent: :destroy
     has_many :friends,
         class_name: :User,
         primary_key: :id,
