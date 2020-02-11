@@ -15,7 +15,7 @@ export const logout = () => {
 };
 // sends request to session api to clear current user
 
-export const signupUser = user => {
+export const signup = user => {
     return $.ajax({
         url: "/api/user",
         method: "POST",
