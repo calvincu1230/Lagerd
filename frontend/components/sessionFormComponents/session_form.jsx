@@ -24,14 +24,13 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        const formUrl = this.props.formType === "Log In" ? "signup" : "login";
-        // const errors = this.props.errors.map(error => {
-        //     return <li>{error}</li>
-        // });
-        const otherForm = formUrl === "login" ? "Sign Up" : "Log In";
+        // const haveErrors = this.props.errors;
+        const errors = this.props.errors.map(error => {
+            return <li key={{ errors: error }}>{error}</li>
+        });
         return (
             <div className={this.props.formType}>
-                {/* <ul>{errors}</ul> */}
+                <ul>{errors}</ul>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username: 
                         <input 
@@ -50,7 +49,7 @@ class SessionForm extends React.Component {
                     </label>
 
                     <button>{this.props.formType}</button>
-                    <p>New around here? <Link to={`/${formUrl}`}>{otherForm}!</Link></p>
+                    <p>New around here? <Link to="/signup">Create an Account!</Link></p>
                 </form>
             </div>
         );

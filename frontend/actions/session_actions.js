@@ -27,21 +27,19 @@ const receieveErrors = errors => {
 export const login = user => dispatch => {
     return SessionUtil.login(user)
         .then(user => dispatch(receiveCurrentUser(user)), 
-            errors => dispatch(receieveErrors(errors))
+            errors => dispatch(receieveErrors(errors.responseJSON))
         );
         // .then on promise object has success and fail callbacks passed in
 };
 
 export const logout = () => dispatch => {
     return SessionUtil.logout()
-        .then(() => dispatch(logoutCurrentUser()), 
-            errors => dispatch(receieveErrors(errors))
-        );
+        .then(() => dispatch(logoutCurrentUser()));
 };
 
 export const signup = user => dispatch => {
     return SessionUtil.signup(user)
         .then(user => dispatch(receiveCurrentUser(user)), 
-            errors => dispatch(receieveErrors(errors))
+            errors => dispatch(receieveErrors(errors.responseJSON))
         );
 };
