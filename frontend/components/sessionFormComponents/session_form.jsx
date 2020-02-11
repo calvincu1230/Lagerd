@@ -26,27 +26,29 @@ class SessionForm extends React.Component {
     render() {
         // const haveErrors = this.props.errors;
         const errors = this.props.errors.map(error => {
-            return <li key={{ errors: error }}>{error}</li>
+            return <li key={{ errors: error }} className="errors-li">{error}</li>
         });
         return (
-            <div className={this.props.formType}>
-                <ul>{errors}</ul>
+            <div className="session-form">
+                <ul className="errors-list">{errors}</ul>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Username: 
+                    <div className="session-form-username">
                         <input 
                             type="text" 
-                            value={this.state.username} 
+                            value={this.state.username}
+                            placeholder="Username"
                             onChange={this.handleChange("username")}
                         />
-                    </label>
+                    </div>
 
-                    <label>Password: 
-                        <input 
+                    <div className="session-form-username">
+                        <input
                             type="password" 
                             value={this.state.password} 
+                            placeholder="Password"
                             onChange={this.handleChange("password")}
                         />
-                    </label>
+                    </div>
 
                     <button>{this.props.formType}</button>
                     <p>New around here? <Link to="/signup">Create an Account!</Link></p>

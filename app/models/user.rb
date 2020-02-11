@@ -10,12 +10,16 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  first_name      :string           not null
+#  last_name       :string           not null
+#  birth_date      :string           not null
 #
 
 class User < ApplicationRecord
 
     validates :username, :email, :password_digest, :session_token, presence: true
     validates :password, length: { minimum: 6 }, allow_nil: true 
+    validate :birth_date, if: :over_21
 
     has_many :checkins, dependent: :destroy
     has_many :comments, dependent: :destroy
@@ -28,6 +32,21 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
     attr_reader :password
+
+    def over_21
+        # based on todays date, compares with date instance of given birthday
+        today = Date.today
+        date = Date.parse(self.birth_date)
+        age = (today.year - date.year)
+        age -= 1 if [date.day, date.month, today.year].join('/').to_date > Date.today
+            # checks if specific date birthdate has passed
+        if age >= 21
+            true
+        else
+            # adds error that will be render with errors.full_messages
+            self.errors.add(:_, "Must be 21 or older to make an account.")
+        end
+    end
 
     # finds user with given username and only returns user info if
     # password is valid

@@ -27,7 +27,10 @@ const receieveErrors = errors => {
 export const login = user => dispatch => {
     return SessionUtil.login(user)
         .then(user => dispatch(receiveCurrentUser(user)), 
-            errors => dispatch(receieveErrors(errors.responseJSON))
+            errors => {
+                // debugger
+                return dispatch(receieveErrors(errors.responseJSON))
+            }
         );
         // .then on promise object has success and fail callbacks passed in
 };
@@ -40,6 +43,9 @@ export const logout = () => dispatch => {
 export const signup = user => dispatch => {
     return SessionUtil.signup(user)
         .then(user => dispatch(receiveCurrentUser(user)), 
-            errors => dispatch(receieveErrors(errors.responseJSON))
+            errors => {
+                debugger
+                return dispatch(receieveErrors(errors.responseJSON))
+            }
         );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -8,9 +9,10 @@ class SignupForm extends React.Component {
         email: "",
         password: "",
         passwordCheck: "",
-        firstName: "",
-        lastName: "",
-        birthDate: ""
+        image_url: "",
+        first_name: "",
+        last_name: "",
+        birth_date: ""
       };
 
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,12 +31,12 @@ class SignupForm extends React.Component {
 
     render() {
         const errors = this.props.errors.map(error => {
-            return <li key={{ errors: error }}>{error}</li>
+            return <li key={error} className="errors-li">{error}</li>
         });
         return (
-            <div className={this.props.formType}>
-                <ul>{errors}</ul>
-                <form onSubmit={this.handleSubmit}>
+            <div className="outer-sign-up-form">
+                <ul className="errors-list">{errors}</ul>
+                <form onSubmit={this.handleSubmit} className="signup-form">
                     <div className="signup-form signup-username">
                         <input 
                             type="text" 
@@ -61,7 +63,7 @@ class SignupForm extends React.Component {
                     </div>
                     <div className="signup-form signup-password password-check">
                         <input 
-                            type="passwordCheck" 
+                            type="password" 
                             placeholder="Repeat Password"
                             value={this.state.passwordCheck} 
                             onChange={this.handleChange("passwordCheck")}
@@ -71,28 +73,29 @@ class SignupForm extends React.Component {
                         <input 
                             type="text" 
                             placeholder="First Name"
-                            value={this.state.firstName} 
-                            onChange={this.handleChange("firstName")}
+                            value={this.state.first_name} 
+                            onChange={this.handleChange("first_name")}
                         />
                     </div>
                     <div className="signup-form signup-lastname">
                         <input 
                             type="text" 
                             placeholder="Last Name"
-                            value={this.state.firstName} 
-                            onChange={this.handleChange("lastName")}
+                            value={this.state.last_name} 
+                            onChange={this.handleChange("last_name")}
                         />
                     </div>
                     <div className="signup-form signup-birthday">
                         <label>Birthday:
                             <input 
                                 type="date" 
-                                value={this.state.birthDate} 
-                                onChange={this.handleChange("birthDate")}
+                                value={this.state.birth_date} 
+                                onChange={this.handleChange("birth_date")}
                             />
                         </label>
+                        Already have an account? <Link to="/login">Log In!</Link>
                     </div>
-                    <button className="signup-sub-btn">Create Account</button>
+                    <button type="submit" className="signup-sub-btn">Create Account</button>
                 </form>
             </div>
         );
