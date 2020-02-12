@@ -44,7 +44,6 @@ export const signup = user => dispatch => {
     return SessionUtil.signup(user)
         .then(user => dispatch(receiveCurrentUser(user)), 
             errors => {
-                debugger
                 return dispatch(receieveErrors(errors.responseJSON))
             }
         );

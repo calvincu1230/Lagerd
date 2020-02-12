@@ -63,7 +63,7 @@ class SessionForm extends React.Component {
                     </div>
 
                     <button className="session-ele session-submit-btn">Sign In</button>
-                    <p className="session-bottom">New around here?    <Link to="/signup"                  className="orange-link">Create an Account!</Link></p>
+                    <p className="session-bottom">New around here? <Link to="/signup" className="orange-link">Sign Up!</Link></p>
                 </form>
             </div>
         );

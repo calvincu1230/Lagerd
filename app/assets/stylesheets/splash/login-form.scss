@@ -32,8 +32,11 @@
     border-top: black solid 1px;
     width: 100%;
     display: flex;
-    justify-content: center;
     padding-top: 20px;
+    justify-content: space-around;
+    font-family: ProximaNova, Helvetica, sans-serif; // ProximaNova is a paid font
+    padding-top: 20px;
+    font-weight: 600;
 }
 
 .session-form {
@@ -43,10 +46,19 @@
 }
 
 .session-submit-btn {
-    width: 100%;
-    margin: auto;
+    // width: 100%;
+    // margin: auto;
     background-color: #FFCC00;
-    margin-top: 50px;
+    // margin-top: 50px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    // position: relative;
+    text-align: center;
+    display: block;
+    padding: 12px 0;
+    color: white;
+    font-weight: 600;
 }
 
 .session-input {

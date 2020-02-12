@@ -20,8 +20,12 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.password === this.state.passwordCheck) {
+        if (this.state.birth_date === ""){
+            this.props.dispatchErrors(["Please Enter a Valid Date."]);
+            // if date is empty on submit, add error
+        } else if (this.state.password === this.state.passwordCheck) {
             this.props.action(this.state);
+            // if both password entries match, submit
         } else {
             this.props.dispatchErrors(["Passwords must match!"]);
         }

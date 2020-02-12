@@ -9,8 +9,15 @@
 
 .splash-header {
     background-color: #ffcc00;
+    display: flex;
 }
 
 body {
     background: image_url("beer-background.jpg");
+}
+
+.logout-btn {
+    width: 150px;
+    display: flex;
+    align-self: center;
 }
