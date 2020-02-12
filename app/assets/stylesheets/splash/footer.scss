@@ -1,0 +1,26 @@
+.splash-footer {
+  margin-top: 100px;
+  background-color: black;
+  height: 85px;
+}
+
+.link-list {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.github-link a, .linkedin-link a {
+  font-family: 'Arvo', serif;
+  color: #FFF;
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+.foot-link a:hover{
+  color: gray;
+}
+
+.foot-link {
+  font-size: 18px;
+}

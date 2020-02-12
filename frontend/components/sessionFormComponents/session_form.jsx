@@ -35,13 +35,18 @@ class SessionForm extends React.Component {
         });
         return (
             <div className="session-form-container">
+                <div class="login-content">
+
                 <h2 className="session-form-title">Lagerd</h2>
-                <button className="demo-login-btn" onClick={this.handleDemoUser}> Demo User</button>
-                <div className="or">or</div>
+                <h3 className="session-sub-title">Drink Socially</h3>
                 <ul className="errors-list">{errors}</ul>
                 <form onSubmit={this.handleSubmit} className="session-form">
-                    <div className="session-form-username session-ele">
-                        <p className="username-input-img"></p>
+                    <div className="session-form-username session-div">
+
+                        <div className="input-picture-login session-username">
+                            <p className="username-input-img"></p>
+                        </div>
+
                         <input 
                             className="session-input"
                             type="text" 
@@ -51,8 +56,12 @@ class SessionForm extends React.Component {
                         />
                     </div>
 
-                    <div className="session-form-username session-ele">
-                        <p className="password-input-img"></p>
+                    <div className="session-form-username session-div">
+
+                        <div className="input-picture-login session-pw">
+                            <p className="password-input-img"></p>
+                        </div>
+
                         <input
                             className="session-input"
                             type="password" 
@@ -62,9 +71,13 @@ class SessionForm extends React.Component {
                         />
                     </div>
 
-                    <button className="session-ele session-submit-btn">Sign In</button>
-                    <p className="session-bottom">New around here? <Link to="/signup" className="orange-link">Sign Up!</Link></p>
+                    <button className="session-div session-submit-btn">Sign In</button>
+                    <div className="or">or</div>
+                    <Link className="demo-login-btn" onClick={this.handleDemoUser}>Demo User</Link>
+                    <p className="session-bottom">New around here?<Link to="/signup" className="orange-link spacer-class">Sign Up!</Link></p>
                 </form>
+
+                </div>
             </div>
         );
     }

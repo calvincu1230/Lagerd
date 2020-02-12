@@ -1,7 +1,16 @@
 .orange-link {
     color: #CC6600;
+    text-decoration: none;
 }
 
 .orange-link:hover {
     color: #FF9932;
+}
+
+body {
+    background: image_url("beer-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: 'Arvo', serif;
 }
