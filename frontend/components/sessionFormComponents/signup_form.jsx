@@ -20,7 +20,11 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.action(this.state);
+        if (this.state.password === this.state.passwordCheck) {
+            this.props.action(this.state);
+        } else {
+            this.props.dispatchErrors(["Passwords must match!"]);
+        }
     }
 
     handleChange(field) {
@@ -35,6 +39,7 @@ class SignupForm extends React.Component {
         });
         return (
             <div className="outer-sign-up-form">
+                <h2 className="form-title">Lagerd</h2>
                 <ul className="errors-list">{errors}</ul>
                 <form onSubmit={this.handleSubmit} className="signup-form">
                     <div className="signup-form signup-username">
@@ -93,7 +98,7 @@ class SignupForm extends React.Component {
                                 onChange={this.handleChange("birth_date")}
                             />
                         </label>
-                        Already have an account? <Link to="/login">Log In!</Link>
+                        Already have an account? <Link to="/login" className="orange-link">Log In!</Link>
                     </div>
                     <button type="submit" className="signup-sub-btn">Create Account</button>
                 </form>

@@ -10,7 +10,6 @@ const sessionReducer = (state = _nullSession, action) => {
         case LOGOUT_CURRENT_USER:
             return _nullSession;
         default:
-            debugger
             return state;
     };
 };

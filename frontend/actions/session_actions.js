@@ -17,7 +17,7 @@ const logoutCurrentUser = () => {
     };
 };
 
-const receieveErrors = errors => {
+export const receieveErrors = errors => {
     return {
         type: RECIEVE_ERRORS,
         errors
@@ -48,4 +48,15 @@ export const signup = user => dispatch => {
                 return dispatch(receieveErrors(errors.responseJSON))
             }
         );
+};
+
+export const loginDemoUser = () => dispatch => {
+    return SessionUtil.loginDemoUser()
+        .then(user => dispatch(receiveCurrentUser(user)), 
+            errors => {
+                // debugger
+                return dispatch(receieveErrors(errors.responseJSON))
+            }
+        );
+        // .then on promise object has success and fail callbacks passed in
 };

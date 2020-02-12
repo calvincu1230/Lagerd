@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
       };
 
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleDemoUser = this.handleDemoUser.bind(this);
     }
 
     handleSubmit(e) {
@@ -23,17 +24,26 @@ class SessionForm extends React.Component {
         }
     }
 
+    handleDemoUser(e) {
+        e.preventDefault();
+        this.props.loginDemoUser();
+    }
+
     render() {
-        // const haveErrors = this.props.errors;
         const errors = this.props.errors.map(error => {
             return <li key={{ errors: error }} className="errors-li">{error}</li>
         });
         return (
-            <div className="session-form">
+            <div className="session-form-container">
+                <h2 className="session-form-title">Lagerd</h2>
+                <button className="demo-login-btn" onClick={this.handleDemoUser}> Demo User</button>
+                <div className="or">or</div>
                 <ul className="errors-list">{errors}</ul>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="session-form-username">
+                <form onSubmit={this.handleSubmit} className="session-form">
+                    <div className="session-form-username session-ele">
+                        <p className="username-input-img"></p>
                         <input 
+                            className="session-input"
                             type="text" 
                             value={this.state.username}
                             placeholder="Username"
@@ -41,8 +51,10 @@ class SessionForm extends React.Component {
                         />
                     </div>
 
-                    <div className="session-form-username">
+                    <div className="session-form-username session-ele">
+                        <p className="password-input-img"></p>
                         <input
+                            className="session-input"
                             type="password" 
                             value={this.state.password} 
                             placeholder="Password"
@@ -50,8 +62,8 @@ class SessionForm extends React.Component {
                         />
                     </div>
 
-                    <button>{this.props.formType}</button>
-                    <p>New around here? <Link to="/signup">Create an Account!</Link></p>
+                    <button className="session-ele session-submit-btn">Sign In</button>
+                    <p className="session-bottom">New around here?    <Link to="/signup"                  className="orange-link">Create an Account!</Link></p>
                 </form>
             </div>
         );

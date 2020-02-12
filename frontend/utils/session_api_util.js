@@ -24,3 +24,11 @@ export const signup = user => {
 };
 
 // sends request to user api to add a user to DB and log them in
+
+export const loginDemoUser = () => {
+    return $.ajax({
+        url: "/api/session",
+        method: "POST",
+        data: { user: { username: "tommy", password: "hunter2" } }
+    }); // MAKE SURE THIS MATCHES IF DB IS DROPPED ^^^
+}; 

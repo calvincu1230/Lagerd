@@ -1,13 +1,118 @@
-.session-form {
+.session-form-container {
     // display: flex;
     width: 300px;
+    height: 500px;
+    margin: auto;
     background-color: white;
+    margin-top: 30px;
+    padding: 24px 16px !important;
+}
+
+.session-form-title {
+    color: #3E4040;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-family: 'Alegreya SC', serif;
 }
 
 .errors-list {
     background-color: #E25858;
+    margin-top: 10px;
+
 }
 
 .errors-li {
     color: white;
+}
+
+.session-bottom {
+    margin-top: 40px;
+    border-top: black solid 1px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.session-submit-btn {
+    width: 100%;
+    margin: auto;
+    background-color: #FFCC00;
+    margin-top: 50px;
+}
+
+.session-input {
+    border: none;
+    border-left: 1px solid #ccc;
+    padding: 2px 0px 0px 12px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 1em;
+    border-radius: 0;
+    width: 100%;
+    float: left;
+}
+
+.or {
+    margin: 10px auto;
+    text-transform: uppercase;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    border-radius: 18px;
+    padding-top: 8px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    color: #ddd;
+    border: 3px solid #ddd;
+}   
+
+.demo-login-btn {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-family: 'Acme', sans-serif;
+    display: block;
+    max-width: 300px;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 0 5px 12px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #354D89;
+}
+
+.username-input-img {
+    padding-top: 5px;
+    width: 30px;
+    background-image: image_url("person.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.password-input-img {
+    height: 100%;
+    width: 30px;
+    background-image: image_url("lock.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.session-form-username {
+    border: 1px #CCCCCC solid;
+    border-radius: 2px;
+    display: flex;
+    height: 30px;
 }
