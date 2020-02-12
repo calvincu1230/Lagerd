@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
                 <form onSubmit={this.handleSubmit} className="session-form">
                     <div className="session-form-username session-div">
 
-                        <div className="input-picture session-username">
+                        <div className="input-picture-login session-username">
                             <p className="username-input-img"></p>
                         </div>
 
@@ -58,7 +58,7 @@ class SessionForm extends React.Component {
 
                     <div className="session-form-username session-div">
 
-                        <div className="input-picture session-pw">
+                        <div className="input-picture-login session-pw">
                             <p className="password-input-img"></p>
                         </div>
 
@@ -73,7 +73,7 @@ class SessionForm extends React.Component {
 
                     <button className="session-div session-submit-btn">Sign In</button>
                     <div className="or">or</div>
-                    <Link className="demo-login-btn orange-link" onClick={this.handleDemoUser}>Demo User</Link>
+                    <Link className="demo-login-btn" onClick={this.handleDemoUser}>Demo User</Link>
                     <p className="session-bottom">New around here?<Link to="/signup" className="orange-link spacer-class">Sign Up!</Link></p>
                 </form>
 

@@ -48,13 +48,17 @@ class SignupForm extends React.Component {
                     <h2 className="signup-form-title">Lagerd</h2>
                     <h3 className="signup-sub-title">Drink Socially</h3>
                     <ul className="errors-list">{errors}</ul>
-                    <strong className="">All fields below are required.</strong>
+                    <strong className="required-fields">All fields below are required.</strong>
                     <form onSubmit={this.handleSubmit} className="signup-form">
                         
-                        <div className="signup-row email-username">
+                        {/* <div className="signup-row email-username"> */}
 
-                            <div className="signup-form signup-username signup-div">
-                                <p className="username-input-img"></p>
+                            <div className="signup-form signup-div">
+                            
+                                <div className="input-picture-signup signup-username">
+                                    <p className="username-input-img"></p>
+                                </div>
+
                                 <input 
                                     type="text" 
                                     className="signup-input"
@@ -63,8 +67,10 @@ class SignupForm extends React.Component {
                                     onChange={this.handleChange("username")}
                                 />
                             </div>
-                            <div className="signup-form signup-email signup-div">
-                                <p className="email-input-img"></p>
+                            <div className="signup-form signup-div">
+                                <div className="input-picture-signup signup-email">
+                                    <p className="email-input-img"></p>
+                                 </div>
                                 <input 
                                     type="email"
                                     className="signup-input"
@@ -74,64 +80,63 @@ class SignupForm extends React.Component {
                                 />
                             </div>
 
-                        </div>
                         <p className="password-suggestion">Avoid using common words and include a mix of letters and numbers.</p>
-                        
-                        <div className="signup-row passwords">
-
-                            <div className="password-inputs">
-                                <div className="signup-form signup-password">
-                                    <p className="password-input-img"></p>
-                                    <input 
-                                        type="password" 
-                                        className="signup-input"
-                                        placeholder="Password"
-                                        value={this.state.password} 
-                                        onChange={this.handleChange("password")}
-                                    />
-                                </div>
-                                <div className="signup-form signup-password password-check">
-                                    <p className="password-input-img"></p>
-                                    <input 
-                                        type="password" 
-                                        placeholder="Repeat Password"
-                                        className="signup-input"
-                                        value={this.state.passwordCheck} 
-                                        onChange={this.handleChange("passwordCheck")}
-                                    />
-                                </div>
+                    
+                        <div className="signup-form signup-password signup-div">
+                            
+                            <div className="input-picture-signup signup-pw">
+                                <p className="password-input-img"></p>
                             </div>
 
+                            <input 
+                                type="password" 
+                                className="signup-input"
+                                placeholder="Password"
+                                value={this.state.password} 
+                                onChange={this.handleChange("password")}
+                            />
+                        </div>
+                        <div className="signup-form signup-password password-check signup-div">
+
+                            <div className="input-picture-signup signup-pw">
+                                <p className="password-input-img"></p>
+                            </div>
+                            <input 
+                                type="password" 
+                                placeholder="Repeat Password"
+                                className="signup-input"
+                                value={this.state.passwordCheck} 
+                                onChange={this.handleChange("passwordCheck")}
+                            />
                         </div>
 
-                        <div className="signup-row firstname-lastname">
-
-                            <div className="signup-form signup-firstname">
-                                <input 
-                                    type="text" 
-                                    placeholder="First Name"
-                                    value={this.state.first_name} 
-                                    onChange={this.handleChange("first_name")}
+                        <div className="signup-firstname signup-div">
+                            <input 
+                                type="text" 
+                                className="signup-input"
+                                placeholder="First Name"
+                                value={this.state.first_name} 
+                                onChange={this.handleChange("first_name")}
                                 />
-                            </div>
-                            <div className="signup-form signup-lastname">
-                                <input 
-                                    type="text" 
-                                    placeholder="Last Name"
-                                    value={this.state.last_name} 
-                                    onChange={this.handleChange("last_name")}
-                                />
-                            </div>
-
                         </div>
-                        <div className="signup-row signup-form signup-birthday">
-                            <label>Birthday:
+                        <div className="signup-lastname signup-div">
+                            <input 
+                                type="text" 
+                                className="signup-input"
+                                placeholder="Last Name"
+                                value={this.state.last_name} 
+                                onChange={this.handleChange("last_name")}
+                                />
+                        </div>
+
+                        <div className="signup-row signup-birthday signup-div">     
+                            <p className="birthday-text">Birthday</p>
                                 <input 
                                     type="date" 
+                                    className="signup-input"
                                     value={this.state.birth_date} 
                                     onChange={this.handleChange("birth_date")}
                                 />
-                            </label>
                         </div>
                             <p className="signup-bottom">
                             Already have an account?<Link to="/login" className="orange-link spacer-class">Log In!</Link>

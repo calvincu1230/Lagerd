@@ -33,7 +33,7 @@
 
 .session-bottom {
     margin-top: 40px;
-    border-top: #DDDDDD solid 1px;
+    border-top: #ddd solid 1px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -45,7 +45,6 @@
 .spacer-class {
     margin-left: 10px;
 }
-
 
 .session-form {
     display: flex;
@@ -107,11 +106,22 @@
 }   
 
 .demo-login-btn {
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Arvo', serif;
     margin-top: 5px;
     text-align: center;
     font-weight: 700;
+    color: #707070;
+    border: 2px solid #DDD;
+    border-radius: 8px;
+    width: 85%;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.demo-login-btn:hover {
+    background-color: #ddd;
+    color: #fff;
 }
 
 .username-input-img {
@@ -146,8 +156,8 @@
     font-weight: 800;
 }
 
-.input-picture {
-    background-image: image_url("person.png");
+.input-picture-login {
+    // background-image: image_url("person.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 15px;
