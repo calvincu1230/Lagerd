@@ -1,26 +1,30 @@
 .session-form-container {
     // display: flex;
-    width: 300px;
-    height: 425px;
+    width: 357px;
+    height: 500px;
     margin: auto;
     background-color: white;
     margin-top: 100px;
+}
+
+.login-content {
     padding: 24px 16px !important;
 }
 
 .session-form-title {
     color: #3E4040;
-    font-size: 40px;
+    font-size: 50px;
     display: flex;
     justify-content: center;
-    margin-bottom: 15px;
-    font-family: 'Alegreya SC', serif;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Arvo', serif;
 }
 
 .errors-list {
     background-color: #E25858;
     margin-top: 10px;
-
 }
 
 .errors-li {
@@ -29,30 +33,34 @@
 
 .session-bottom {
     margin-top: 40px;
-    border-top: black solid 1px;
+    border-top: #DDDDDD solid 1px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    font-family: ProximaNova, Helvetica, sans-serif; // ProximaNova is a paid font
+    justify-content: center;
+    font-family: 'Arvo', serif;
     padding-top: 30px;
     font-weight: 600;
 }
+
+.spacer-class {
+    margin-left: 10px;
+}
+
 
 .session-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .session-submit-btn {
-    // width: 100%;
-    // margin: auto;
     background-color: #FFCC00;
-    // margin-top: 50px;
     margin: 0 auto;
     width: 100%;
     max-width: 300px;
-    // position: relative;
+    border: none;
+    border-radius: 8px;
     text-align: center;
     display: block;
     padding: 12px 0;
@@ -61,9 +69,13 @@
     margin-top: 30px;
 }
 
+.session-submit-btn:hover {
+    background-color: #F4B702;
+}
+
 .session-input {
     border: none;
-    border-left: 1px solid #ccc;
+    // border-left: 1px solid #ddd;
     padding: 2px 0px 0px 12px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -72,6 +84,10 @@
     border-radius: 0;
     width: 100%;
     float: left;
+}
+
+.session-input::placeholder {
+    color: #ddd;
 }
 
 .or {
@@ -91,44 +107,60 @@
 }   
 
 .demo-login-btn {
-    color: #FFFFFF;
     font-size: 30px;
-    font-family: 'Acme', sans-serif;
-    display: block;
-    max-width: 300px;
-    border-radius: 5px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 5px 0 5px 12px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background-color: #354D89;
+    font-family: 'Arvo', serif;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 700;
 }
 
 .username-input-img {
     padding-top: 5px;
     width: 30px;
-    background-image: image_url("person.png");
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .password-input-img {
     height: 100%;
     width: 30px;
-    background-image: image_url("lock.png");
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .session-form-username {
-    border: 1px #CCCCCC solid;
-    border-radius: 2px;
+    border: 1px #ccc solid;
+    border-radius: 4px;
     display: flex;
     height: 30px;
+    width: 90%;
 }
 
-.session-ele {
+.session-div {
     margin-bottom: 10px;
+}
+
+.session-sub-title {
+    text-align: center;
+    font-size: 12px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    color: gray;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.input-picture {
+    background-image: image_url("person.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    margin: 8px;
+    padding-right: 5px;
+    border-right: #ddd solid 1px;
+}
+
+.session-username {
+    background-image: image_url("person.png");
+}
+
+.session-pw {
+    background-image: image_url("lock.png");
 }

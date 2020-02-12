@@ -1,0 +1,23 @@
+.splash-btn {
+  margin-right: 15px;
+  padding: 15px 20px;
+  font-size: 1em;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-family: ProximaNova, Helvetica, sans-serif;
+}
+
+.login-signup-upper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.splash-btn:hover {
+  background-color: #fff;
+  color: black;
+}
