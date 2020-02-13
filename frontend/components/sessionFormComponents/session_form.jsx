@@ -34,8 +34,9 @@ class SessionForm extends React.Component {
     }
 
     render() {
+        const errors = this.props.errors;
         const showErrors = Boolean(errors) && errors.length > 0 ? "show-errors" : "";
-        const errors = this.props.errors.map(error => {
+        const currentErrors = errors.map(error => {
             return <li key={{ errors: error }} className="errors-li">{error}</li>
         });
         
@@ -45,7 +46,7 @@ class SessionForm extends React.Component {
 
                 <h2 className="session-form-title">Lagerd</h2>
                 <h3 className="session-sub-title">Drink Socially</h3>
-                <ul className={`errors-list ${showErrors}`}>{errors}</ul>
+                <ul className={`errors-list ${showErrors}`}>{currentErrors}</ul>
                 <form onSubmit={this.handleSubmit} className="session-form">
                     <div className="session-form-username session-div">
 
