@@ -3,7 +3,8 @@
     height: 600px;
     margin: auto;
     background-color: white;
-    margin-top: 75px;
+    margin-top: 50px;
+    margin-bottom: 40px;
     padding: 24px 16px !important;
 }
 
@@ -183,4 +184,9 @@ input[type=date] {
 
 .signup-birthday {
     width: 43%;
+}
+
+.signup-title-link {
+    text-decoration: none;
+    color: inherit;
 }

@@ -4,7 +4,7 @@
     height: 575px;
     margin: auto;
     background-color: white;
-    margin-top: 75px;
+    margin-top: 20px;
 }
 
 .login-content {
@@ -181,4 +181,9 @@
 
 .session-pw {
     background-image: image_url("lock.png");
+}
+
+.login-title-link {
+    text-decoration: none;
+    color: inherit;
 }

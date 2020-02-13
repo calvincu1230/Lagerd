@@ -16,7 +16,6 @@ class Splash extends React.Component {
         </div>
         <LoginFormContainer />
         <SiteFeatures />
-        <Footer />
       </div>
     )
   }

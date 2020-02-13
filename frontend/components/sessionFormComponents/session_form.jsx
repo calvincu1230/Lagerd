@@ -44,7 +44,7 @@ class SessionForm extends React.Component {
             <div className="session-form-container">
                 <div className="login-content">
 
-                <h2 className="session-form-title">Lagerd</h2>
+                <h2 className="session-form-title"><Link className="login-title-link" to="/">Lagerd</Link></h2>
                 <h3 className="session-sub-title">Drink Socially</h3>
                 <ul className={`errors-list ${showErrors}`}>{currentErrors}</ul>
                 <form onSubmit={this.handleSubmit} className="session-form">

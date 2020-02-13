@@ -27,7 +27,7 @@ class SignupForm extends React.Component {
             this.props.dispatchErrors(["Please Enter a Valid Date."]);
             // if date is empty on submit, add error
         } else if (this.state.password === this.state.passwordCheck) {
-            this.props.action(this.state);
+            this.props.action(this.state).then(() => this.props.history.push('/feed'))
             // if both password entries match, submit
         } else {
             this.props.dispatchErrors(["Passwords must match!"]);
@@ -50,7 +50,7 @@ class SignupForm extends React.Component {
             <div className="signup-form-container">
                 <div className="signup-content">
     
-                    <h2 className="signup-form-title">Lagerd</h2>
+                    <h2 className="signup-form-title"><Link className="signup-title-link" to="/">Lagerd</Link></h2>
                     <h3 className="signup-sub-title">Drink Socially</h3>
                     <ul className={`errors-list ${showErrors}`}>{currentErrors}</ul>
                     <strong className="required-fields">All fields below are required.</strong>
