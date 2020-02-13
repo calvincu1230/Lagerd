@@ -9,7 +9,6 @@ class SignupForm extends React.Component {
         email: "",
         password: "",
         passwordCheck: "",
-        image_url: "",
         first_name: "",
         last_name: "",
         birth_date: ""
