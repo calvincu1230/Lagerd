@@ -18,6 +18,10 @@ class SignupForm extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.birth_date === ""){
@@ -38,20 +42,20 @@ class SignupForm extends React.Component {
     }
 
     render() {
-        const errors = this.props.errors.map(error => {
+        const errors = this.props.errors;
+        const showErrors = Boolean(errors) && errors.length > 0 ? "show-errors" : "";
+        const currentErrors = errors.map(error => {
             return <li key={error} className="errors-li">{error}</li>
         });
         return (
             <div className="signup-form-container">
-                <div class="signup-content">
+                <div className="signup-content">
     
                     <h2 className="signup-form-title">Lagerd</h2>
                     <h3 className="signup-sub-title">Drink Socially</h3>
-                    <ul className="errors-list">{errors}</ul>
+                    <ul className={`errors-list ${showErrors}`}>{currentErrors}</ul>
                     <strong className="required-fields">All fields below are required.</strong>
                     <form onSubmit={this.handleSubmit} className="signup-form">
-                        
-                        {/* <div className="signup-row email-username"> */}
 
                             <div className="signup-form signup-div">
                             
@@ -130,7 +134,7 @@ class SignupForm extends React.Component {
                         </div>
 
                         <div className="signup-row signup-birthday signup-div">     
-                            <p className="birthday-text">Birthday</p>
+                            <p className="birthday-text">Birthday:</p>
                                 <input 
                                     type="date" 
                                     className="signup-input"

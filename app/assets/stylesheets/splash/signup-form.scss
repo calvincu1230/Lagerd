@@ -1,9 +1,9 @@
 .signup-form-container {
     width: 600px;
-    height: 90%;
+    height: 600px;
     margin: auto;
     background-color: white;
-    margin-top: 100px;
+    margin-top: 75px;
     padding: 24px 16px !important;
 }
 
@@ -181,7 +181,6 @@ input[type=date] {
     padding: 5px;
 }
 
-// .password-input-img {
-//     height: 100%;
-//     width: 30px;
-// }
+.signup-birthday {
+    width: 43%;
+}
