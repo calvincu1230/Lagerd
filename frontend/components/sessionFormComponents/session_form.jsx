@@ -13,6 +13,10 @@ class SessionForm extends React.Component {
       this.handleDemoUser = this.handleDemoUser.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state);
@@ -30,16 +34,18 @@ class SessionForm extends React.Component {
     }
 
     render() {
+        const showErrors = Boolean(errors) && errors.length > 0 ? "show-errors" : "";
         const errors = this.props.errors.map(error => {
             return <li key={{ errors: error }} className="errors-li">{error}</li>
         });
+        
         return (
             <div className="session-form-container">
-                <div class="login-content">
+                <div className="login-content">
 
                 <h2 className="session-form-title">Lagerd</h2>
                 <h3 className="session-sub-title">Drink Socially</h3>
-                <ul className="errors-list">{errors}</ul>
+                <ul className={`errors-list ${showErrors}`}>{errors}</ul>
                 <form onSubmit={this.handleSubmit} className="session-form">
                     <div className="session-form-username session-div">
 
@@ -73,7 +79,7 @@ class SessionForm extends React.Component {
 
                     <button className="session-div session-submit-btn">Sign In</button>
                     <div className="or">or</div>
-                    <Link className="demo-login-btn" onClick={this.handleDemoUser}>Demo User</Link>
+                    <button className="demo-login-btn" onClick={this.handleDemoUser}>Demo User</button>
                     <p className="session-bottom">New around here?<Link to="/signup" className="orange-link spacer-class">Sign Up!</Link></p>
                 </form>
 

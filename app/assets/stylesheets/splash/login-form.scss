@@ -1,7 +1,7 @@
 .session-form-container {
     // display: flex;
-    width: 357px;
-    height: 500px;
+    width: 360px;
+    height: 575px;
     margin: auto;
     background-color: white;
     margin-top: 100px;
@@ -25,10 +25,18 @@
 .errors-list {
     background-color: #E25858;
     margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+    display: none;
 }
 
 .errors-li {
     color: white;
+}
+
+.show-errors {
+    display: block;
 }
 
 .session-bottom {
