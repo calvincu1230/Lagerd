@@ -1,21 +1,11 @@
-// .app-main {
-//     display: flex;
-//     flex-direction: column;
-//     height: 100vh;
-//     background: image_url("beer-background.jpg");
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     font-family: 'Arvo', serif;
-// }
-
 .signup-form-container {
     width: 600px;
-    height: 600px;
+    height: fit-content;
     margin: auto;
     background-color: white;
     margin-top: 50px;
     margin-bottom: 40px;
+    border-radius: 3px;
     padding: 24px 16px !important;
 }
 
@@ -42,7 +32,8 @@
     border-top: #ddd solid 1px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
     font-family: 'Arvo', serif;
     padding-top: 30px;
     font-weight: 600;
@@ -60,7 +51,8 @@
     padding: 12px 0;
     color: white;
     font-weight: 600;
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .signup-sub-btn:hover {

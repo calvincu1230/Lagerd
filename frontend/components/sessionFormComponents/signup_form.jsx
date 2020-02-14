@@ -141,11 +141,12 @@ class SignupForm extends React.Component {
                                     onChange={this.handleChange("birth_date")}
                                 />
                         </div>
-                            <p className="signup-bottom">
+                        <div className="signup-bottom">
+                            <p className="">
                             Already have an account?<Link to="/login" className="orange-link spacer-class">Log In!</Link>
                             </p>
-                        <button type="submit" className="signup-sub-btn">Create Account</button>
-
+                            <button type="submit" className="signup-sub-btn">Create Account</button>
+                        </div>
                     </form>
                 </div>
             </div>

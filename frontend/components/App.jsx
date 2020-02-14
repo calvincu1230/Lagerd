@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import LoginFormContainer from "./sessionFormComponents/login_form_container";
 import SignupFormContainer from "./sessionFormComponents/signup_form_container";
 import SplashContainer from "./splash/splash_container";
@@ -9,7 +9,6 @@ import Footer from "./footer/footer";
 
 const App = () => (
     <div className="app-main">
-      {/* <ProtectedRoute path="/" component={HeaderContainer} /> */}
       <Switch> 
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />

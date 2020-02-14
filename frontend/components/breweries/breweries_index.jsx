@@ -5,16 +5,17 @@ class BreweriesIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchBreweries();
+    this.props.fetchBeers();
   }
 
   render() {
     const breweryLis = this.props.breweries.map(brewery => {
-      return ( <BreweriesIndexItem brewery={brewery} key={brewery.id} /> )
+      return ( <BreweriesIndexItem brewery={brewery} key={brewery.name} /> )
     });
     return (
-      <div className="brewery-index-feed">
-        <div className="breweries-index-title">Breweries</div>
-        <div className="brewery-index-body">
+      <div className="index-feed">
+        <div className="index-title">Breweries</div>
+        <div className="index-body">
           <ul>{breweryLis}</ul>
         </div>
       </div>

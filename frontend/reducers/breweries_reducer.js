@@ -1,4 +1,5 @@
 import { RECEIVE_BREWERY, RECEIVE_BREWERIES } from "../actions/brewery_actions";
+// import { merge }
 
 const breweriesReducer = (state = {}, action) => {
   // debugger

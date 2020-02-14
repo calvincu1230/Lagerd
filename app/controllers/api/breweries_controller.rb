@@ -1,7 +1,7 @@
 class Api::BreweriesController < ApplicationController
 
   def index
-    @breweries = Brewery.all
+    @breweries = Brewery.with_attached_photo.all
     render :index
   end
 

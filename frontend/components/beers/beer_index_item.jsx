@@ -5,13 +5,15 @@ export default props => {
   return (
     <li className="index-item">
       <div>
+        <img src={props.beer.imgUrl} className="index-img"/>
         <h4 className="index-item-title">
           <Link 
-            to={`/breweries/${props.brewery.id}`} 
-            className="orange-link">{props.brewery.name}
+            to={`/beers/${props.beer.id}`} 
+            className="orange-link">{props.beer.name}
           </Link>
         </h4>
-        <p className="index-item-location index-subitem">{props.brewery.location}</p>
+        <p className="beer-item-style index-subitem">{props.beer.style}</p>
+        <p className="beer-item-abv index-subitem">{props.beer.abv}%</p>
       </div>
       <div className="index-item-underline"></div>
     </li>

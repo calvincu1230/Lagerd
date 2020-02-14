@@ -3,7 +3,6 @@ import React from "react";
 class BreweryShow extends React.Component {
   constructor(props) {
     super(props);
-    debugger
   }
 
   componentDidMount() {
@@ -13,7 +12,7 @@ class BreweryShow extends React.Component {
   render() {
     return (
       <div className="brewery-show-main">
-        {/* {this.props.brewery.name} */}
+        {this.props.brewery.name}
       </div>
     );
   }

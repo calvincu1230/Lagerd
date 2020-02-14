@@ -1,5 +1,10 @@
 class Api::BeersController < ApplicationController
 
+  def index 
+    @beers = Beer.with_attached_photo.all
+    render :index
+  end
+
   def show
     @beer = Beer.find(params[:id])
     render :show

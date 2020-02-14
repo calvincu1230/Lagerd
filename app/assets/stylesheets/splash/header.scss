@@ -1,8 +1,15 @@
 .header-main {
     background-color: #ffcc00;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     color: #FFFFFF;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 .header-title-div {
@@ -23,6 +30,14 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 800;
+}
+
+.header-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 18px;
+    width: 60%;
 }
 
 .logout-btn {

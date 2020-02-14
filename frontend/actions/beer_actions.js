@@ -5,12 +5,12 @@ export const RECEIVE_BEER = "RECEIVE_BEER";
 export const RECEIVE_BEERS = "RECEIVE_BEERS";
 export const RECEIVE_BEER_ERRORS = "RECEIVE_BEERS_ERRORS";
 
-// const receiveBeers = beers => {
-//   return {
-//     type: RECEIVE_BEERS,
-//     beers
-//   }; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
-// };
+const receiveBeers = beers => {
+  return {
+    type: RECEIVE_BEERS,
+    beers
+  }; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
+};
 
 const recieveBeerErrors = errors => {
   return {
@@ -26,15 +26,18 @@ const receiveBeer = beer => {
   };
 };
 
-export const fetchbeer = beerId => dispatch => {
+export const fetchBeer = beerId => dispatch => {
   return BeerUtil.fetchBeer(beerId)
     .then(beer => dispatch(receiveBeer(beer)));
 };
 
-// export const fetchBeers = () => dispatch => {
-//   return BeerUtil.fetchBeers()
-//     .then(beers => dispatch(receiveBeers(beers)));
-// }; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
+export const fetchBeers = () => dispatch => {
+  return BeerUtil.fetchBeers()
+    .then(beers => {
+      debugger
+      return dispatch(receiveBeers(beers))
+    }
+    )}; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
 
 export const updateBeer = beer => dispatch => {
   return BeerUtil.updateBeer(beer)

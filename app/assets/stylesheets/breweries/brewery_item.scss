@@ -1,17 +1,21 @@
-.brewery-item {
+.index-item {
   height: 80px;
   display: flex;
   align-items: center;
 }
 
-.brewery-item-title {
+.index-item-title {
 
 }
 
-.brewery-item-location {
+.index-item-location {
 
 }
 
-.brewery-item-underline {
+.index-item-underline {
   // border-bottom: ;
+}
+
+.index-subitem{
+  margin: 5px;
 }

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index, :create, :destroy, :update]
     resource :session, only: [:create, :destroy]
     resources :breweries, only: [:show, :index] # nest beers and checkins later
-    resources :beers, only: [:show, :create, :update]
+    resources :beers, only: [:index, :show, :create, :update]
   end
 
 

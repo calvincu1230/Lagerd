@@ -1,9 +1,11 @@
 .session-form-container {
     width: 360px;
-    height: 575px;
+    height: fit-content;
     margin: auto;
     background-color: white;
     margin-top: 20px;
+    padding: 20px;
+    border-radius: 3px;
 }
 
 .login-content {

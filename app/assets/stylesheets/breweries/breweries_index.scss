@@ -1,17 +1,13 @@
-// .app-main {
-//   background-image: none;
-//   background-color: #F5F2E8;
-// }
-
-.brewery-index-feed {
+.index-feed {
   margin: auto;
   height: 70%;
-  width: 70%;
+  width: 60%;
   background-color: #FFFFFF;
   margin-bottom: 30px;
+  margin-top: 80px;
 }
 
-.breweries-index-title {
+.index-title {
   background-color: #F9F9F9;
   width: auto;
   height: 60px;
@@ -21,7 +17,7 @@
   font-size: 18px;
 }
 
-.brewery-index-body {
+.index-body {
   position: relative;
   padding: 0 24px 24px
 }
