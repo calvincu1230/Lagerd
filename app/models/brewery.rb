@@ -11,7 +11,7 @@
 
 class Brewery < ApplicationRecord
 
-  validates :name, :img_url, :location, presence: true
+  validates :name, :location, presence: true
   
   has_many :beers
   has_one_attached :photo

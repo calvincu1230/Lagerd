@@ -1,0 +1,1 @@
+# json.extract! @brewery, :id, :name, :location #eventually grab beer ids and photo

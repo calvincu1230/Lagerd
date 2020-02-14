@@ -1,15 +1,28 @@
-.header-title {
-    font-size: 40px;
-    color: white;
-    padding-bottom: 5px;
-    z-index: 100;
-    width: 100%;
-    font-family: 'Arvo', serif;
-}
-
-.splash-header {
+.header-main {
     background-color: #ffcc00;
     display: flex;
+    justify-content: space-around;
+    color: #FFFFFF;
+}
+
+.header-title-div {
+    padding-top: 5px;
+}
+
+.header-title {
+    font-size: 30px;
+    margin-bottom: 3px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.header-sub-title {
+    text-align: center;
+    font-size: 8px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
 }
 
 .logout-btn {

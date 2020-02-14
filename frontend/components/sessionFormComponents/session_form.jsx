@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
         const errors = this.props.errors;
         const showErrors = Boolean(errors) && errors.length > 0 ? "show-errors" : "";
         const currentErrors = errors.map(error => {
-            return <li key={{ errors: error }} className="errors-li">{error}</li>
+            return <li key={error} className="errors-li">{error}</li>
         });
         
         return (

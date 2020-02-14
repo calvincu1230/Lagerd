@@ -14,9 +14,9 @@
 class Beer < ApplicationRecord
 
   validates :name, uniqueness: true
-  validates :name, :brewery_id, :img_url, :style, :abv, presence: true
+  validates :name, :brewery_id, :style, :abv, presence: true
 
-  # has_many :checkins
+  has_many :checkins
   belongs_to :brewery
   has_one_attached :photo
 
