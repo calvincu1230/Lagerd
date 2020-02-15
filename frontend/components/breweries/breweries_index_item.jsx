@@ -12,6 +12,7 @@ export default props => {
           </Link>
         </h4>
         <p className="index-item-location index-subitem">{props.brewery.location}</p>
+        <p>{props.brewery.beerCount}</p>
       </div>
       <div className="index-item-underline"></div>
     </li>

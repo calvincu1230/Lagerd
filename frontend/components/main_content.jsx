@@ -13,10 +13,11 @@ const MainContent = () => (
     <div className="main-content-body">
       <Switch>
         {/* <ProtectedRoute path="/feed" component={BreweriesIndexContainer} /> */}
+        <ProtectedRoute path="/breweries/:breweryId/beers/:beerId" component={BeerShowContainer} />
         <ProtectedRoute path="/breweries/:breweryId" component={BreweryShowContainer} />
-        <ProtectedRoute path="/beers/:beerId" component={BeerShowContainer} />
         <ProtectedRoute path="/breweries" component={BreweriesIndexContainer} /> 
-        <ProtectedRoute path="/beers" component={BeersIndexContainer} />  {/* TEMPORARY BREWERIES CONTAINER */}
+        <ProtectedRoute path="/beers" component={BeersIndexContainer} />
+        {/* <ProtectedRoute path="/" component={BreweriesIndexContainer} /> */}
       </Switch>
     </div>
   </div>

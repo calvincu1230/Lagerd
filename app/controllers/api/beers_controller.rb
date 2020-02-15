@@ -2,6 +2,7 @@ class Api::BeersController < ApplicationController
 
   def index 
     @beers = Beer.with_attached_photo.all
+    # @beers = Beer.with_attached_photo.all.page(params[:page]).per(5)
     render :index
   end
 

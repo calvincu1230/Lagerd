@@ -26,7 +26,9 @@
 .app-main {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    justify-content: space-between;
+    height: fit-content;
+    min-height: 775px;
     background: image_url("beer-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -39,7 +41,8 @@ a {
     color: inherit;
 }
 .main-content-main {
-    height: fit-content;
+    max-height: fit-content;
+    min-height: 90vh;
     background-image: none;
     background-color: #F5F2E8;
 }

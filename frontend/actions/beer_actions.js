@@ -1,5 +1,4 @@
 import * as BeerUtil from "../utils/beer_api_util";
-import { receieveErrors } from "./session_actions";
 
 export const RECEIVE_BEER = "RECEIVE_BEER";
 export const RECEIVE_BEERS = "RECEIVE_BEERS";
@@ -12,7 +11,7 @@ const receiveBeers = beers => {
   }; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
 };
 
-const recieveBeerErrors = errors => {
+const receieveBeerErrors = errors => {
   return {
     type: RECEIVE_BEER_ERRORS,
     errors
@@ -34,7 +33,7 @@ export const fetchBeer = beerId => dispatch => {
 export const fetchBeers = () => dispatch => {
   return BeerUtil.fetchBeers()
     .then(beers => {
-      debugger
+      // debugger
       return dispatch(receiveBeers(beers))
     }
     )}; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES

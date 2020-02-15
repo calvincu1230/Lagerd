@@ -1,7 +1,76 @@
 .beer-show-main {
   height: 250px;
+  padding: 16px;
 }
 
-.beer-show-brewery {
+.beer-info {
+  width: 50%;
+}
 
+.show-img {
+  height: 97px;
+  width: 97px;
+}
+
+.show-top {
+  display: flex;
+  align-items: center;
+  // justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.show-info {
+  padding-left: 10px;
+}
+
+.show-item {
+  margin: 5px;
+}
+
+.show-title {
+  font-weight: 400px;
+  font-size: 1.5em;
+}
+
+.show-mid {
+  display: flex;
+  font-size: 14px;
+  color: #999999;
+  border-top: #E9E9E9 solid 1px;
+  border-bottom: #E9E9E9 solid 1px;
+}
+
+.mid-show-item {
+  width: 20%;
+  padding: 12px;
+}
+
+.show-stat-box {
+  font-size: 12px;
+  display: flex;
+  text-align: center;
+  margin-right: auto;
+}
+
+.stat {
+  width: 80px;
+  align-self: center;
+  margin-bottom: 5px;
+}
+
+.right-side {
+  border-left: #E9E9E9 solid 1px;
+}
+
+.top-right, .top-left {
+  border-bottom: #E9E9E9 solid 1px;
+  padding-bottom: 5px;
+}
+
+.stat-stat {
+  font-size: 18px;
+}
+
+.stat-title {
+  font-size: 10px;
 }

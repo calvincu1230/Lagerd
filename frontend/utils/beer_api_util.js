@@ -5,10 +5,11 @@ export const fetchBeer = beerId => {
   });
 };
 
-export const fetchBeers = () => {
+export const fetchBeers = (page) => {
   return $.ajax({
     url: "/api/beers",
-    method: "GET"
+    method: "GET",
+    data: { page }
   });
 };
 

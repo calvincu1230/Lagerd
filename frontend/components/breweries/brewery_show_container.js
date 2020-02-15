@@ -4,7 +4,7 @@ import BreweryShow from "./brewery_show";
 
 
 const mSP = (state, ownProps) => {
-  debugger
+  // debugger
   return {
     brewery: state.entities.breweries[ownProps.match.params.breweryId] || {}
   };
