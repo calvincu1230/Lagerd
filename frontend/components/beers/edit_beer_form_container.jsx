@@ -14,7 +14,7 @@ class EditBeerForm extends React.Component {
   }
 
   render() {
-    const { action, formType, beer, fetchBeer, fetchBreweries, breweries, STYLES } = this.props;
+    const { action, formType, beer, fetchBeer, fetchBreweries, breweries, STYLES, history } = this.props;
     if (!beer) return null;
     return (
       <BeerForm 
@@ -25,6 +25,7 @@ class EditBeerForm extends React.Component {
         fetchBeer={fetchBeer}
         breweries={breweries}
         STYLES={STYLES}
+        history={history}
       />
     );
   }

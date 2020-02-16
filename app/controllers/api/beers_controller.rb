@@ -15,6 +15,7 @@ class Api::BeersController < ApplicationController
     @beer = Beer.new(beer_params)
 
     if @beer.save
+      # @beer.photo.attach(io: open('https://lagerd-seeds.s3.us-east-2.amazonaws.com/default_beer.png'), filename: 'default_beer.png')
       render :show
     else
       render json: @beer.errors.full_messages, status: 422
@@ -23,7 +24,7 @@ class Api::BeersController < ApplicationController
 
   def update
     @beer = Beer.find(params[:id])
-    if @beer && @beer.update_attributes(beer)
+    if @beer && @beer.update_attributes(beer_params)
       render :show
     elsif !@beer
       render json: ['Could not find beer'], status: 400
@@ -35,6 +36,6 @@ class Api::BeersController < ApplicationController
   private
 
   def beer_params
-    params.require(:beer).permit(:name, :brewery_id, :style, :abv)
+    params.require(:beer).permit(:name, :brewery_id, :style, :abv, :ibu)
   end
 end

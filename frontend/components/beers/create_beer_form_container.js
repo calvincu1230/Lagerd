@@ -3,7 +3,7 @@ import { createBeer } from "../../actions/beer_actions";
 import { fetchBreweries } from "../../actions/brewery_actions";
 import BeerForm from "./beer_form";
 
-const mSP = state => {
+const mSP = (state, ownProps) => {
   debugger
   return {
     beer: {

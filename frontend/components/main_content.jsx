@@ -15,12 +15,12 @@ const MainContent = () => (
     <div className="main-content-body">
       <Switch>
         {/* <ProtectedRoute path="/feed" component={BreweriesIndexContainer} /> */}
+        <ProtectedRoute exact path="/beers/new" component={CreateBeerFormContainer} />
+        <Route exact path="/breweries/:breweryId/beers/:beerId/edit" component={EditBeerFormContainer} />
         <Route path="/breweries/:breweryId/beers/:beerId" component={BeerShowContainer} />
         <Route path="/breweries/:breweryId" component={BreweryShowContainer} />
         <ProtectedRoute path="/breweries" component={BreweriesIndexContainer} /> 
-        <Route exact path="/beers/:beerId/edit" component={EditBeerFormContainer} />
         <Route path="/beers/:beerId" component={BeerShowContainer} />
-        <ProtectedRoute exact path="/beers/new" component={CreateBeerFormContainer} />
         <ProtectedRoute path="/beers" component={BeersIndexContainer} />
         <ProtectedRoute path="/" component={BreweriesIndexContainer} />
       </Switch>

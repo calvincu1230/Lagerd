@@ -15,7 +15,10 @@ class BeerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state);
+    if (this.state.ibu === "") {
+      this.setState({ ibu: "No" })
+    }
+    this.props.action(this.state).then(() => this.props.history.push("/feed"));
   }
 
   handleChange(field) {
@@ -26,12 +29,12 @@ class BeerForm extends React.Component {
 
   render() {
     let brewerySelects;
-    if (Object.values(this.props.breweries) > 0) {
+    if (this.props.breweries) {
       brewerySelects = this.props.breweries.map(brewery => {
         if (this.state.brewery_id === brewery.id) {
-          return <option value={brewery.id} key={{[brewery.id]: brewery}}>{brewery.name}</option>
+          return <option value={brewery.id} key={brewery.name}>{brewery.name}</option>
         }
-        return <option value={brewery.id} key={{[brewery.id]: brewery}}>{brewery.name}</option>
+        return <option value={brewery.id} key={brewery.name}>{brewery.name}</option>
       });
     }
 
@@ -43,30 +46,39 @@ class BeerForm extends React.Component {
     });
     // current will prefill data except brewery if coming from a the related beer page
     // maybe make separate forms rather than a shared one so its less confusing
+    const defaultSelect = this.props.formType === "Add New Beer" ? (<option value="" key="select">Choose A Brewery</option>) : "";
     return (
-      <div className="beer-form-outer">
+      <div className="beer-form-section beer-form-outer">
+        <h3 className="beer-form-title">{this.props.formType}</h3>
         <form className="beer-form" onSubmit={this.handleSubmit}>
-          <label>BEER NAME
+          <div className="beer-name-line">
+            <p>BEER NAME</p>
             <input type="text" value={this.state.name} onChange={this.handleChange("name")}/>
-          </label>
-          <label>BREWERY NAME
-            <select onChange={this.handleChange("brewery_id")} value={this.state.value}>
-              <option value="" key="select">Choose A Brewery</option>
+          </div>
+
+          <div className="beer-form-section beer-brewery-line">
+            <p>BREWERY NAME</p>
+            <select onChange={this.handleChange("brewery_id")} value={this.state.brewery_id}>
+              {defaultSelect}
               {brewerySelects}
             </select>
-          </label>
-            Style
-            <select onChange={this.handleChange("style")} value={this.state.style}>
+          </div>
+
+          <div className="beer-form-section beer-info-line">
+            <p>ABV</p>
+            <input className="beer-form-item" type="text" value={this.state.abv} onChange={this.handleChange("abv")}/>
+
+            <p>IBU</p>
+            <input className="beer-form-item" type="text" value={this.state.ibu} onChange={this.handleChange("ibu")}/>
+
+            <p>Style</p>
+            <select className="" onChange={this.handleChange("style")} value={this.state.style}>
               <option value="" key="select">Choose A Style</option>
               {beerStyles}
             </select>
-          <label>ABV
-            <input type="text" value={this.state.abv} onChange={this.handleChange("abv")}/>
-          </label>
-          <label>IBU
-            <input type="text" value={this.state.ibu} onChange={this.handleChange("ibu")}/>
-          </label>
-          <button>{this.props.formType}</button>
+          </div>
+
+          <button className="beer-form-btn">{this.props.formType}</button>
         </form>
       </div>
     );

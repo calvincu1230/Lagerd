@@ -1,0 +1,50 @@
+.beer-form-outer {
+  width: 50%;
+  height: 400px;
+  margin: auto;
+  background-color: #FFFFFF;
+  padding: 32px;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
+  font-family: 'Arvo', serif; // did this work without needin it? since no internet for google font
+}
+
+.beer-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.beer-form-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.beer-info-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0;
+}
+
+.beer-form-item {
+  width: 20%;
+}
+
+.beer-form-btn {
+  background-color: #FFCC00;
+  margin: 0 auto;
+  width: 100%;
+  // max-width: 300px;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  display: block;
+  padding: 12px 0;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.beer-form-btn:hover {
+  background-color: #F4B702;
+}
