@@ -1,11 +1,13 @@
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ProtectedRoute } from "../utils/route_util";
 import HeaderContainer from "./header/header_container";
 import BreweriesIndexContainer from "./breweries/breweries_index_container";
 import BreweryShowContainer from "./breweries/brewery_show_container";
 import BeersIndexContainer from "./beers/beer_index_container";
 import BeerShowContainer from "./beers/beer_show_container";
+import EditBeerFormContainer from "./beers/edit_beer_form_container";
+import CreateBeerFormContainer from "./beers/create_beer_form_container";
 
 const MainContent = () => (
   <div className="main-content-main">
@@ -13,11 +15,14 @@ const MainContent = () => (
     <div className="main-content-body">
       <Switch>
         {/* <ProtectedRoute path="/feed" component={BreweriesIndexContainer} /> */}
-        <ProtectedRoute path="/breweries/:breweryId/beers/:beerId" component={BeerShowContainer} />
-        <ProtectedRoute path="/breweries/:breweryId" component={BreweryShowContainer} />
+        <Route path="/breweries/:breweryId/beers/:beerId" component={BeerShowContainer} />
+        <Route path="/breweries/:breweryId" component={BreweryShowContainer} />
         <ProtectedRoute path="/breweries" component={BreweriesIndexContainer} /> 
+        <Route exact path="/beers/:beerId/edit" component={EditBeerFormContainer} />
+        <Route path="/beers/:beerId" component={BeerShowContainer} />
+        <ProtectedRoute exact path="/beers/new" component={CreateBeerFormContainer} />
         <ProtectedRoute path="/beers" component={BeersIndexContainer} />
-        {/* <ProtectedRoute path="/" component={BreweriesIndexContainer} /> */}
+        <ProtectedRoute path="/" component={BreweriesIndexContainer} />
       </Switch>
     </div>
   </div>

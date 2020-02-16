@@ -18,7 +18,7 @@ class BreweryShow extends React.Component {
           <div className="beer-info">
             <div className="show-info show-item">
               <h3 className="show-item show-title">{this.props.brewery.name}</h3>
-              <p className="show-style show-item">{this.props.brewery.style}</p>
+              <p className="show-style show-item">{this.props.brewery.location}</p>
             </div>
           </div>
           <div className="show-stat-box">
@@ -45,10 +45,10 @@ class BreweryShow extends React.Component {
           </div>
         </div>
 
-        <div className="show-mid">
-          <p className="mid-show-item">Avg Rating</p>
-          <p className="mid-show-item mid-border">Total Review Count</p>
-          <p className="mid-show-item mid-border">Total Beers</p>
+        <div className="show-mid brwewery-show-mid">
+          <p className="mid-show-item brewery-mid-show-item">Avg Rating</p>
+          <p className="brewery-mid-show-item mid-border">Total Review Count</p>
+          <p className="brewery-mid-show-item mid-border">{this.props.brewery.beerCount} Beers</p> {/* WILL LINK TO BREWERY BEERS PAGE */}
         </div>
       </div>
     );

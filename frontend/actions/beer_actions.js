@@ -2,7 +2,7 @@ import * as BeerUtil from "../utils/beer_api_util";
 
 export const RECEIVE_BEER = "RECEIVE_BEER";
 export const RECEIVE_BEERS = "RECEIVE_BEERS";
-export const RECEIVE_BEER_ERRORS = "RECEIVE_BEERS_ERRORS";
+export const RECEIVE_BEER_ERRORS = "RECEIVE_BEER_ERRORS";
 
 const receiveBeers = beers => {
   return {
@@ -36,12 +36,15 @@ export const fetchBeers = () => dispatch => {
       // debugger
       return dispatch(receiveBeers(beers))
     }
-    )}; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
+)}; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
 
 export const updateBeer = beer => dispatch => {
   return BeerUtil.updateBeer(beer)
     .then(beer => dispatch(receiveBeer(beer)), 
-    errors => dispatch(receieveBeerErrors(errors.responseJSON)));
+    errors => {
+      debugger
+      return dispatch(receieveBeerErrors(errors.responseJSON))
+    });
 };
 
 export const createBeer = beer => dispatch => {

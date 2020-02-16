@@ -28,3 +28,5 @@ export const updateBeer = (beer) => {
     data: { beer }
   });
 };
+
+export const STYLES = ['Pale Ale', 'Wheat', 'IPA', 'Stout', 'Sour', 'Pilsner', 'IPL', 'Brown Ale', 'Amber Ale', 'Helles Lager']

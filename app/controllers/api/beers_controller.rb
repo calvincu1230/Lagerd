@@ -22,7 +22,7 @@ class Api::BeersController < ApplicationController
   end
 
   def update
-    @beer = User.find(params[:id])
+    @beer = Beer.find(params[:id])
     if @beer && @beer.update_attributes(beer)
       render :show
     elsif !@beer

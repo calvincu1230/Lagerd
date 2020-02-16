@@ -15,7 +15,6 @@
 .show-top {
   display: flex;
   align-items: center;
-  // justify-content: flex-start;
   margin-bottom: 10px;
 }
 
@@ -34,6 +33,8 @@
 
 .show-mid {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 14px;
   color: #999999;
   border-top: #E9E9E9 solid 1px;
@@ -43,19 +44,19 @@
 .mid-show-item {
   width: 20%;
   padding: 12px;
+  text-align: center;
 }
 
 .show-stat-box {
   font-size: 12px;
   display: flex;
   text-align: center;
-  margin-right: auto;
+  margin-left: 30px;
 }
 
 .stat {
   width: 80px;
   align-self: center;
-  margin-bottom: 5px;
 }
 
 .right-side {
@@ -71,6 +72,11 @@
   font-size: 18px;
 }
 
+.bottom-left, .bottom-right {
+  margin-top: 6px;
+}
+
 .stat-title {
   font-size: 10px;
+  margin-bottom: 5px;
 }

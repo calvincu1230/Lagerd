@@ -9,6 +9,7 @@
 #  abv        :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  ibu        :string           not null
 #
 
 require 'test_helper'
