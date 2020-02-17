@@ -15,17 +15,11 @@ class BreweryBeerIndex extends React.Component {
   }
 
   render() {
-    // debugger
     let beerLis;
     if (Object.values(this.state.brewery).length > 0) {
-      // debugger
-
       beerLis = Object.values(this.props.brewery.beers).map(beer => {
-        // debugger
-        // const beer = this.props.beers[id];
         return <BeerIndexItem beer={beer} key={beer.id} />
       });
-      // this.setState({ beers: beerLis })
     }
     return (
       <div className="index-sub-feed">

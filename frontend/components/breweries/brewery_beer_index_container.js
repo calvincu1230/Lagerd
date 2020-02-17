@@ -5,7 +5,6 @@ import { fetchBrewery } from "../../actions/brewery_actions";
 import BreweryBeerIndex from "./brewery_beer_index";
 
 const mSP = (state, ownProps) => {
-  debugger
   return {
     brewery: state.entities.breweries[ownProps.match.params.breweryId],
     beers: state.entities.beers
