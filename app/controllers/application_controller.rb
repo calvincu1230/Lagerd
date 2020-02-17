@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user
     end
+
+    def ensure_default_photo
+        self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_brewery.png')), filename: 'default_brewery.png')
+    end
 end

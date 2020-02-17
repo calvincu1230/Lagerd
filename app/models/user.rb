@@ -30,8 +30,13 @@ class User < ApplicationRecord
     has_one_attached :photo
 
     after_initialize :ensure_session_token
+    after_create :ensure_default_photo
 
     attr_reader :password
+  
+    def ensure_default_photo
+        self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_user_img.png')), filename: 'default_user_img.png')
+    end
 
     def over_21
         # based on todays date, compares with date instance of given birthday

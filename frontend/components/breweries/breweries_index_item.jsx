@@ -3,18 +3,32 @@ import { Link } from "react-router-dom";
 
 export default props => {
   return (
-    <li className="index-item">
-      <div>
-        <h4 className="index-item-title">
+    <>
+    <div className="index-item">
+      <div className="left-items">
+
+      <img src={props.brewery.imgUrl} className="index-img"/>
+      <div className="index-info">
+
+        <h4 className="index-item-title index-subitem">
           <Link 
             to={`/breweries/${props.brewery.id}`} 
             className="orange-link">{props.brewery.name}
           </Link>
         </h4>
         <p className="index-item-location index-subitem">{props.brewery.location}</p>
-        <p>{props.brewery.beerCount}</p>
+      
       </div>
-      <div className="index-item-underline"></div>
-    </li>
+      </div>
+      <div className="right-items">
+        <div>
+          <p className="index-subitem beer-count">{props.brewery.beerCount} Beers</p>
+          <p className="index-subitem checkin-count">{/* props.brewery.checkinCount */}Total Ratings</p>
+        </div>
+        <p>Average Rating</p>
+      </div>
+    </div>
+    <div className="index-item-underline"></div>
+    </>
   );
 };

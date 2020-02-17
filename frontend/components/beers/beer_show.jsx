@@ -24,7 +24,9 @@ class BeerShow extends React.Component {
               <p className="show-style show-item">{this.props.beer.style}</p>
             </div>
           </div>
+
           <div className="show-stat-box">
+
             <div className="left-side">
               <div className="stat top-left">
                 <h4 className="stat-title">TOTAL</h4>
@@ -35,6 +37,7 @@ class BeerShow extends React.Component {
                 <p className="stat-stat">234</p>
               </div>
             </div>
+
             <div className="right-side">
               <div className="stat top-right">
                 <h4 className="stat-title">UNIQUE</h4>
@@ -54,6 +57,23 @@ class BeerShow extends React.Component {
           <p className="mid-show-item mid-border">Avg Rating</p>
           <p className="mid-show-item">Total Ratings</p>
         </div>
+
+          <div className="show-bottom">
+            <p className="show-description">{this.props.beer.description}</p>
+          <div className="test">
+            <Link to={`/breweries/${this.props.brewery.id}/beers/${this.props.beer.id}/edit`}>
+              <div className="btn-background">
+                <p className="edit-btn show-btn"></p>
+              </div>
+            </Link>
+            {/* <Link to={`/checkins/${this.props.brewery.id}/beers/${this.props.beer.id}/edit`}>
+              <div className="btn-background">
+              <p className="edit-btn"></p>
+              </div>
+            </Link> */}
+            {/* THIS IS FOR A MODAL POPUP */}
+            </div>
+          </div>
       </div>
     );
   }

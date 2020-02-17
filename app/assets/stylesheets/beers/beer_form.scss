@@ -1,9 +1,10 @@
 .beer-form-outer {
-  width: 50%;
-  height: 400px;
+  width: 30%;
   margin: auto;
   background-color: #FFFFFF;
+  min-width: 425px;
   padding: 32px;
+  height: fit-content;
   box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
   font-family: 'Arvo', serif; // did this work without needin it? since no internet for google font
 }
@@ -11,6 +12,19 @@
 .beer-form {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+  align-content: center;
+}
+
+.beer-form-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.beer-form-sub {
+  font-size: 14px;
+  font-weight: 900;
 }
 
 .beer-form-section {
@@ -18,22 +32,48 @@
   margin-bottom: 20px;
 }
 
+.beer-form-category {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.beer-form-ibu, .beer-form-abv, .beer-form-style {
+  display: flex;
+  flex-direction: column;
+}
+
+.beer-form-ibu, .beer-form-abv {
+  width: 100px;
+}
+
 .beer-info-line {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   margin-top: 0;
 }
 
 .beer-form-item {
-  width: 20%;
+  margin: 2px 10px 10px 0;
+  padding: 5px;
+  border: solid 1px #CCCCCC;
+  border-radius: 4px;
+}
+
+.beer-form-item select {
+  border: 0;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: window;
+  outline: none;
+  width: 300px;
+  font-size: 0.9em;
 }
 
 .beer-form-btn {
   background-color: #FFCC00;
   margin: 0 auto;
   width: 100%;
-  // max-width: 300px;
+  height: fit-content;
   border: none;
   border-radius: 6px;
   text-align: center;
@@ -41,10 +81,27 @@
   padding: 12px 0;
   color: white;
   font-weight: 600;
-  margin-top: 10px;
   margin-bottom: 30px;
 }
 
 .beer-form-btn:hover {
   background-color: #F4B702;
+}
+
+.beer-form-category {
+  color: #A3A3A3;
+}
+
+.beer-form-select-effect:focus {
+  outline: -webkit-focus-ring-color auto 5px;;
+}
+
+textarea {
+  resize: none;
+  width: 90%;
+  height: 100px;
+}
+
+.beer-name {
+  width: 90%;
 }

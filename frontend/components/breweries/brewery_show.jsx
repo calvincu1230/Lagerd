@@ -50,6 +50,11 @@ class BreweryShow extends React.Component {
           <p className="brewery-mid-show-item mid-border">Total Review Count</p>
           <p className="brewery-mid-show-item mid-border">{this.props.brewery.beerCount} Beers</p> {/* WILL LINK TO BREWERY BEERS PAGE */}
         </div>
+
+        <div className="show-bottom">
+            <p className="show-description">{this.props.brewery.description}</p>
+        </div>
+
       </div>
     );
   }

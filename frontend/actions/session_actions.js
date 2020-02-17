@@ -35,7 +35,7 @@ export const login = user => dispatch => {
     return SessionUtil.login(user)
         .then(user => dispatch(receiveCurrentUser(user)), 
             errors => {
-                // debugger
+
                 return dispatch(receieveErrors(errors.responseJSON))
             }
         );
@@ -60,7 +60,6 @@ export const loginDemoUser = () => dispatch => {
     return SessionUtil.loginDemoUser()
         .then(user => dispatch(receiveCurrentUser(user)), 
             errors => {
-                // debugger
                 return dispatch(receieveErrors(errors.responseJSON))
             }
         );

@@ -1,7 +1,8 @@
 .index-item {
-  height: 80px;
   display: flex;
   align-items: center;
+  height: 130px;
+  width: 100%;
 }
 
 .index-item-title {
@@ -12,8 +13,18 @@
 
 }
 
+.left-items {
+  display: flex;
+}
+
+.right-items {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .index-item-underline {
-  // border-bottom: ;
+  border-bottom: 1px solid #E9E9E9;
+  width: 100%;
 }
 
 .index-subitem{

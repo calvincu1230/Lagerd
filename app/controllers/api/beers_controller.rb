@@ -13,9 +13,9 @@ class Api::BeersController < ApplicationController
 
   def create
     @beer = Beer.new(beer_params)
-
     if @beer.save
       # @beer.photo.attach(io: open('https://lagerd-seeds.s3.us-east-2.amazonaws.com/default_beer.png'), filename: 'default_beer.png')
+      @beer.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_beer.png')), filename: 'default_beer.png')
       render :show
     else
       render json: @beer.errors.full_messages, status: 422
@@ -36,6 +36,6 @@ class Api::BeersController < ApplicationController
   private
 
   def beer_params
-    params.require(:beer).permit(:name, :brewery_id, :style, :abv, :ibu)
+    params.require(:beer).permit(:name, :brewery_id, :style, :abv, :ibu, :description)
   end
 end

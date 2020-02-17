@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateBeer, fetchBeer } from "../../actions/beer_actions";
 import { fetchBreweries } from "../../actions/brewery_actions";
+import { clearErrors } from "../../actions/session_actions";
 import BeerForm from "./beer_form";
 
 class EditBeerForm extends React.Component {
@@ -9,12 +10,16 @@ class EditBeerForm extends React.Component {
     super(props);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   componentDidMount() {
     this.props.fetchBeer(this.props.match.params.beerId);
   }
 
   render() {
-    const { action, formType, beer, fetchBeer, fetchBreweries, breweries, STYLES, history } = this.props;
+    const { action, clearErrors, formType, errors, beer, fetchBeer, fetchBreweries, breweries, STYLES, history } = this.props;
     if (!beer) return null;
     return (
       <BeerForm 
@@ -26,6 +31,8 @@ class EditBeerForm extends React.Component {
         breweries={breweries}
         STYLES={STYLES}
         history={history}
+        errors={errors}
+        clearErrors={clearErrors}
       />
     );
   }
@@ -36,7 +43,8 @@ const mSP = (state, ownProps) => {
   return {
     beer: state.entities.beers[ownProps.match.params.beerId] || {},
     formType: "Update Beer",
-    breweries: Object.values(state.entities.breweries) || []
+    breweries: Object.values(state.entities.breweries) || [],
+    errors: state.errors.beer
   };
 };
 
@@ -44,7 +52,8 @@ const mDP = dispatch => {
   return {
     action: beer => dispatch(updateBeer(beer)),
     fetchBeer: beerId => dispatch(fetchBeer(beerId)),
-    fetchBreweries: () => dispatch(fetchBreweries())
+    fetchBreweries: () => dispatch(fetchBreweries()),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 

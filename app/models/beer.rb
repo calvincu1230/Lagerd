@@ -15,14 +15,20 @@
 class Beer < ApplicationRecord
 
   validates :name, uniqueness: true
-  validates :name, :brewery_id, :style, :abv, presence: true
+  validates :name, :brewery_id, :style, :abv, :ibu, :description, presence: true
 
-  has_many :checkins
+  has_many :checkins, dependent: :destroy
   # has_many :posters,
   #   through :checkins,
   #   source 
   belongs_to :brewery
   has_one_attached :photo
+
+  after_create :ensure_default_photo
+  
+  def ensure_default_photo
+    self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_beer.png')), filename: 'default_beer.png')
+  end
 
   def unique_user_count
     self.joins()

@@ -18,7 +18,6 @@ const receiveBrewery = brewery => {
 };
 
 export const fetchBrewery = breweryId => dispatch => {
-  // debugger
   return BreweryUtil.fetchBrewery(breweryId)
     .then(brewery => dispatch(receiveBrewery(brewery)));
 };

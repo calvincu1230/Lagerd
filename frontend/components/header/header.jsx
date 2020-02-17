@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = props => {
-    const logoutBtn = <button onClick={props.logout}>Log Out!</button>
-    const logoutLink = props.currentUser ? logoutBtn : null;
+    // const logoutBtn = <button onClick={props.logout}>Log Out!</button>
+    // const logoutLink = props.currentUser ? logoutBtn : null;
     return (
         <header className="header-main sticky">
 
@@ -30,10 +30,17 @@ const Header = props => {
                 <div className="beers-div header-link">
                     <Link className="header-beers-link " to="/beers">Beers</Link>
                 </div>
+
+                <div className="add-beer-div header-link">
+                    <Link className="header-add-beer-link " to="/beers/new">Add a Beer</Link>
+                </div>
             </div>
             {/* PUT PROFILE PICTURE HERE WITH DROPDOWN FOR LOGOUT */}
-            <div className="logout-btn">
-                {logoutLink}
+            <div className="profile-pic">
+                <img className="current-user-photo" src={props.user.imgUrl} />
+                <ul className="header-dropdown">
+                    <li onClick={props.logout}>Logout</li>
+                </ul>
             </div>
         </header>
     );

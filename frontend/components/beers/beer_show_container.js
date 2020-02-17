@@ -4,7 +4,6 @@ import BeerShow from "./beer_show";
 import { fetchBrewery } from "../../actions/brewery_actions";
 
 const mSP = (state, ownProps) => {
-  // debugger
   return {
     beer: state.entities.beers[ownProps.match.params.beerId] || {},
     brewery: state.entities.breweries[ownProps.match.params.breweryId] || {},
@@ -16,7 +15,6 @@ const mDP = dispatch => {
   return {
     fetchBeer: beerId => dispatch(fetchBeer(beerId)),
     fetchBrewery: breweryId => {
-      // debugger
       return dispatch(fetchBrewery(breweryId))
     }
   };

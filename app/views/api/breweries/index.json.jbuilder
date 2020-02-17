@@ -1,6 +1,6 @@
 @breweries.includes(:beers).each do |brewery|
   json.set! brewery.id do
-    json.extract! brewery, :id, :name, :location
+    json.extract! brewery, :id, :name, :location, :description
     ids = []
     brewery.beers.each do |beer|
       ids << beer.id

@@ -4,7 +4,8 @@ import { logout } from "../../actions/session_actions";
 
 const mSP = state => {
     return {
-        currentUser: state.session.currentUserId 
+        currentUser: state.session.currentUserId,
+        user: state.entities.users[state.session.currentUserId]
     };
 };
 

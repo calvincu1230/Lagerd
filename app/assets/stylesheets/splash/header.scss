@@ -50,3 +50,33 @@
     font-size: 40px;
     font-weight: 700;
 }
+
+.current-user-photo {
+    width: 36px;
+    height: 36px;
+    // text-align: center;
+    -webkit-border-radius: 18px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+}
+
+.header-dropdown {
+    background-color: #2C2C2C;
+    color: #FFFFFF;
+    display: none;
+    height: fit-content;
+    width: 100px;
+    position: absolute;
+    height: 44px;
+    position: absolute;
+    top: 40px;
+}
+
+.header-dropdown > li {
+    cursor: pointer;
+}
+
+.profile-pic:hover .header-dropdown {
+    display: block;
+}

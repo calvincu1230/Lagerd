@@ -33,7 +33,6 @@ export const fetchBeer = beerId => dispatch => {
 export const fetchBeers = () => dispatch => {
   return BeerUtil.fetchBeers()
     .then(beers => {
-      // debugger
       return dispatch(receiveBeers(beers))
     }
 )}; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
@@ -42,7 +41,6 @@ export const updateBeer = beer => dispatch => {
   return BeerUtil.updateBeer(beer)
     .then(beer => dispatch(receiveBeer(beer)), 
     errors => {
-      debugger
       return dispatch(receieveBeerErrors(errors.responseJSON))
     });
 };
