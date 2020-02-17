@@ -1,11 +1,12 @@
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import LoginFormContainer from "./sessionFormComponents/login_form_container";
 import SignupFormContainer from "./sessionFormComponents/signup_form_container";
 import SplashContainer from "./splash/splash_container";
 import MainContent from "./main_content";
 import { ProtectedRoute, AuthRoute } from "../utils/route_util";
 import Footer from "./footer/footer";
+import FooterMain from "./footer/main_footer";
 
 const App = () => (
     <div className="app-main">
@@ -16,7 +17,8 @@ const App = () => (
         <ProtectedRoute path="/" component={MainContent} />  {/* TEMPORARY HEADER CONTAINER */}
       </Switch>
       <div className="footer-container">
-        <Footer />
+        {/* <ProtectedRoute path="/" component={FooterMain} /> */}
+        <Route path="/" component={Footer} />
       </div>
     </div>
   );

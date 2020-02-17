@@ -39,6 +39,8 @@ const Header = props => {
             <div className="profile-pic">
                 <img className="current-user-photo" src={props.user.imgUrl} />
                 <ul className="header-dropdown">
+                    <div className="dropdown-arrow"></div>
+                    <li>My Profile</li>
                     <li onClick={props.logout}>Logout</li>
                 </ul>
             </div>

@@ -4,6 +4,12 @@
   width: 100%;
 }
 
+.main-footer {
+  background-color: #F5F2E8;
+  height: 85px;
+  width: 100%;
+}
+
 .link-list {
   display: flex;
   justify-content: center;
@@ -23,4 +29,8 @@
 
 .foot-link {
   font-size: 18px;
+}
+
+.github-foot-link, .linkedin-foot-link {
+  padding-left: 20px;
 }

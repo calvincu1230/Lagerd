@@ -15,7 +15,10 @@ class EditBeerForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchBeer(this.props.match.params.beerId);
+    this.props.fetchBeer(this.props.match.params.beerId)
+      .then(beer => this.setState({ beer })
+    );
+    this.props.fetchBreweries();
   }
 
   render() {
@@ -41,9 +44,9 @@ class EditBeerForm extends React.Component {
 
 const mSP = (state, ownProps) => {
   return {
-    beer: state.entities.beers[ownProps.match.params.beerId] || {},
+    beer: state.entities.beers[ownProps.match.params.beerId],
     formType: "Update Beer",
-    breweries: Object.values(state.entities.breweries) || [],
+    breweries: Object.values(state.entities.breweries),
     errors: state.errors.beer
   };
 };
