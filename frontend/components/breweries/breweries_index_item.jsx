@@ -12,7 +12,7 @@ export default props => {
 
         <h4 className="index-item-title index-subitem">
           <Link 
-            to={`/breweries/${props.brewery.id}`} 
+            to={`/breweries/${props.brewery.id}/beers`} 
             className="orange-link">{props.brewery.name}
           </Link>
         </h4>
@@ -21,11 +21,15 @@ export default props => {
       </div>
       </div>
       <div className="right-items">
-        <div>
+        <div className="right-items-top">
           <p className="index-subitem beer-count">{props.brewery.beerCount} Beers</p>
-          <p className="index-subitem checkin-count">{/* props.brewery.checkinCount */}Total Ratings</p>
+          <div className="checkin-count-container">
+            <p className="index-subitem checkin-count">{/* props.brewery.checkinCount */}Total Ratings</p>
+          </div>
         </div>
-        <p>Average Rating</p>
+        <div>
+          <p className="index-subitem">Average Rating</p>
+        </div>
       </div>
     </div>
     <div className="index-item-underline"></div>

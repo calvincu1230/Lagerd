@@ -10,13 +10,25 @@
   width: 100%;
 }
 
-.link-list {
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+
+.foot-name {
+  align-self: center;
+  font-weight: 800;
+}
+
+.link-list, .foot-name {
   display: flex;
   justify-content: center;
   padding-top: 30px;
+  margin-right: 30px;
 }
 
-.github-link a, .linkedin-link a {
+.github-link a, .linkedin-link a, .foot-name {
   font-family: 'Arvo', serif;
   color: #FFF;
   text-decoration: none;

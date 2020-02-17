@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { fetchBrewery } from "../../actions/brewery_actions";
 import BreweryShow from "./brewery_show";
 
@@ -15,4 +16,4 @@ const mDP = dispatch => {
   };
 };
 
-export default connect(mSP, mDP)(BreweryShow);
+export default withRouter(connect(mSP, mDP)(BreweryShow));

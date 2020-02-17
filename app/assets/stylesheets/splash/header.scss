@@ -54,9 +54,9 @@
 
 .profile-pic {
     height: 44px;
-    position: absolute;
-    right: 264px;
-    top: 8px;
+    position: relative;
+    /* right: 264px; */
+    top: 6px;
 }
 
 .current-user-photo {
@@ -75,22 +75,45 @@
     top: 44px;
     left: -10px;
     z-index: 12;
-    width: 200px
+    min-width: 125px;
+    width: fit-content;
 }
 
 .header-dropdown > li {
     cursor: pointer;
     padding: 12px;
+    border-bottom: #444444 solid 1px;
 }
 
 .profile-pic:hover .header-dropdown {
     display: block;
 }
 
+.profile-pic:hover .dropdown-arrow {
+    display: block;
+}
+
 .dropdown-arrow {
-    border-top: transparent 3px solid;
-    border-right: transparent 3px solid;
-    border-left: transparent 3px solid;
-    border-bottom: #2c2c2c 3px solid;
-    z-index: 100;
+    bottom: 100%;
+    left: 12px;
+    display: none;
+    top: 33px;
+    border: solid transparent;
+    content: " ";
+    z-index: 20;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(44, 44, 44, 0);
+    border-bottom-color: #2c2c2c;
+    border-width: 6px;
+}
+
+.header-link:hover a {
+    color: #2c2c2c;
+}
+
+.header-dropdown li:hover {
+    // background: #ffcc00;
 }

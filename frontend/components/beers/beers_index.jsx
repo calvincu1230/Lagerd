@@ -5,11 +5,9 @@ class BeersIndex extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentPage: 1
-    };
-
-    // this.fetchMoreBeers= this.fetchMoreBeers.bind(this);
+    // this.state = {
+    //   currentPage: 1
+    // };
   }
   
   componentDidMount() {

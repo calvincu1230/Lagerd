@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BreweryBeerIndexContainer from "./brewery_beer_index_container";
 
 class BreweryShow extends React.Component {
   constructor(props) {
@@ -38,8 +39,8 @@ class BreweryShow extends React.Component {
                 <p className="stat-stat">1,233</p>
               </div>
               <div className="stat bottom-right">
-                <h4 className="stat-title"><Link to={`/users/${this.props.currentUserId}`}>YOU</Link></h4>
-                <p className="stat-stat">0</p>
+                <h4 className="stat-title">YOU</h4>
+                <p className="stat-stat orange-link"><Link to={`/users/${this.props.currentUserId}`}>0</Link></p>
               </div>
             </div>
           </div>
@@ -54,7 +55,6 @@ class BreweryShow extends React.Component {
         <div className="show-bottom">
             <p className="show-description">{this.props.brewery.description}</p>
         </div>
-
       </div>
     );
   }

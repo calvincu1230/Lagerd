@@ -1,7 +1,7 @@
 class Api::BreweriesController < ApplicationController
 
   def index
-    @breweries = Brewery.with_attached_photo.all
+    @breweries = Brewery.includes(:beers).with_attached_photo
     render :index
   end
 
@@ -9,5 +9,10 @@ class Api::BreweriesController < ApplicationController
     @brewery = Brewery.find(params[:id])
     render :show
   end
+
+  # def beers 
+  #   @brewery = Brewery.find(params[:id]).beers
+  #   render :
+  # end
   
 end
