@@ -6,6 +6,7 @@ class BeerForm extends React.Component {
     super(props);
     this.state = this.props.beer;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleImgChange = this.handleImgChange.bind(this);
   }
 
   componentWillUnmount() {
@@ -16,13 +17,52 @@ class BeerForm extends React.Component {
     this.props.fetchBreweries();
   }
 
+  handleImgChange(e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>{
+      this.setState({ imgUrl: reader.result, imageFile: file });
+    }
+
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imgUrl: "", imageFile: null });
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.description === "") {
       this.setState({ description: "None" })
     }
-    this.props.action(this.state).then(() => this.props.history.push("/beers"));
+    const formData = new FormData();
+    if (this.state.id) {
+      formData.append('beer[id]', this.state.id);
+    }
+
+    formData.append('beer[name]', this.state.name);
+    formData.append('beer[brewery_id]', this.state.brewery_id);
+    formData.append('beer[style]', this.state.style);
+    formData.append('beer[abv]', this.state.abv);
+    formData.append('beer[ibu]', this.state.ibu);
+    formData.append('beer[description]', this.state.description);
+    
+    if (this.state.imageFile) {
+      formData.append('beer[photo]', this.state.imageFile);
+    }
+    debugger
+    this.props.action(formData).then(() => this.props.history.push("/beers"));
   }
+
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   if (this.state.description === "") {
+  //     this.setState({ description: "None" })
+  //   }
+  //   this.props.action(this.state).then(() => this.props.history.push("/beers"));
+  // }
 
   handleChange(field) {
     return e => {
@@ -37,6 +77,17 @@ class BeerForm extends React.Component {
         return <li key={error} className="errors-li">{error}</li>
     });
 
+    let uploadedImg;
+    let hidden = "";
+    if (this.state.imgUrl) {
+      hidden = "hide-img"
+      uploadedImg = (
+        <img className="real-image" src={this.state.imgUrl} width="50px" height="50px" />
+      );
+    } else {
+      uploadedImg = null;
+    }
+
     let brewerySelects; // adds varied amount of breweries as options and sets default one
     if (this.props.breweries) {
       brewerySelects = this.props.breweries.map(brewery => {
@@ -49,9 +100,9 @@ class BeerForm extends React.Component {
 
     const beerStyles = STYLES.map(style => {
       if (this.state.style === style) {
-        return <option value={style} key={style}>{style}</option>
+        return <option className="style-option" value={style} key={style}>{style}</option>
       }
-      return <option value={style} key={style}>{style}</option>
+      return <option className="style-option" value={style} key={style}>{style}</option>
     });
     // current will prefill data except brewery if coming from a the related beer page
     // maybe make separate forms rather than a shared one so its less confusing
@@ -70,11 +121,23 @@ class BeerForm extends React.Component {
           </div>
 
           <div className="beer-form-section beer-brewery-line">
-            <p className="beer-form-category">BREWERY NAME</p>
-            <select onChange={this.handleChange("brewery_id")} value={this.state.brewery_id} className="beer-form-item">
-              {defaultSelect}
-              {brewerySelects}
-            </select>
+            <div className="brewery-select">
+              <div className="suggest-brewery">
+                <p className="beer-form-category">BREWERY NAME</p>
+                <p className="email-text">
+                  Can't find a brewery? <a href="mailto: brewerysuggestions@lagerd.io" subject="Brewery Suggestion" className="orange-link">Suggest one here!</a>
+                </p>
+              </div>
+              <select onChange={this.handleChange("brewery_id")} value={this.state.brewery_id} className="beer-form-item">
+                {defaultSelect}
+                {brewerySelects}
+              </select>
+            </div>
+            <div className="img-preview" id={`${hidden}`}>
+              <input className="pic-input" type="file" onChange={this.handleImgChange} />
+              {uploadedImg}
+              <p className="photo-text">Add A Photo!</p>
+            </div>
           </div>
 
           <div className="beer-form-section beer-info-line">
@@ -89,9 +152,9 @@ class BeerForm extends React.Component {
             </div>
 
             <div className="beer-form-style">
-              <p className="beer-form-category">STYLE</p>
-              <select className="" onChange={this.handleChange("style")} value={this.state.style} className="beer-form-item">
-                <option value="" key="select">Choose A Style</option>
+              <p className="beer-form-category style-title">STYLE</p>
+              <select className="style-option" onChange={this.handleChange("style")} value={this.state.style} className="beer-form-item">
+                <option value="style-option" key="select">Choose A Style</option>
                 {beerStyles}
               </select>
             </div>

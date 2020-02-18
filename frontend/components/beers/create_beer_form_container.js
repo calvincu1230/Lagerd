@@ -12,7 +12,8 @@ const mSP = (state, ownProps) => {
       style: "",
       abv: "",
       ibu: "",
-      description: ""
+      description: "",
+      imgUrl: ""
     },
     formType: "Add New Beer",
     breweries: Object.values(state.entities.breweries) || [],
@@ -22,7 +23,7 @@ const mSP = (state, ownProps) => {
 
 const mDP = dispatch => {
   return {
-    action: beer => dispatch(createBeer(beer)),
+    action: (formData, beer) => dispatch(createBeer(formData, beer)),
     fetchBreweries: () => dispatch(fetchBreweries()),
     clearErrors: () => dispatch(clearErrors())
   };

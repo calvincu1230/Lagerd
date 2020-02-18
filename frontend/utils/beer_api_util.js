@@ -13,19 +13,24 @@ export const fetchBeers = (page) => {
   });
 };
 
-export const createBeer = (beer) => {
+export const createBeer = (formData) => {
   return $.ajax({
     url: "/api/beers",
     method: "POST",
-    data: { beer }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 
 export const updateBeer = (beer) => {
+  debugger
   return $.ajax({
     url: `/api/beers/${beer.id}`,
     method: "PATCH",
-    data: { beer }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 

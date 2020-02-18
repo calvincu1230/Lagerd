@@ -37,7 +37,7 @@ export const fetchBeers = () => dispatch => {
     }
 )}; // NOT SURE IF I WILL NEED THIS LATER AS BEERS ARE NESTED IN BREWERIES
 
-export const updateBeer = beer => dispatch => {
+export const updateBeer = (beer) => dispatch => {
   return BeerUtil.updateBeer(beer)
     .then(beer => dispatch(receiveBeer(beer)), 
     errors => {

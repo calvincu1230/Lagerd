@@ -16,9 +16,13 @@
   align-content: center;
 }
 
+.style-title {
+  margin-bottom: 6px;
+}
+
 .beer-form-title {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
   font-weight: 900;
 }
 
@@ -37,6 +41,10 @@
   font-weight: 100;
 }
 
+.beer-form-style {
+  align-self: center;
+}
+
 .beer-form-ibu, .beer-form-abv, .beer-form-style {
   display: flex;
   flex-direction: column;
@@ -46,17 +54,23 @@
   width: 100px;
 }
 
+
+.style-dropdown {
+  padding-top: 5px;
+}
+
 .beer-info-line {
   display: flex;
   align-items: center;
-  margin-top: 0;
+  margin-top: 40px;
 }
 
 .beer-form-item {
-  margin: 2px 10px 10px 0;
+  margin: 5px 10px 10px 0;
   padding: 5px;
   border: solid 1px #CCCCCC;
   border-radius: 4px;
+  position: relative;
 }
 
 .beer-form-item select {
@@ -90,6 +104,7 @@
 
 .beer-form-category {
   color: #A3A3A3;
+  letter-spacing: 1px;
 }
 
 .beer-form-select-effect:focus {
@@ -104,4 +119,54 @@ textarea {
 
 .beer-name {
   width: 90%;
+}
+
+.email-text {
+  font-size: 12px;
+  margin: 7px 0 5px 0;
+  letter-spacing: .75px;
+}
+
+.suggest-brewery {
+  color: #A3A3A3;
+  font-weight: 300;
+}
+
+.image-upload {
+  margin: 15px 0 15px 0;
+  position: relative;
+}
+
+.pic-input {
+  position: relative;
+  opacity: 0;
+  height: 50px;
+  width: 50px;
+  z-index: 15;
+  cursor: pointer;
+}
+
+.beer-brewery-line {
+  position: relative;
+}
+
+.real-image {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+}
+
+.photo-text {
+  font-size: 12px;
+  color: #A3A3A3;
+  font-weight: 300;
+  margin: 5px 0 0 0;
+  letter-spacing: .75px;
+  width: 100px;
+  text-align: center;
+}
+
+#hide-img {
+  background-image: none;
+  background-color: #FFFFFF;
 }

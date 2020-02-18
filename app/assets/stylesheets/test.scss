@@ -1,0 +1,11 @@
+.img-preview {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  background-image: url("default_beer.png");
+  left: 315px;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+}

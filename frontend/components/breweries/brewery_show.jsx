@@ -25,22 +25,22 @@ class BreweryShow extends React.Component {
           <div className="show-stat-box">
             <div className="left-side">
               <div className="stat top-left">
-                <h4 className="stat-title">TOTAL</h4>
+                <h4 className="stat-title">TOTAL {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
                 <p className="stat-stat">3,432</p> {/* REAL INFO EVENTUALLY */}
               </div>
               <div className="stat bottom-left">
-                <h4 className="stat-title">MONTLY</h4>
+                <h4 className="stat-title">MONTLY {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
                 <p className="stat-stat">234</p>
               </div>
             </div>
             <div className="right-side">
               <div className="stat top-right">
-                <h4 className="stat-title">UNIQUE</h4>
+                <h4 className="stat-title">UNIQUE {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
                 <p className="stat-stat">1,233</p>
               </div>
               <div className="stat bottom-right">
                 <h4 className="stat-title">YOU</h4>
-                <p className="stat-stat orange-link"><Link to={`/users/${this.props.currentUserId}`}>0</Link></p>
+                <p className="stat-stat orange-link"><Link to={`/users/${this.props.currentUserId}`}>0 {/*(<span className="orange-link info-hover">?</span>)*/}</Link></p>
               </div>
             </div>
           </div>
@@ -49,7 +49,11 @@ class BreweryShow extends React.Component {
         <div className="show-mid brwewery-show-mid">
           <p className="mid-show-item brewery-mid-show-item">Avg Rating</p>
           <p className="brewery-mid-show-item mid-border">Total Review Count</p>
-          <p className="brewery-mid-show-item mid-border">{this.props.brewery.beerCount} Beers</p> {/* WILL LINK TO BREWERY BEERS PAGE */}
+          <p className="brewery-mid-show-item mid-border">
+            <Link 
+            to={`/breweries/${this.props.brewery.id}/beers`} 
+            className="orange-link">{this.props.brewery.beerCount} Beers
+            </Link></p>
         </div>
 
         <div className="show-bottom">

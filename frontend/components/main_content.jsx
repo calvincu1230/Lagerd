@@ -9,6 +9,7 @@ import BeersIndexContainer from "./beers/beer_index_container";
 import BeerShowContainer from "./beers/beer_show_container";
 import EditBeerFormContainer from "./beers/edit_beer_form_container";
 import CreateBeerFormContainer from "./beers/create_beer_form_container";
+import BreweryCheckinShow from "./breweries/brewery_checkin_show";
 
 const MainContent = () => (
   <div className="main-content-main">
@@ -20,6 +21,7 @@ const MainContent = () => (
         <Route exact path="/breweries/:breweryId/beers/:beerId/edit" component={EditBeerFormContainer} />
         <Route exact path="/breweries/:breweryId/beers/:beerId" component={BeerShowContainer} />
         <Route exact path="/breweries/:breweryId/beers" component={BreweryBeerShow} />
+        <Route exact path="/breweries/:breweryId" component={BreweryCheckinShow} />
         <ProtectedRoute path="/breweries" component={BreweriesIndexContainer} /> 
         {/* <Route path="/beers/:beerId" component={BeerShowContainer} /> */}
         <ProtectedRoute path="/beers" component={BeersIndexContainer} />
