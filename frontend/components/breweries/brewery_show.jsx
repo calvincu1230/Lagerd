@@ -46,6 +46,7 @@ class BreweryShow extends React.Component {
           </div>
         </div>
 
+{/* // test commit */}
         <div className="show-mid brwewery-show-mid">
           <p className="mid-show-item brewery-mid-show-item">Avg Rating</p>
           <p className="brewery-mid-show-item mid-border">Total Review Count</p>
