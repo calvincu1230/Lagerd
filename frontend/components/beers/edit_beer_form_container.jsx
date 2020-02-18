@@ -53,7 +53,7 @@ const mSP = (state, ownProps) => {
 
 const mDP = dispatch => {
   return {
-    action: (formData, beer) => dispatch(updateBeer(formData, beer)),
+    action: (formData) => dispatch(updateBeer(formData)),
     fetchBeer: beerId => dispatch(fetchBeer(beerId)),
     fetchBreweries: () => dispatch(fetchBreweries()),
     clearErrors: () => dispatch(clearErrors())

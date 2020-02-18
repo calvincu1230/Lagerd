@@ -23,10 +23,9 @@ export const createBeer = (formData) => {
   });
 };
 
-export const updateBeer = (beer) => {
-  debugger
+export const updateBeer = (formData) => { // gets specific id from formData to go to right route, was coming up undefined and erroring out
   return $.ajax({
-    url: `/api/beers/${beer.id}`,
+    url: `/api/beers/${formData.get("beer[id]")}`,  
     method: "PATCH",
     data: formData,
     contentType: false,

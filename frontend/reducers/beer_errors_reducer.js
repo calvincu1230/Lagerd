@@ -3,6 +3,7 @@ import { CLEAR_ERRORS } from "../actions/session_actions";
 
 const beerErrorsReducer = (state = [], action) => {
   Object.freeze(state);
+  debugger
   switch (action.type) {
     case RECEIVE_BEER_ERRORS:
       return action.errors;

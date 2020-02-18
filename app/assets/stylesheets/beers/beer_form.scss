@@ -150,6 +150,17 @@ textarea {
   position: relative;
 }
 
+.img-preview {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  left: 315px;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .real-image {
   position: absolute;
   height: 50px;

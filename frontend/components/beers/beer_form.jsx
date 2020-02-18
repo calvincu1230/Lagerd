@@ -56,14 +56,6 @@ class BeerForm extends React.Component {
     this.props.action(formData).then(() => this.props.history.push("/beers"));
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   if (this.state.description === "") {
-  //     this.setState({ description: "None" })
-  //   }
-  //   this.props.action(this.state).then(() => this.props.history.push("/beers"));
-  // }
-
   handleChange(field) {
     return e => {
       this.setState({ [field]: e.target.value })
@@ -81,11 +73,9 @@ class BeerForm extends React.Component {
     let hidden = "";
     if (this.state.imgUrl) {
       hidden = "hide-img"
-      uploadedImg = (
-        <img className="real-image" src={this.state.imgUrl} width="50px" height="50px" />
-      );
+      uploadedImg = this.state.imgUrl;
     } else {
-      uploadedImg = null;
+      uploadedImg = defaultBeerPNG;
     }
 
     let brewerySelects; // adds varied amount of breweries as options and sets default one
@@ -134,8 +124,8 @@ class BeerForm extends React.Component {
               </select>
             </div>
             <div className="img-preview" id={`${hidden}`}>
+              <img className="real-image" src={uploadedImg} width="50px" height="50px" />
               <input className="pic-input" type="file" onChange={this.handleImgChange} />
-              {uploadedImg}
               <p className="photo-text">Add A Photo!</p>
             </div>
           </div>
