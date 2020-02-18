@@ -28,6 +28,7 @@ class CheckinsController < ApplicationController
       render json: ['Could not find checkin'], status: 400
     else
       render json: @checkin.errors.full_messages, status: 401
+    end
   end
 
   def destroy
