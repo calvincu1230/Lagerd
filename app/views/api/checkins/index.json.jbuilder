@@ -8,11 +8,13 @@
       json.id checkin.author.id
       json.firstName checkin.author.first_name
       json.lastName checkin.author.last_name
+      json.imgUrl url_for(checkin.author.photo) if checkin.author.photo.attached?
     end
 
     json.beer do
       json.id checkin.beer.id
       json.name checkin.beer.name
+      json.imgUrl url_for(checkin.beer.photo) if checkin.beer.photo.attached?
     end
 
     json.brewery do

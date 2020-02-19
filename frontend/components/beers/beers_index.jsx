@@ -12,13 +12,13 @@ class BeersIndex extends React.Component {
   
   componentDidMount() {
     this.props.fetchBeers();
-    // this.fetchMoreBeers();
+    // this.props.fetchMoreBeers();
     this.props.fetchBreweries();
   }
 
   // fetchMoreBeers() {
-  //   this.setState = ({ currentPage: this.state.currentPage += 1 });
-  //   this.props.fetchBeers(this.state.currentPage);
+    // this.props.fetchBeers(this.state.currentPage);
+    // this.setState = ({ currentPage: this.state.currentPage += 1 });
   //   // added kaminari gem to not have to load all beers at once
   // }
 

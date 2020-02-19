@@ -14,12 +14,17 @@ class CheckinsIndex extends React.Component {
   render() {
 
     const checkinLis = this.props.checkins.map(checkin => {
-      return <CheckinsIndexItem key={`${checkin.id}${checkin.body}`} checkin={checkin} deleteCheckin={this.props.deleteCheckin} />
+      return <CheckinsIndexItem 
+                key={`${checkin.id}${checkin.body}`} 
+                checkin={checkin} 
+                deleteCheckin={this.props.deleteCheckin} 
+                currentUserId={this.props.currentUserId}
+                />
     });
     
     return (
       <div className="index-feed">
-        <div className="index-title">Recent Global Activity</div>
+        <div className="checkin-index-title">Recent Global Activity</div>
         <div className="index-body">
           <ul>{checkinLis}</ul>
         </div>

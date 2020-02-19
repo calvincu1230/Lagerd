@@ -7,7 +7,7 @@ class Api::BeersController < ApplicationController
   end
 
   def show
-    @beer = Beer.includes(:checkins).find(params[:id])
+    @beer = Beer.includes(:checkins).with_attached_photo.find(params[:id])
     render :show
   end
 

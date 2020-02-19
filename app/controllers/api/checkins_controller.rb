@@ -1,13 +1,13 @@
 class Api::CheckinsController < ApplicationController
 
   def show
-    @checkin = Checkin.find(params[:id])
+    @checkin = Checkin.with_attached_photo.find(params[:id])
     # .with_attached_photo
     render :show
   end
 
   def index
-    @checkins = Checkin.all
+    @checkins = Checkin.with_attached_photo
     # with_attached_image
     render :index
   end

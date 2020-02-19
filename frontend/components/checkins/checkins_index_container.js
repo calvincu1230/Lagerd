@@ -5,7 +5,8 @@ import { fetchBeers } from "../../actions/beer_actions";
 
 const mSP = state => {
   return {
-    checkins: Object.values(state.entities.checkins)
+    checkins: Object.values(state.entities.checkins),
+    currentUserId: state.session.currentUserId
   };
 };
 
