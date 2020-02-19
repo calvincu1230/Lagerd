@@ -20,7 +20,12 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6 }, allow_nil: true 
     validate :birth_date, if: :over_21
 
-    has_many :checkins, dependent: :destroy
+    has_many :checkins, 
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :Checkin,
+        dependent: :destroy
+
     has_many :comments, dependent: :destroy
     has_many :toasts, dependent: :destroy
     has_many :friends,
@@ -35,7 +40,7 @@ class User < ApplicationRecord
     attr_reader :password
   
     def ensure_default_photo
-        self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_user_img.png')), filename: 'default_user_img.png')
+        self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_user_img.png')), filename: 'default_user_img.png') unless self.photo.attached?
     end
 
     def over_21

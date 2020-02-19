@@ -1,13 +1,13 @@
 class Api::BeersController < ApplicationController
 
   def index 
-    @beers = Beer.with_attached_photo
-    # @beers = Beer.with_attached_photo.all.page(params[:page]).per(5)
+    @beers = Beer.includes(:checkins).with_attached_photo
+    # @beers = Beer.includes(:checkins).with_attached_photo.all.page(params[:page]).per(5)
     render :index
   end
 
   def show
-    @beer = Beer.find(params[:id])
+    @beer = Beer.includes(:checkins).find(params[:id])
     render :show
   end
 

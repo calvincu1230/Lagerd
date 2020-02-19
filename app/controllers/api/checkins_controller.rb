@@ -1,7 +1,8 @@
-class CheckinsController < ApplicationController
+class Api::CheckinsController < ApplicationController
 
   def show
     @checkin = Checkin.find(params[:id])
+    # .with_attached_photo
     render :show
   end
 

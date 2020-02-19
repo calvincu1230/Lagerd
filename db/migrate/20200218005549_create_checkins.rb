@@ -2,7 +2,7 @@ class CreateCheckins < ActiveRecord::Migration[5.2]
   def change
     create_table :checkins do |t|
       t.integer :author_id, null: false
-      t.text :body, null: false
+      t.text :body
       t.integer :beer_id, null: false
       t.integer :rating, null: false
 

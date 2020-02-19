@@ -34,9 +34,6 @@ class BeerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.description === "") {
-      this.setState({ description: "None" })
-    }
     const formData = new FormData();
     if (this.state.id) {
       formData.append('beer[id]', this.state.id);

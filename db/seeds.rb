@@ -9,16 +9,17 @@
 
 # require 'open-uri'
 
-Beer.delete_all
-Brewery.delete_all
-User.delete_all
+Checkin.destroy_all
+Beer.destroy_all
+Brewery.destroy_all
+User.destroy_all
 
 # User Seeds
 
-demo_user = User.create!(username: "tommy", email: "tommy@aa.io", password: "hunter2", first_name: "tommy", last_name: "duek", birth_date: "1990-12-30")
-# user1 = User.create!(username: "BeerGuy", email: "beerguy@lagerd.com", password: "hunter2", first_name: "Bob", last_name: "Belcher", birth_date: "1990-12-30")
-# user2 = User.create!(username: "BeerHunter234", email: "chad@lagerd.com", password: "hunter2", first_name: "Chad", last_name: "Chaddington", birth_date: "1992-8-30")
-# user3 = User.create!(username: "HopHead32", email: "ben@lagerd.com", password: "hunter2", first_name: "Ben", last_name: "Wyatt", birth_date: "1982-1-3")
+demo_user = User.create!(username: "tommy", email: "tommy@aa.io", password: "hunter2", first_name: "Tommy", last_name: "Duek", birth_date: "1990-12-30")
+user1 = User.create!(username: "BeerGuy", email: "beerguy@lagerd.com", password: "hunter2", first_name: "Bob", last_name: "Belcher", birth_date: "1990-12-30")
+user2 = User.create!(username: "BeerHunter234", email: "chad@lagerd.com", password: "hunter2", first_name: "Chad", last_name: "Chaddington", birth_date: "1992-8-30")
+user3 = User.create!(username: "HopHead32", email: "ben@lagerd.com", password: "hunter2", first_name: "Ben", last_name: "Wyatt", birth_date: "1982-1-3")
 # user4 = User.create!(username: "BeerLyfee", email: "tommy@lagerd.com", password: "hunter2", first_name: "Stephen", last_name: "DiPietro", birth_date: "1996-5-9")
 # user5 = User.create!(username: "BeerChick", email: "katie@lagerd.com", password: "hunter2", first_name: "Katie", last_name: "O'Connor", birth_date: "1994-2-12")
 
@@ -41,7 +42,7 @@ russian_river = Brewery.create!(name: "Russian River Brewing Company", location:
 
 # lawsons = Brewery.create!(name: "Lawson's Finest Liquids", location: "Waitsfield, VT United States", description: "Lawson’s Finest Liquids produces beer of the highest quality with outstanding freshness. We emulate the best of widely appreciated styles of beer, featuring world class IPAs and unique maple brews, while quenching the thirst of beer lovers from near and far.")
 
-# gsb = Brewery.create!(name: "Great South Bay Brewery", location: "Bay Shore, NY United States", description: "None")
+# gsb = Brewery.create!(name: "Great South Bay Brewery", location: "Bay Shore, NY United States", description: "The Bay we’re talking about is the Great South Bay, 151 square miles of shallow saltwater heaven stretching to the horizon off the south shore of Long Island, New York.")
 
 # hill_farmstead = Brewery.create!(name: "Hill Farmstead Brewery", location: "Greensboro, VT United States", description: "Hill Farmstead Brewery is the culmination of many years of travel and insight—of experience and education—of friendships and explorations. The brewery is the revival and continuation of 220 years of Hill heritage and hand crafted history in North Greensboro, Vermont. Its logo is retrieved from a sign that once hung in Aaron Hill's (our great(x3) grandfather) tavern, just up the hill, in the early 1800s.")
 
@@ -58,7 +59,7 @@ russian_river = Brewery.create!(name: "Russian River Brewing Company", location:
 # trillium = Brewery.create!(name: "Trillium Brewing Company", location: "Canton, MA United States", description: "Trillium Brewing Company was founded by JC and Esther Tetreault, a young dumb couple in love, planning their wedding and dreaming about how they would spend their lives together. The desire to build a brewery was about more than just making beer, it was about creating a way of life and building a community with which to share experiences. A beer geek and botany nerd, JC chose the trillium flower to represent what we strive to bring to our beer and our lives: beauty, strength, simplicity, and balance. We operate a brewery and taproom in Canton, MA as well as a full service restaurant and brewery in the Fort Point neighborhood of Boston. We also operate seasonal pop-up beer gardens around the city of Boston under the Trillium Garden project.")
 
 # tree_house = Brewery.create!(name: "Tree House Brewing Company", location: "Charlton, MA United States", description: "Tree House Brewing Company brews a vast array of ales. The offerings vary based on the season, our moods, and innovations discovered in the midst of day in and day out brewing. Our artisan brewery knows no bounds and we are driven by an intense curiosity of ingredients and how they blend together to create something special.")
-# augustiner = Brewery.create!(name: "Augustiner-Bräu", location: "Munich, Bayern Germany", description: "None")
+# augustiner = Brewery.create!(name: "Augustiner-Bräu", location: "Munich, Bayern Germany", description: "Augustiner-Bräu is a brewery in Munich, Germany. Established in 1328, it is Munich's oldest independent brewery. The company is owned by the Edith Haberland Wagner Trust 51% and the Inselkammer-Family 49%.")
 
 # lagunitas = Brewery.create!(name: "Lagunitas", location: "Petaluma, CA United States", description: "From points distant and beyond we all converged on Petaluma in 1993 and ’94 with an unenunciated desire to be more than we were before. The core of Lagunitas came from Chicago, St Louis, Memphis, Walker Creek, and the highlands of Quincy. The Chicago contingent initiated the brewing and the gravitational effect of its suchness did the rest. We all loved the beer but the mission was larger than the ordinary joy of a hoppy-sweet quaff. It was driven unseen by an urge to communicate with people, to find our diasporidic tribe, and to connect with other souls adrift on a culture that had lost its center and spun its inhabitants to the four winds to wander lost and bereft with a longing to re-enter the light. Beer, we have learned, has always been a good lubricant for social intercourse! The Lagunitas Brewing Co. was not so much an act of ordinary ‘foundling’ as it was willed into being by the unspoken desire of supportive beer-lovers in Northern California after which they continued to nurture their creation and urged us forward to fulfill the unifying needs of that same beer-loving diaspora from coast to coast and beyond. It is good to have friends!")
 
@@ -107,8 +108,8 @@ beer9 = Beer.create!(name: "Consecration", brewery_id: russian_river.id, style: 
 # beer29 = Beer.create!(name: "Edward", brewery_id: hill_farmstead.id, style: "Pale Ale", ibu: "65", description: "Edward (1917-2002) is our grandfather; Hill Farmstead Brewery rests upon the land that was once home to him and his five children. In his honor, this American Pale Ale is dutifully crafted from American malted barley, a plethora of American hops, our ale yeast and water from Edward’s well. It is unfiltered and dry hopped. Aromatic and flowery, with impressions of citrus and pine, this is the ale that I dream to have shared with Edward. Pale and Caramel malt; Centennial, Chinook, Columbus, Simcoe, and Warrior hops; House Ale Yeast, and our Well Water. ", abv: "5.2")
 # beer30 = Beer.create!(name: "Everett", brewery_id: hill_farmstead.id, style: "Porter", ibu: "30", description: "Everett (1908–1939) was our grandfather’s brother; Hill Farmstead Brewery rests upon the land that was once home to him and his 13 siblings. In his honor, this Porter is crafted from American malted barley, English and German roasted malts, American hops, our ale yeast, and water from our well. It is unfiltered and naturally carbonated. Decadent in its depth, with a complex backbone of chocolate, coffee, and malty sweetness, this is the ale that I dream to have shared with Everett.", abv: "7.5")
 
-# beer31 = Beer.create!(name: "Rosé de Gambrinus", brewery_id: cantillon.id, style: "Sour", ibu: "10", description: "None", abv: "5")
-# beer32 = Beer.create!(name: "Classic Gueuze", brewery_id: cantillon.id, style: "Sour", ibu: "10", description: "None", abv: "5")
+# beer31 = Beer.create!(name: "Rosé de Gambrinus", brewery_id: cantillon.id, style: "Sour", ibu: "10", description: "Beer with a slightly acidic, fruity and fragrant taste. Just like kriek, the 'fruitiness' of Rosé de Gambrinus is at its best when the beer is young. With age the lambic will take the upper hand, but this is at the expense of the fruit component.", abv: "5")
+# beer32 = Beer.create!(name: "Classic Gueuze", brewery_id: cantillon.id, style: "Sour", ibu: "10", description: "Beer with a slightly acidic and fruity taste, delicate and woody fragrance and a dry finish that lingers on the palate. Beer with taste evolution that will keep for a long time in a good cellar.", abv: "5")
 # beer33 = Beer.create!(name: "Cuvée Saint-Gilloise (Champions)", brewery_id: cantillon.id, style: "Sour", ibu: "8", description: "Cuvee des Champions is not a traditional ’gueuze,’ in that it is made from only two year-old 2001 lambic, not from a blend of older and younger lambics. It is also dry-hopped in the cask for three weeks with fresh Styrian Goldings hops. Re-fermentation in the bottle is achieved with the addition of a small amount of candi sugar.``", abv: "5")
 
 # beer34 = Beer.create!(name: "Breakfast Stout", brewery_id: founders.id, style: "Stout", ibu: "60", description: "The coffee lover’s consummate beer. Brewed with an abundance of flaked oats, bitter and imported chocolates, and Sumatra and Kona coffee, this stout has an intense fresh-roasted java nose topped with a frothy, cinnamon-colored head that goes forever.", abv: "8.3")
@@ -145,6 +146,17 @@ beer9 = Beer.create!(name: "Consecration", brewery_id: russian_river.id, style: 
 # beer57 = Beer.create!(name: "Hoponius Union", brewery_id: jacks_abbey.id, style: "IPL", ibu: "65", description: "Hoponius Union harmoniously combines lager yeast fermentation and West Coast IPA hops. Our flagship hoppy lager is like a traditional IPA but with a twist – it’s fermented cold and aged for extended periods. A blend of classic American hops creates a huge tropical fruit and citrusy hop aroma. A dry finish accentuates the pleasant bitterness and hop profile.", abv: "6.5")
 # beer58 = Beer.create!(name: "Kiwi Rising", brewery_id: jacks_abbey.id, style: "IPL", ibu: "105", description: "Kiwi Rising is a double IPL dry-hopped with over four pounds of New Zealand hops per barrel. Expect intense notes of white grape, ripe melon, and bright citrus by way of Nelson Sauvin, Waimea, and Motueka hops. While this beer might taste like a fresh and juicy kiwifruit, it doesn't actually contain any.", abv: "8.5")
 # beer59 = Beer.create!(name: "House Lager", brewery_id: jacks_abbey.id, style: "Helles Lager", ibu: "18", description: "What the Helles is a Landbier? Ours is sweet and golden with a full malty body, inspired by the country lagers of Bavaria. This Pale Bier is our House specialty. From Jack’s House to Your House!", abv: "5.2")
+
+# Checkin Seeds
+
+checkin = Checkin.create!(author_id: demo_user.id, body: "This. Tastes. Good. To Me", beer_id: beer2.id, rating: 4.25)
+checkin = Checkin.create!(author_id: demo_user.id, body: "Pretty darn good beer!", beer_id: beer1.id, rating: 3.75)
+checkin = Checkin.create!(author_id: user1.id, body: "First checkin!!!!!!!!", beer_id: beer3.id, rating: 4)
+checkin = Checkin.create!(author_id: user1.id, body: "BEST BEER EVERRR", beer_id: beer2.id, rating: 5)
+checkin = Checkin.create!(author_id: user2.id, body: "dis pretty good", beer_id: beer6.id, rating: 3.5)
+checkin = Checkin.create!(author_id: user2.id, body: "This beer is not for me.", beer_id: beer7.id, rating: 2.5)
+checkin = Checkin.create!(author_id: user3.id, body: "Eh, I've brewed better.", beer_id: beer4.id, rating: 3.5)
+checkin = Checkin.create!(author_id: user3.id, body: "BRB grabbing another!", beer_id: beer9.id, rating: 4)
 
 # user_pic = open('https://lagerd-seeds.s3.us-east-2.amazonaws.com/default_user_img.png')
 # beer_pic = open('https://lagerd-seeds.s3.us-east-2.amazonaws.com/default_beer.png')

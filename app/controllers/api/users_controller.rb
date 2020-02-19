@@ -1,12 +1,12 @@
 class Api::UsersController < ApplicationController
 
     def index
-        @users = User.with_attached_photo.all
+        @users = User.includes(:checkins).with_attached_photo
         render :index
     end
 
     def show
-        @user = User.find(params[:id])
+        @user = User.includes(:checkins).find(params[:id])
         render :show
     end
 
