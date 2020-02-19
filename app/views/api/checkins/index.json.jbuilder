@@ -1,6 +1,6 @@
 @checkins.each do |checkin|
   json.set! checkin.id do
-    json.extract! checkin, :body, :rating
+    json.extract! checkin, :id, :body, :rating
     json.createdAt checkin.created_at
     json.beerId checkin.beer_id
 

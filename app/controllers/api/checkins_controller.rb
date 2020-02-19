@@ -34,7 +34,7 @@ class Api::CheckinsController < ApplicationController
 
   def destroy
     @checkin = Checkin.find(params[:id])
-    if @checkin.destroy
+    if @checkin && @checkin.destroy
       render :show
     else
       render json: ["Could not find checkin."], status: 404

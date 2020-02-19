@@ -1,9 +1,6 @@
 .outer-checkin-item {
   display: flex;
-  // justify-content: center;
-  // flex-direction: column;
   margin: 20px 10px 20px 10px;
-  // padding: 10px;
   border-bottom: solid 1px #EEEEEE;
 }
 
@@ -12,19 +9,28 @@
   height: 40px;
   padding-left: 20px;
   padding-top: 20px;
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 900;
+  font-size: 20px;
   border-bottom: 1px solid #E2E2E2;
 }
 
 .upper-checkin-content {
   display: flex;
+  color: #000000;
+}
+
+.checkin-main {
+  color: #999999;
+  margin-bottom: 30px;
+  margin-left: 15px;
 }
 
 .checkin-bottom {
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
   margin-bottom: 20px;
+  font-size: 12px;
 }
 
 .checkin-user-pic {
@@ -35,6 +41,7 @@
 .checkin-beer-pic {
   height: 42px;
   width: 42px;
+  margin-left: 20px;
 }
 
 .checkin-info {
@@ -44,8 +51,13 @@
 
 .checkin-rating-body {
   height: fit-content;
-  width: 50%;
   border: 1px solid #EEEEEE;
+  width: 82%;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 12px;
 }
 
 .index-feed {
@@ -53,8 +65,14 @@
   width: fit-content;
 }
 
-.checkin-rating-body {
-  // display: flex;
-  // justify-content: center;
-  width: 80%;
+.date-posted {
+  margin-right: 10px;
+}
+
+.checkin-show {
+  margin-right: 15px;
+}
+
+.checkin-rating {
+  padding-top: 10px;
 }

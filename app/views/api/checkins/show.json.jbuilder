@@ -1,4 +1,4 @@
-json.extract! @checkin, :body, :rating
+json.extract! @checkin, :id, :body, :rating
 json.createdAt @checkin.created_at
 json.beerId @checkin.beer_id
 json.createdAt @checkin.created_at

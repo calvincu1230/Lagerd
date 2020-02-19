@@ -26,8 +26,8 @@ class User < ApplicationRecord
         class_name: :Checkin,
         dependent: :destroy
 
-    has_many :comments, dependent: :destroy
-    has_many :toasts, dependent: :destroy
+    # has_many :comments, dependent: :destroy
+    # has_many :toasts, dependent: :destroy
     has_many :friends,
         class_name: :User,
         primary_key: :id,

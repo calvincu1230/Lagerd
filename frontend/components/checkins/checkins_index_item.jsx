@@ -45,34 +45,39 @@ export default (props) => {
             <Link to={`/breweries/${brewery.id}/beers/${beer.id}`} className="orange-link"> {beer.name}</Link> by 
             <Link to={`/breweries/${brewery.id}`} className="orange-link"> {brewery.name}</Link>
           </p>
+          <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
+            <img src={beer.imgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
+          </Link>
         </div>
 
         <div className="checkin-rating-body">
           <div className="checkin-body">{checkin.body}</div>
-          <div className="checkin-rating">{parseFloat(checkin.rating)}</div>
+          <div className="checkin-rating">Rating: {parseFloat(checkin.rating)}</div>
 
           <div className="checkin-photo">
             {checkinPhoto}
           </div>
         </div>
         <div className="checkin-bottom">
-          <div className="checkin-info">
-            <p className="date posted">
-              {formatDate(checkin.createdAt)}
-            </p>
+          <div className="checkin-bottom-inner">
+            <div className="checkin-info">
+              <p className="date-posted">
+                {formatDate(checkin.createdAt)}
+              </p>
 
-            <p className="checkin-show orange-link">
-              <Link to={`/checkins/${checkin.id}`}>View Detailed Check-in</Link>
-            </p>
-          </div> 
-          <div className="checkin-delete">
-            {deleteable}
+              <p className="checkin-show orange-link">
+                <Link to={`/checkins/${checkin.id}`}>View Detailed Check-in</Link>
+              </p>
+              <div className="checkin-delete">
+                {deleteable}
+              </div>
+            </div> 
           </div>
         </div>
       </div>
-      <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
+      {/* <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
         <img src={beer.imgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
-      </Link>
+      </Link> */}
     </div>
   );
 }

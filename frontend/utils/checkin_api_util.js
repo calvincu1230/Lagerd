@@ -8,7 +8,7 @@ export const fetchAllCheckins = () => {
 export const fetchCheckin = checkinId => {
   return $.ajax({
     method: "GET",
-    url: `/api/checkins${checkinId}`
+    url: `/api/checkins/${checkinId}`
   });
 };
 
@@ -23,7 +23,7 @@ export const createCheckin = checkin => {
 export const updateCheckin = checkin => {
   return $.ajax({
     method: "PATCH",
-    url: `/api/checkins${checkin.id}`,
+    url: `/api/checkins/${checkin.id}`,
     data: { checkin }
   });
 };
@@ -31,6 +31,6 @@ export const updateCheckin = checkin => {
 export const deleteCheckin = checkinId => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/checkins${checkinId}`
+    url: `/api/checkins/${checkinId}`
   });
 };

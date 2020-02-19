@@ -15,8 +15,8 @@ class Checkin < ApplicationRecord
 
   validates :author_id, :body, :beer_id, :rating, presence: true
 
-  has_many :toasts, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  # has_many :toasts, dependent: :destroy
+  # has_many :comments, dependent: :destroy
   has_one_attached :photo
   
   belongs_to :beer
