@@ -1,12 +1,9 @@
 @breweries.includes(:beers).each do |brewery|
   json.set! brewery.id do
-    json.extract! brewery, :id, :name, :location, :description
-    ids = []
-    brewery.beers.each do |beer|
-      ids << beer.id
-    end
-    json.beerIds ids
+    json.extract! brewery, :id, :name, :location, :description, :beer_ids
     json.beerCount brewery.beers.length
+    json.avgRating brewery.average_rating.round(2)
+    json.totalCheckins brewery.checkins.size
     json.imgUrl url_for(brewery.photo) if brewery.photo.attached?
   end
 end

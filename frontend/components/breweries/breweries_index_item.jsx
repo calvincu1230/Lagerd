@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { displayStars } from "../../utils/checkin_api_util";
 
 export default props => {
   return (
@@ -24,11 +25,11 @@ export default props => {
         <div className="right-items-top">
           <p className="index-subitem beer-count">{props.brewery.beerCount} Beers</p>
           <div className="checkin-count-container">
-            <p className="index-subitem checkin-count">{/* props.brewery.checkinCount */}Total Ratings</p>
+            <p className="index-subitem checkin-count">{props.brewery.totalCheckins} Ratings</p>
           </div>
         </div>
         <div>
-          <p className="index-subitem">Average Rating</p>
+          <p className="index-subitem">{displayStars(props.brewery.avgRating)} ({props.brewery.avgRating})</p>
         </div>
       </div>
     </div>

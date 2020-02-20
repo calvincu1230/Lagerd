@@ -8,6 +8,12 @@ class CheckinShow extends React.Component {
     super(props);
     this.state = {
     };
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete() {
+    this.props.deleteCheckin(this.props.checkin.id)
+      .then(() => this.props.history.push("/feed"));
   }
 
   componentDidMount() {
@@ -32,9 +38,7 @@ class CheckinShow extends React.Component {
     const noCheckinPicture = checkinImage ? "" : "no-picture"
 
     if (Boolean(Object.values(this.props.checkin)) > 0) {
-      deleteable = author.id === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={() => {
-        return props.deleteCheckin(checkin.id)
-      }}>Delete Check-in</p> : null;
+      deleteable = author.id === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
     }
     return (
       <div className="checkin-show-container">
