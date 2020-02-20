@@ -4,61 +4,27 @@ import { formatDate } from "../../utils/date_util";
 
 export default (props) => {
 
-  // {
-  //   "body": "This. Tastes. Good. To Me",
-  //   "rating": 4,
-  //   "createdAt": "2020-02-18T21:14:22.673Z",
-  //   "beerId": 2,
-  //   "author": {
-  //   "id": 1,
-  //   "firstName": "tommy",
-  //   "lastName": "duek"
-  //   },
-  //   "beer": {
-  //   "id": 2,
-  //   "name": "Double Dry Hopped Double Mosaic Dream"
-  //   },
-  //   "brewery": {
-  //   "id": 1,
-  //   "name": "Other Half Brewing Co.",
-  //   "location": "Brooklyn, NY United States"
-  //   }
-  // }
-
   const checkin = props.checkin;
   const author = checkin.author;
   const beer = checkin.beer;
-  const brewery = checkin.brewery;
-
-  // iterate 5 times
-  // increment num each time,
-    // if rating > num && rating >= num + 1
-          // gold star
-    // else if rating < num + .50
-    //       quarter star
-    // else if rating < num + .75
-    //       half star
-    // else if rating === num + .75
-    //       three quarter star
-    // else
-    //   empty star
-        
+  const brewery = checkin.brewery ? checkin.brewery : props.brewery;  
   
   const displayStars = rating => { 
     let num = 0;
     const starsArr = [];
     while (num < 5) {
       if ((rating > num) && (rating >= (num + 1))) {
-        starsArr.push(<img url={fullCap} />)
-      } else if (rating < num + .50) {
-        starsArr.push(<img url={quarterCap} />)
-      } else if (rating < num + .75) {
-        starsArr.push(<img url={halfCap} />)
+        starsArr.push(<img key={num} className="cap" src={fullCap} />)
+      } else if (rating === num + .25) {
+        starsArr.push(<img key={num} className="cap" src={quarterCap} />)
+      } else if (rating === num + .50) {
+        starsArr.push(<img key={num} className="cap" src={halfCap} />)
       } else if (rating === num + .75) {
-        starstarsArr.push(<img url={threeQuartersCap} />)
+        starstarsArr.push(<img key={num} className="cap" src={threeQuartersCap} />)
       } else {
-        starsArr.push(<img url={emptyCap} />)
+        starsArr.push(<img key={num} className="cap" src={emptyCap} />)
       }
+      num += 1;
     }
 
     return starsArr;
@@ -98,7 +64,7 @@ export default (props) => {
         <div className="checkin-rating-body">
           <div className="checkin-body">{checkin.body}</div>
           <div className="checkin-rating">
-            {/* {displayStars(checkin.rating)} */}
+            {displayStars(checkin.rating)}
           </div>
 
         </div>

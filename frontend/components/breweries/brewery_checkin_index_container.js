@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchBeers } from "../../actions/beer_actions";
+// import { fetchCheckin } from "../../actions/beer_actions";
 import { fetchBrewery } from "../../actions/brewery_actions";
-import BreweryBeerIndex from "./brewery_beer_index";
+import BreweryCheckinIndex from "./brewery_checkin_index";
 
 const mSP = (state, ownProps) => {
   return {
@@ -13,9 +13,9 @@ const mSP = (state, ownProps) => {
 
 const mDP = dispatch => {
   return {
-    fetchBeers: () => dispatch(fetchBeers()), // MAY BE ABLE TO REDO THIS CUZ JBUILDER
     fetchBrewery: breweryId => dispatch(fetchBrewery(breweryId))
+    // maybe do fetch checkins but jbuilder prob got me on this onekl
   };
 };
 
-export default withRouter(connect(mSP, mDP)(BreweryBeerIndex));
+export default withRouter(connect(mSP, mDP)(BreweryCheckinIndex));
