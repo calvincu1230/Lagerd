@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/date_util";
+import { displayStars } from "../../utils/checkin_api_util";
 
 export default (props) => {
 
@@ -8,27 +9,6 @@ export default (props) => {
   const author = checkin.author;
   const beer = checkin.beer;
   const brewery = checkin.brewery ? checkin.brewery : props.brewery;  
-  
-  const displayStars = rating => { 
-    let num = 0;
-    const starsArr = [];
-    while (num < 5) {
-      if ((rating > num) && (rating >= (num + 1))) {
-        starsArr.push(<img key={num} className="cap" src={fullCap} />)
-      } else if (rating === num + .25) {
-        starsArr.push(<img key={num} className="cap" src={quarterCap} />)
-      } else if (rating === num + .50) {
-        starsArr.push(<img key={num} className="cap" src={halfCap} />)
-      } else if (rating === num + .75) {
-        starstarsArr.push(<img key={num} className="cap" src={threeQuartersCap} />)
-      } else {
-        starsArr.push(<img key={num} className="cap" src={emptyCap} />)
-      }
-      num += 1;
-    }
-
-    return starsArr;
-  } 
 
   const deleteable = author.id === props.currentUserId ? <p className="orange-link" onClick={() => {
     debugger
@@ -42,9 +22,11 @@ export default (props) => {
   
   return (
     <div className="outer-checkin-item">
-      <Link to={`/users/${author.id}`}>
-        <img src={author.imgUrl} alt="User Photo" className="checkin-user-pic"/>
-      </Link>
+      <div className="beer-pic-container">
+        <Link to={`/users/${author.id}`}>
+          <img src={author.imgUrl} alt="User Photo" className="checkin-user-pic"/>
+        </Link>
+      </div>
       <div className="checkin-main">
         <div className="upper-checkin-content">
           <div className="upper-main">
@@ -54,17 +36,12 @@ export default (props) => {
               <Link to={`/breweries/${brewery.id}`} className="orange-link"> {brewery.name}</Link>
             </p>
           </div>
-          <div className="beer-pic-container">
-            <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
-              <img src={beer.imgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
-            </Link>
-          </div>
         </div>
 
         <div className="checkin-rating-body">
           <div className="checkin-body">{checkin.body}</div>
           <div className="checkin-rating">
-            {displayStars(checkin.rating)}
+            {displayStars(checkin.rating)} {checkin.rating}
           </div>
 
         </div>
@@ -85,6 +62,11 @@ export default (props) => {
             </div> 
           </div>
         </div>
+      </div>
+      <div className="beer-pic-container">
+        <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
+          <img src={beer.imgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
+        </Link>
       </div>
       {/* <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
         <img src={beer.imgUrl} alt="Beer Photo" className="checkin-beer-pic"/>

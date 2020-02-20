@@ -23,4 +23,12 @@ class Brewery < ApplicationRecord
   def ensure_default_photo
     self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_brewery.png')), filename: 'default_brewery.png') unless self.photo.attached?
   end
+
+  def average_rating
+    sum = 0
+    self.checkins.each do |checkin|
+      sum += checkin.rating
+    end
+    sum.to_f / self.checkins.size
+  end
 end

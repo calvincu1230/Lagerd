@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BreweryBeerIndexContainer from "./brewery_beer_index_container";
+import { displayStars } from "../../utils/checkin_api_util";
 
 class BreweryShow extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class BreweryShow extends React.Component {
             <div className="left-side">
               <div className="stat top-left">
                 <h4 className="stat-title">TOTAL {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
-                <p className="stat-stat">3,432</p> {/* REAL INFO EVENTUALLY */}
+                <p className="stat-stat">{this.props.brewery.totalCheckins}</p> {/* REAL INFO EVENTUALLY */}
               </div>
               <div className="stat bottom-left">
                 <h4 className="stat-title">MONTLY {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
@@ -46,9 +46,9 @@ class BreweryShow extends React.Component {
           </div>
         </div>
 
-        <div className="show-mid brwewery-show-mid">
-          <p className="mid-show-item brewery-mid-show-item">Avg Rating</p>
-          <p className="brewery-mid-show-item mid-border">Total Review Count</p>
+        <div className="show-mid brewery-show-mid">
+          <p className="mid-show-item brewery-mid-show-item">{displayStars(this.props.brewery.avgRating)} {this.props.brewery.avgRating}</p>
+          <p className="brewery-mid-show-item mid-border">{this.props.brewery.totalCheckins} Ratings</p>
           <p className="brewery-mid-show-item mid-border">
             <Link 
             to={`/breweries/${this.props.brewery.id}/beers`} 

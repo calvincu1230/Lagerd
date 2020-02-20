@@ -32,7 +32,7 @@ class BreweryCheckinIndex extends React.Component {
     }
     return (
       <div className="index-sub-feed">
-        <div className="index-title">Check-ins</div>
+        <div className="checkin-index-title">Recent Global Activity</div>
         <div className="index-body">
           <ul>{checkinLis}</ul>
         </div>
