@@ -2,7 +2,6 @@ class Api::BeersController < ApplicationController
 
   def index 
     @beers = Beer.includes(:checkins).with_attached_photo
-    # @beers = Beer.includes(:checkins).with_attached_photo.all.page(params[:page]).per(5)
     render :index
   end
 
@@ -14,8 +13,6 @@ class Api::BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     if @beer.save
-      # @beer.photo.attach(io: open(params[:photo]), filename: 'default_beer.png')
-      # @beer.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_beer.png')), filename: 'default_beer.png')
       render :show
     else
       render json: @beer.errors.full_messages, status: 422
@@ -30,6 +27,15 @@ class Api::BeersController < ApplicationController
       render json: ['Could not find beer'], status: 400
     else
       render json: @beer.errors.full_messages, status: 401
+    end
+  end
+
+  def checkins 
+    @checkins = Beer.find(params[:id]).checkins
+    if @checkins
+      render :checkins
+    else
+      render json: @checkin.errors.full_messages, status: 422
     end
   end
 

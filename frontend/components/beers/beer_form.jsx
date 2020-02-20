@@ -34,6 +34,7 @@ class BeerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const path = this.state.id ? `/breweries/${this.state.brewery_id}/beers/${this.state.id}` : `/breweries/${this.state.brewery_id}/beers`;
     const formData = new FormData();
     if (this.state.id) {
       formData.append('beer[id]', this.state.id);
@@ -49,7 +50,7 @@ class BeerForm extends React.Component {
     if (this.state.imageFile) {
       formData.append('beer[photo]', this.state.imageFile);
     }
-    this.props.action(formData).then(() => this.props.history.push("/beers"));
+    this.props.action(formData).then(() => this.props.history.push(path));
   }
 
   handleChange(field) {
@@ -77,17 +78,11 @@ class BeerForm extends React.Component {
     let brewerySelects; // adds varied amount of breweries as options and sets default one
     if (this.props.breweries) {
       brewerySelects = this.props.breweries.map(brewery => {
-        // if (this.state.brewery_id === brewery.id) {
-        //   return <option value={brewery.id} key={brewery.name}>{brewery.name}</option>
-        // }
         return <option value={brewery.id} key={brewery.name}>{brewery.name}</option>
       });
     }
 
     const beerStyles = STYLES.map(style => {
-      if (this.state.style === style) {
-        return <option className="style-option" value={style} key={style}>{style}</option>
-      }
       return <option className="style-option" value={style} key={style}>{style}</option>
     });
     // current will prefill data except brewery if coming from a the related beer page

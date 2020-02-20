@@ -10,7 +10,7 @@ json.beers @brewery.beers do |beer|
 end
 
 json.checkins @brewery.checkins do |checkin|
-  json.extract! checkin, :body, :rating
+  json.extract! checkin, :id, :body, :rating
   json.author do
     json.id checkin.author.id
     json.firstName checkin.author.first_name

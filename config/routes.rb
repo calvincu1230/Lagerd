@@ -6,7 +6,15 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index, :create, :destroy, :update]
     resources :checkins, only: [:show, :index, :create, :destroy, :update]
     resource :session, only: [:create, :destroy]
-    resources :breweries, only: [:show, :index]
-    resources :beers, only: [:index, :show, :create, :update]
+    resources :breweries, only: [:show, :index] do 
+      member do 
+        get 'checkins'
+      end
+    end
+    resources :beers, only: [:index, :show, :create, :update] do 
+      member do 
+        get 'checkins'
+      end
+    end
   end
 end

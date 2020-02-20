@@ -1,0 +1,91 @@
+.checkin-show-photo {
+  width: 40%;
+  position: absolute;
+  right: 20px;
+  top: 100px;
+}
+
+.checkin-show-main {
+  max-width: 1048px;
+  min-width: 320px;
+  width: 100%;
+  margin: 28px auto 48px;
+  padding: 0 12px;
+  position: relative;
+}
+
+.checkin-show-container {
+  padding-top: 52px;
+  width: 100%;
+  position: absolute;
+}
+
+.checkin-show-info {
+  display: contents;
+}
+
+.checkin-show-top {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+.upper-mid {
+  display: flex;
+  align-items: center;
+}
+
+.checkin-show-mid {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px;
+}
+
+.checkin-show-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkin-author-name {
+  margin-left: 20px;
+}
+
+.inner-checkin-show {
+  background-color: #fff;
+  width: 44%;
+  padding-top: 12px;
+  // position: relative;
+}
+
+.checkin-show-pic {
+  height: 50px;
+  width: 50px;
+  margin-left: 5px;
+  margin-right: 16px;
+}
+
+.show-rating {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.checkin-beer-info {
+
+}
+
+.checkin-show-date {
+  padding: 16px;
+  font-size: 12px;
+  color: #A9A9A9
+}
+
+.checkin-show-delete {
+  padding-right: 10px;
+  font-size: 14px;
+}
+
+#no-picture{
+  margin-left: 25%;
+}

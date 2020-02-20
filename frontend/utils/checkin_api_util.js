@@ -50,7 +50,7 @@ export const displayStars = rating => {
     } else if (rating <= num + .50  && rating > num) {
       starsArr.push(<img key={num} className="cap" src={halfCap} />)
     } else if (rating <= num + .75 && rating > num) {
-      starstarsArr.push(<img key={num} className="cap" src={threeQuartersCap} />)
+      starsArr.push(<img key={num} className="cap" src={threeQuartersCap} />)
     } else {
       starsArr.push(<img key={num} className="cap" src={emptyCap} />)
     }

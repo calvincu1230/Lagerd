@@ -40,14 +40,18 @@ class BreweryShow extends React.Component {
               </div>
               <div className="stat bottom-right">
                 <h4 className="stat-title">YOU</h4>
-                <p className="stat-stat orange-link"><Link to={`/users/${this.props.currentUserId}`}>0 {/*(<span className="orange-link info-hover">?</span>)*/}</Link></p>
+                <p className="stat-stat">
+                  {/* <Link to={`/users/${this.props.currentUserId}`}> */}
+                    0 {/*(<span className="orange-link info-hover">?</span>)*/}
+                    {/* </Link> */}
+                    </p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="show-mid brewery-show-mid">
-          <p className="mid-show-item brewery-mid-show-item">{displayStars(this.props.brewery.avgRating)} {this.props.brewery.avgRating}</p>
+          <p className="mid-show-item brewery-mid-show-item">{displayStars(this.props.brewery.avgRating)} ({this.props.brewery.avgRating})</p>
           <p className="brewery-mid-show-item mid-border">{this.props.brewery.totalCheckins} Ratings</p>
           <p className="brewery-mid-show-item mid-border">
             <Link 

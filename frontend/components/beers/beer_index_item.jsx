@@ -25,7 +25,7 @@ export default props => {
           <p className="beer-item-description index-subitem">{props.beer.description}</p>
         </div>
         <ul className="beer-item-stats">
-          <li className="beer-item-abv beer-index-subitem">{props.beer.abv}%</li>
+          <li className="beer-item-abv beer-index-subitem">{props.beer.abv}% ABV</li>
           <li className="beer-item-ibu beer-index-subitem">{props.beer.ibu} IBU</li>
           <li className="beer-item-rating beer-index-subitem">Average Rating</li>
           <li className="beer-item-checkins  beer-index-subitem">Total Checkins</li>

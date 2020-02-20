@@ -45,7 +45,11 @@ class BeerShow extends React.Component {
               </div>
               <div className="stat bottom-right">
                 <h4 className="stat-title">YOU</h4>
-                <p className="stat-stat"><Link className="orange-link" to={`/users/${this.props.currentUserId}`}>0</Link></p>
+                <p className="stat-stat">
+                  {/* <Link className="orange-link" to={`/users/${this.props.currentUserId}`}> */}
+                    0
+                    {/* </Link> */}
+                    </p>
               </div>
             </div>
           </div>

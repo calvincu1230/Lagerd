@@ -3,6 +3,7 @@ import { fetchBeer } from "../../actions/beer_actions";
 import BeerShow from "./beer_show";
 import { fetchBrewery } from "../../actions/brewery_actions";
 import { openCheckinModal } from "../../actions/checkin_modal_actions";
+import { withRouter } from "react-router-dom";
 
 const mSP = (state, ownProps) => {
   return {
@@ -21,4 +22,4 @@ const mDP = dispatch => {
   };
 };
 
-export default connect(mSP, mDP)(BeerShow);
+export default withRouter(connect(mSP, mDP)(BeerShow));

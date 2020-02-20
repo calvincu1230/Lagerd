@@ -16,8 +16,9 @@ class EditBeerForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchBeer(this.props.match.params.beerId)
-      .then(beer => this.setState({ beer })
-    );
+      .then(beer => { 
+        this.setState({ beer })
+      });
     this.props.fetchBreweries();
   }
 

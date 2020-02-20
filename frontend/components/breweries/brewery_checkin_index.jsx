@@ -5,14 +5,15 @@ class BreweryCheckinIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      brewery: {}
+      brewery: {},
     }
   }
 
   componentDidMount() {
-    this.props.fetchBrewery(this.props.match.params.breweryId).then((brewery) => { 
-      this.setState({ brewery })
-    });
+    this.props.fetchBrewery(this.props.match.params.breweryId)
+      .then(brewery => {
+        this.setState({ brewery: brewery.brewery })
+      }); // Why is brewery an action here? I don't really have time but I want to refactor ALOT of my site for better practices
   }
 
   render() {
@@ -20,14 +21,14 @@ class BreweryCheckinIndex extends React.Component {
     let checkinLis;
     if (Object.values(this.state.brewery).length > 0) {
       checkinLis = Object.values(this.props.brewery.checkins).map(checkin => {
-        return <CheckinIndexItem 
+        return (<CheckinIndexItem 
                     key={`${checkin.id}${checkin.body}`} 
                     checkin={checkin} 
                     beer={checkin.beer} 
                     deleteCheckin={this.props.deleteCheckin} 
                     brewery={this.state.brewery}
                     currentUserId={this.props.currentUserId}
-                />
+                />)
       });
     }
     return (
