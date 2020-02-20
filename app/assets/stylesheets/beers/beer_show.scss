@@ -97,10 +97,6 @@
   background-image: image_url("edit-icon.png");
 }
 
-.checkin-btn {
-  background-image: image_url("edit-icon.png");
-}
-
 .btn-background {
   background-color: #FFCC00;
 }
@@ -114,11 +110,26 @@
   background-position: center center;
 }
 
-.show-btn:hover {
+.checkin-btn {
+  color: #FFFFFF;
+  height: 40px;
+  width: 40px;
+  font-size: 30px;
+  text-align: center;
+  margin-left: 10px;
+  border: none;
+}
+
+.checkin-btn, .show-btn {
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.show-btn:hover, .checkin-btn:hover {
   background-color: #F4B702;
   border-color: #F4B702;
 }
 
-.test {
+.show-btns {
+  display: flex;
   margin-left: 10px;
 }

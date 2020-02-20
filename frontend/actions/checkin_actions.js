@@ -47,8 +47,8 @@ export const fetchCheckin = checkinId => dispatch => {
     });
 };
 
-export const createCheckin = checkin => dispatch => {
-  return CheckinApiUtil.createCheckin(checkin)
+export const createCheckin = formData => dispatch => {
+  return CheckinApiUtil.createCheckin(formData)
     .then(checkin => dispatch(receiveCheckin(checkin)), errors => { 
       return dispatch(receiveCheckinErrors(errors))
     });

@@ -60,18 +60,17 @@ class BeerShow extends React.Component {
 
           <div className="show-bottom">
             <p className="show-description">{this.props.beer.description}</p>
-          <div className="test">
-            <Link to={`/breweries/${this.props.brewery.id}/beers/${this.props.beer.id}/edit`}>
-              <div className="btn-background">
-                <p className="edit-btn show-btn"></p>
-              </div>
-            </Link>
-            {/* <Link to={`/checkins/${this.props.brewery.id}/beers/${this.props.beer.id}/edit`}>
-              <div className="btn-background">
-              <p className="edit-btn"></p>
-              </div>
-            </Link> */}
-            {/* THIS IS FOR A MODAL POPUP */}
+            <div className="show-btns">
+              <Link to={`/breweries/${this.props.brewery.id}/beers/${this.props.beer.id}/edit`}>
+                <div className="btn-background">
+                  <p className="edit-btn show-btn"></p>
+                </div>
+              </Link>
+              <button 
+                  onClick={() => this.props.openCheckinModal('checkin')} 
+                  className="btn-background checkin-btn">
+                  &#10004;
+              </button>
             </div>
           </div>
       </div>

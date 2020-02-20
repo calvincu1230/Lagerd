@@ -2,6 +2,7 @@
   display: flex;
   margin: 20px 10px 20px 10px;
   border-bottom: solid 1px #EEEEEE;
+  position: relative;
 }
 
 .checkin-index-title {
@@ -60,9 +61,16 @@
   margin-bottom: 12px;
 }
 
-.index-feed {
-  max-width: 60%;
-  width: fit-content;
+.checkin-photo-container {
+  width: 90%;
+  height: 240px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.checkin-photo {
+  margin: -25% 0;
+  width: 100%;
 }
 
 .date-posted {

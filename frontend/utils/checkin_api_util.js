@@ -12,11 +12,13 @@ export const fetchCheckin = checkinId => {
   });
 };
 
-export const createCheckin = checkin => {
+export const createCheckin = formData => {
   return $.ajax({
     method: "POST",
     url: "/api/checkins",
-    data: { checkin }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 

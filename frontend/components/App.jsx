@@ -6,10 +6,12 @@ import SplashContainer from "./splash/splash_container";
 import MainContent from "./main_content";
 import { ProtectedRoute, AuthRoute } from "../utils/route_util";
 import Footer from "./footer/footer";
-import FooterMain from "./footer/main_footer";
+// import FooterMain from "./footer/main_footer";
+import CheckinModal from "./checkins/checkin_modal";
 
 const App = () => (
     <div className="app-main">
+      <CheckinModal />
       <Switch> 
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />

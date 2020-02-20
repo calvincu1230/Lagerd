@@ -49,7 +49,6 @@ class BeerForm extends React.Component {
     if (this.state.imageFile) {
       formData.append('beer[photo]', this.state.imageFile);
     }
-    debugger
     this.props.action(formData).then(() => this.props.history.push("/beers"));
   }
 

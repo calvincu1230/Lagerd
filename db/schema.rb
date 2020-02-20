@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_211225) do
+ActiveRecord::Schema.define(version: 2020_02_19_222018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_211225) do
   create_table "checkins", force: :cascade do |t|
     t.integer "author_id", null: false
     t.integer "beer_id", null: false
-    t.integer "rating", null: false
+    t.float "rating", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body"

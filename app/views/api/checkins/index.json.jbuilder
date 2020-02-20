@@ -3,6 +3,7 @@
     json.extract! checkin, :id, :body, :rating
     json.createdAt checkin.created_at
     json.beerId checkin.beer_id
+    json.imgUrl url_for(checkin.photo) if checkin.photo.attached?
 
     json.author do
       json.id checkin.author.id
