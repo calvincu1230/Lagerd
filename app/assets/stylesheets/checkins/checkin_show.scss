@@ -71,14 +71,19 @@
   margin-bottom: 5px;
 }
 
-.checkin-beer-info {
+.checkin-brewery-name {
+  font-size: 14px;
+  color: #666666;
+}
 
+.checkin-beer-name {
+  font-size: 18px;
 }
 
 .checkin-show-date {
   padding: 16px;
   font-size: 12px;
-  color: #A9A9A9
+  color: #A9A9A9;
 }
 
 .checkin-show-delete {
@@ -88,4 +93,8 @@
 
 #no-picture{
   margin-left: 25%;
+}
+
+.black-link:hover {
+  color: #CC6600;
 }
