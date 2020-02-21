@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { displayStars } from "../../utils/checkin_api_util";
 
 export default props => {
+  const avgRating = props.brewery.avgRating > 0 ? (
+    <p className="index-subitem">{displayStars(props.brewery.avgRating)} ({props.brewery.avgRating})</p>
+  ) :  (<p className="index-subitem">No Ratings Yet!</p>);
   return (
     <>
     <div className="index-item">
@@ -29,7 +32,7 @@ export default props => {
           </div>
         </div>
         <div>
-          <p className="index-subitem">{displayStars(props.brewery.avgRating)} ({props.brewery.avgRating})</p>
+          {avgRating}
         </div>
       </div>
     </div>

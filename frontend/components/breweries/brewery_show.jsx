@@ -12,6 +12,10 @@ class BreweryShow extends React.Component {
   };
 
   render() {
+
+    const avgRating = this.props.brewery.avgRating > 0 ? (
+      <p className="mid-show-item brewery-mid-show-item">{displayStars(this.props.brewery.avgRating)} ({this.props.brewery.avgRating})</p>
+    ) :  (<p className="mid-show-item brewery-mid-show-item">No Ratings Yet!</p>);
     return (
       <div className="index-feed beer-show-main">
         <div className="show-top">
@@ -51,7 +55,7 @@ class BreweryShow extends React.Component {
         </div>
 
         <div className="show-mid brewery-show-mid">
-          <p className="mid-show-item brewery-mid-show-item">{displayStars(this.props.brewery.avgRating)} ({this.props.brewery.avgRating})</p>
+          {avgRating}
           <p className="brewery-mid-show-item mid-border">{this.props.brewery.totalCheckins} Ratings</p>
           <p className="brewery-mid-show-item mid-border">
             <Link 
