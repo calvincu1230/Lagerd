@@ -7,7 +7,7 @@ class Api::CheckinsController < ApplicationController
   end
 
   def index
-    @checkins = Checkin.with_attached_photo
+    @checkins = Checkin.order('created_at DESC').with_attached_photo.all
     render :index
   end
   

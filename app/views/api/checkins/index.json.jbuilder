@@ -25,3 +25,9 @@
     json.createdAt checkin.created_at
   end
 end
+
+# @checkins.each do |checkin|
+#   json.set! checkin.created_at do
+#     json.extract! checkin, :id, :body, :rating, :created_at
+#   end
+# end

@@ -31,4 +31,9 @@ class Brewery < ApplicationRecord
     end
     sum.to_f / self.checkins.size
   end
+
+  def uniq_users
+    self.checkins
+      .group()
+  end
 end

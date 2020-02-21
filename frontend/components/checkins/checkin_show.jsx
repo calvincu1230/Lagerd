@@ -35,7 +35,7 @@ class CheckinShow extends React.Component {
 
     let deleteable;
 
-    const noCheckinPicture = checkinImage ? "" : "no-picture"
+    const noCheckinPicture = checkinImage ? "" : "no-picture";
 
     if (Boolean(Object.values(this.props.checkin)) > 0) {
       deleteable = author.id === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
@@ -44,6 +44,7 @@ class CheckinShow extends React.Component {
       <div className="checkin-show-container">
         <div className="checkin-show-main" id={noCheckinPicture}>
           <div className="inner-checkin-show">
+            <div className="orange-link return"><Link to="/feed">Return back to Feed.</Link></div>
             <section className="checkin-show-info">
               <div className="checkin-show-top">
                 <img className="checkin-user-pic" src={author.imgUrl} />

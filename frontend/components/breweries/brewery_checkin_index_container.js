@@ -8,8 +8,8 @@ import { deleteCheckin } from "../../actions/checkin_actions";
 const mSP = (state, ownProps) => {
   return {
     brewery: state.entities.breweries[ownProps.match.params.breweryId],
-    beers: state.entities.beers,
-    currentUserId: state.session.currentUserId
+    beers: state.entities.beers
+    // currentUserId: state.session.currentUserId
   };
 };
 

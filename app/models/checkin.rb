@@ -24,5 +24,9 @@ class Checkin < ApplicationRecord
       primary_key: :id,
       foreign_key: :author_id,
       class_name: :User
+
+  def self.order_by_created
+    Checkin.order('created_at DESC').all
+  end
       
 end

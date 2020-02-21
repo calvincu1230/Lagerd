@@ -43,7 +43,7 @@ export default (props) => {
         <div className="checkin-rating-body">
           <div className="checkin-body">{checkin.body}</div>
           <div className="checkin-rating">
-            {displayStars(checkin.rating)} {checkin.rating}
+            {displayStars(checkin.rating)}
           </div>
 
         </div>

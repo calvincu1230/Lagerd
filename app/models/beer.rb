@@ -35,4 +35,16 @@ class Beer < ApplicationRecord
   #   self.joins()
   # end
 
+  def average_rating
+    sum = 0
+    self.checkins.each do |checkin|
+      sum += checkin.rating
+    end
+    sum.to_f / self.checkins.size
+  end
+
+  # def sort_ch
+
+  # end
+
 end
