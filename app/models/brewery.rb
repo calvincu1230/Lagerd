@@ -34,6 +34,8 @@ class Brewery < ApplicationRecord
 
   def uniq_users
     self.checkins
-      .group()
+      .group(:author_id)
+      .count
+      .size
   end
 end

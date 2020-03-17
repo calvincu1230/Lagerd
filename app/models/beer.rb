@@ -31,9 +31,12 @@ class Beer < ApplicationRecord
     self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_beer.png')), filename: 'default_beer.png') unless self.photo.attached?
   end
 
-  # def unique_user_count
-  #   self.joins()
-  # end
+  def uniq_users
+    self.checkins
+      .group(:author_id)
+      .count
+      .size
+  end
 
   def average_rating
     sum = 0
