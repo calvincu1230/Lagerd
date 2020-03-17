@@ -6,10 +6,12 @@ import BreweryCheckinIndex from "./brewery_checkin_index";
 import { deleteCheckin } from "../../actions/checkin_actions";
 
 const mSP = (state, ownProps) => {
+  debugger
   return {
     brewery: state.entities.breweries[ownProps.match.params.breweryId],
-    beers: state.entities.beers
-    // currentUserId: state.session.currentUserId
+    beers: state.entities.beers,
+    checkins: state.entities.checkins,
+    currentUserId: state.session.currentUserId
   };
 };
 

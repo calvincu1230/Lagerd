@@ -10,17 +10,20 @@ class BreweryCheckinIndex extends React.Component {
   }
 
   componentDidMount() {
+    debugger
     this.props.fetchBrewery(this.props.match.params.breweryId)
       .then(brewery => {
+        debugger
         this.setState({ brewery: brewery.brewery })
       }); // Why is brewery an action here? I don't really have time but I want to refactor ALOT of my site for better practices
   }
 
   render() {
-
+    debugger
     let checkinLis;
     if (Object.values(this.state.brewery).length > 0) {
-      checkinLis = Object.values(this.props.brewery.checkins).map(checkin => {
+      checkinLis = this.state.brewery.checkin_ids.map(id => {
+        const checkin = this.props.checkins[id];
         return (<CheckinIndexItem 
                     key={`${checkin.id}${checkin.body}`} 
                     checkin={checkin} 

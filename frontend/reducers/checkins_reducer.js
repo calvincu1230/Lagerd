@@ -4,8 +4,10 @@ import {
   REMOVE_CHECKIN
  } from "../actions/checkin_actions";
 import { merge } from "lodash";
+import { RECEIVE_BREWERY } from "../actions/brewery_actions";
 
 const checkinsReducer = (state={}, action) => {
+  debugger
   Object.freeze(state);
   let nextState = merge({}, state);
   switch (action.type) {
@@ -13,6 +15,8 @@ const checkinsReducer = (state={}, action) => {
       return merge({}, state, action.checkins);
     case RECEIVE_CHECKIN:
       return merge({}, state, { [action.checkin.id]: action.checkin });
+    case RECEIVE_BREWERY:
+      return merge({}, state, action.payload.checkins);
     case REMOVE_CHECKIN:
       delete nextState[action.checkinId.id];
       return nextState;

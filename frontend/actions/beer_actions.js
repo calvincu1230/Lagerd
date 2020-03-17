@@ -30,13 +30,6 @@ export const fetchBeer = beerId => dispatch => {
     .then(beer => dispatch(receiveBeer(beer)));
 };
 
-export const fetchBreweryBeers = breweryId => dispatch => {
-  return BeerUtil.fetchBreweryBeers(breweryId)
-    .then(beers => {
-      return dispatch(receiveBeers(beers))
-    }
-)};
-
 export const fetchBeers = () => dispatch => {
   return BeerUtil.fetchBeers()
     .then(beers => {

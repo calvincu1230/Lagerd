@@ -6,7 +6,7 @@ class BreweryBeerIndex extends React.Component {
     super(props);
     this.state = {
       brewery: {},
-      beers: {}
+      // beers: {}
     }
   }
 
