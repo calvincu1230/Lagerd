@@ -7,7 +7,6 @@ import { merge } from "lodash";
 import { RECEIVE_BREWERY } from "../actions/brewery_actions";
 
 const checkinsReducer = (state={}, action) => {
-  debugger
   Object.freeze(state);
   let nextState = merge({}, state);
   switch (action.type) {

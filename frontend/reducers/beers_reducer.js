@@ -4,7 +4,6 @@ import { RECEIVE_BREWERY } from "../actions/brewery_actions";
 
 const beersReducer = (state = {}, action) => {
   Object.freeze(state);
-  debugger
   switch (action.type) {
     case RECEIVE_BEERS:
       return merge({}, state, action.beers);

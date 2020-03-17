@@ -5,9 +5,9 @@ import { displayStars } from "../../utils/checkin_api_util";
 
 export default (props) => {
   const checkin = props.checkin;
-  const author = checkin.author;
-  const beer = checkin.beer;
-  const brewery = checkin.brewery ? checkin.brewery : props.brewery;  
+  const author = props.author;
+  const beer = props.beer;
+  const brewery = props.brewery ? props.brewery : props.brewery;  
 
   const deleteable = author.id === props.currentUserId ? <p className="orange-link" onClick={() => {
     return props.deleteCheckin(checkin.id)
