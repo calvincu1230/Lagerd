@@ -14,4 +14,9 @@ class Api::BreweriesController < ApplicationController
     @beers = Brewery.find(params[:id]).beers.with_attached_photo
     render "/api/beers/index.json.jbuilder"
   end
+
+  def checkins 
+    @checkins = Brewery.find(params[:id]).checkins.with_attached_photo
+    render "/api/checkins/index.json.jbuilder"
+  end
 end
