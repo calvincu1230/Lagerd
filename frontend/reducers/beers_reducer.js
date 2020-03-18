@@ -1,6 +1,6 @@
 import { RECEIVE_BEER, RECEIVE_BEERS } from "../actions/beer_actions";
-import { merge } from "lodash";
 import { RECEIVE_BREWERY } from "../actions/brewery_actions";
+import { merge } from "lodash";
 
 const beersReducer = (state = {}, action) => {
   Object.freeze(state);

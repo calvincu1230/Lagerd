@@ -3,8 +3,8 @@ import {
   RECEIVE_CHECKIN,
   REMOVE_CHECKIN
  } from "../actions/checkin_actions";
-import { merge } from "lodash";
 import { RECEIVE_BREWERY } from "../actions/brewery_actions";
+import { merge } from "lodash";
 
 const checkinsReducer = (state={}, action) => {
   Object.freeze(state);
@@ -15,7 +15,7 @@ const checkinsReducer = (state={}, action) => {
     case RECEIVE_CHECKIN:
       return merge({}, state, { [action.checkin.id]: action.checkin });
     case RECEIVE_BREWERY:
-      return merge({}, state, action.payload.checkins);
+      return merge({}, state, action.checkins);
     case REMOVE_CHECKIN:
       delete nextState[action.checkinId.id];
       return nextState;
