@@ -5,11 +5,12 @@ import { displayStars } from "../../utils/checkin_api_util";
 
 export default (props) => {
   const checkin = props.checkin;
-  const author = props.author;
-  const beer = props.beer;
-  const brewery = props.brewery ? props.brewery : props.brewery;  
+  // const author = props.author;
+  // const beer = props.beer;
+  // debugger
+  // const brewery = props.brewery;
 
-  const deleteable = author.id === props.currentUserId ? <p className="orange-link" onClick={() => {
+  const deleteable = checkin.authorId === props.currentUserId ? <p className="orange-link" onClick={() => {
     return props.deleteCheckin(checkin.id)
   }}>Delete Check-in</p> : null;
 
@@ -22,20 +23,20 @@ export default (props) => {
   return (
     <div className="outer-checkin-item">
       <div className="beer-pic-container">
-        {/* <Link to={`/users/${author.id}`}> */}
-          <img src={author.imgUrl} alt="User Photo" className="checkin-user-pic"/>
+        {/* <Link to={`/users/${checkin.authorId}`}> */}
+          <img src={checkin.authorImgUrl} alt="User Photo" className="checkin-user-pic"/>
         {/* </Link> */}
       </div>
       <div className="checkin-main">
         <div className="upper-checkin-content">
           <div className="upper-main">
             <p className="checkin-text">
-              {/* <Link to={`/users/${author.id}`} className="orange-link">{author.firstName} {author.lastName[0]}.</Link> is drinking a
-              <Link to={`/breweries/${brewery.id}/beers/${beer.id}`} className="orange-link"> {beer.name}</Link> by 
-              <Link to={`/breweries/${brewery.id}`} className="orange-link"> {brewery.name}</Link> */}
-              {author.firstName} {author.lastName[0]}. is drinking a
-              <Link to={`/breweries/${brewery.id}/beers/${beer.id}`} className="orange-link"> {beer.name}</Link> by 
-              <Link to={`/breweries/${brewery.id}`} className="orange-link"> {brewery.name}</Link>
+              {/* <Link to={`/users/${checkin.authorId}`} className="orange-link">{checkin.authorFName} {checkin.authorLName[0]}.</Link> is drinking a
+              <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`} className="orange-link"> {checkin.beerName}</Link> by 
+              <Link to={`/breweries/${checkin.breweryId}`} className="orange-link"> {checkin.breweryName}</Link> */}
+              {checkin.authorFName} {checkin.authorLName[0]}. is drinking a
+              <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`} className="orange-link"> {checkin.beerName}</Link> by 
+              <Link to={`/breweries/${checkin.breweryId}`} className="orange-link"> {checkin.breweryName}</Link>
             </p>
           </div>
         </div>
@@ -66,12 +67,12 @@ export default (props) => {
         </div>
       </div>
       <div className="beer-pic-container">
-        <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
-          <img src={beer.imgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
+        <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`}>
+          <img src={checkin.beerImgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
         </Link>
       </div>
-      {/* <Link to={`/breweries/${brewery.id}/beers/${beer.id}`}>
-        <img src={beer.imgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
+      {/* <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`}>
+        <img src={checkin.beerImgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
       </Link> */}
     </div>
   );

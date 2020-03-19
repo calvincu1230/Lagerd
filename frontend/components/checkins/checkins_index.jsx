@@ -8,18 +8,24 @@ class CheckinsIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllCheckins();
-    this.props.fetchBeers();
   }
 
   render() {
 
-    const checkinLis = this.props.checkins.map(checkin => {
-      return <CheckinsIndexItem 
+    if (Object.keys(this.props.checkins).length === 0) {
+      return null;
+    }
+
+    const checkinIdOrder = Object.keys(this.props.checkins).reverse();
+    const checkinLis = checkinIdOrder.map(id => {
+      const checkin = this.props.checkins[id];
+
+      return (<CheckinsIndexItem 
                 key={`${checkin.id}${checkin.body}`} 
                 checkin={checkin} 
                 deleteCheckin={this.props.deleteCheckin} 
                 currentUserId={this.props.currentUserId}
-                />
+                />)
     });
     
     return (

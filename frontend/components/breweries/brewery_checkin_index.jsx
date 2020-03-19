@@ -21,16 +21,15 @@ class BreweryCheckinIndex extends React.Component {
 
     let checkinLis;
     if (Object.values(this.state.brewery).length > 0) {
-      checkinLis = this.state.brewery.checkinIds.map(id => {
+      debugger
+      const sortedCheckins = this.state.brewery.checkinIds.sort((a, b) => b - a);
+      checkinLis = sortedCheckins.map(id => {
         const checkin = this.props.checkins[id];
-        // const author = this.props.users[checkin.authorId];
+        if (checkin === undefined) return null; // ensures post that was prev in brewery id arr is not rendered b4 it updates
         return (<CheckinIndexItem 
                     key={`${checkin.id}${checkin.body}`} 
                     checkin={checkin}
-                    author={this.props.users[checkin.authorId]}
-                    beer={this.props.beers[checkin.beerId]} 
                     deleteCheckin={this.props.deleteCheckin} 
-                    brewery={this.state.brewery}
                     currentUserId={this.props.currentUserId}
                 />)
       });
