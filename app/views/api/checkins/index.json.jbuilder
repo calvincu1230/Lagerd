@@ -3,31 +3,13 @@
     json.extract! checkin, :id, :body, :rating
     json.createdAt checkin.created_at
     json.beerId checkin.beer_id
+    json.beerImgUrl url_for(checkin.beer.photo)
+    json.breweryId checkin.beer.brewery_id
+    json.breweryName checkin.beer.brewery.name
+    json.authorId checkin.author_id
+    json.authorFName checkin.author.first_name
+    json.authorLName checkin.author.last_name
+    json.authorImgUrl url_for(checkin.author.photo)
     json.imgUrl url_for(checkin.photo) if checkin.photo.attached?
-
-    json.author do
-      json.id checkin.author.id
-      json.firstName checkin.author.first_name
-      json.lastName checkin.author.last_name
-      json.imgUrl url_for(checkin.author.photo) if checkin.author.photo.attached?
-    end
-
-    json.beer do
-      json.id checkin.beer.id
-      json.name checkin.beer.name
-      json.imgUrl url_for(checkin.beer.photo) if checkin.beer.photo.attached?
-    end
-
-    json.brewery do
-      json.extract! checkin.beer.brewery, :id, :name, :location
-    end
-
-    json.createdAt checkin.created_at
   end
 end
-
-# @checkins.each do |checkin|
-#   json.set! checkin.created_at do
-#     json.extract! checkin, :id, :body, :rating, :created_at
-#   end
-# end
