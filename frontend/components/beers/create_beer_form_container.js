@@ -8,7 +8,7 @@ const mSP = (state, ownProps) => {
   return {
     beer: {
       name: "",
-      brewery_id: "",
+      breweryId: "",
       style: "",
       abv: "",
       ibu: "",

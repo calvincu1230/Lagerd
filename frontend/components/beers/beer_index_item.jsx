@@ -16,12 +16,12 @@ export default props => {
         <div className="index-info">
           <h4 className="index-item-title index-subitem">
             {/* <Link 
-              to={`breweries/${props.beer.brewery_id}/beers/${props.beer.id}`} 
+              to={`breweries/${props.beer.breweryId}/beers/${props.beer.id}`} 
               className="orange-link">{props.beer.name}
             </Link> */}
             <a 
               className="orange-link"
-              href={`/#/breweries/${props.beer.brewery_id}/beers/${props.beer.id}`}>
+              href={`/#/breweries/${props.beer.breweryId}/beers/${props.beer.id}`}>
               {props.beer.name}
             </a>
           </h4>
