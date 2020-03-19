@@ -5,6 +5,7 @@ import {
  } from "../actions/checkin_actions";
 import { RECEIVE_BREWERY } from "../actions/brewery_actions";
 import { merge } from "lodash";
+import { RECEIVE_BEER } from "../actions/beer_actions";
 
 const checkinsReducer = (state={}, action) => {
   Object.freeze(state);
@@ -12,6 +13,8 @@ const checkinsReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_ALL_CHECKINS:
       return merge({}, state, action.checkins);
+    case RECEIVE_BEER:
+      return merge({}, state, action.payload.checkins);
     case RECEIVE_CHECKIN:
       return merge({}, state, { [action.checkin.id]: action.checkin });
     case RECEIVE_BREWERY:
