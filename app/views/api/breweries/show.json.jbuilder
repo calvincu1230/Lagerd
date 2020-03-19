@@ -12,7 +12,8 @@ end
 @brewery.beers.each do |beer|
   json.beers do
     json.set! beer.id do
-      json.extract! beer, :id, :name, :brewery_id, :ibu, :style, :abv, :description
+      json.extract! beer, :id, :name, :ibu, :style, :abv, :description
+      json.breweryId beer.brewery_id
       json.imgUrl url_for(beer.photo) if beer.photo.attached?
     end
   end
