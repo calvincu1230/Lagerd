@@ -22,7 +22,7 @@ class BeersIndex extends React.Component {
   // }
 
   render() {
-    const beerLis = this.props.beers.map(beer => { /* ADD FUNC TO CHECKIN BEER HERE LATER  */
+    const beerLis = Object.values(this.props.beers).map(beer => { /* ADD FUNC TO CHECKIN BEER HERE LATER  */
       return <BeerIndexItem beer={beer} key={beer.name} /> 
     });
 

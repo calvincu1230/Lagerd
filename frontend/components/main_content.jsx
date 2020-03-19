@@ -5,7 +5,7 @@ import HeaderContainer from "./header/header_container";
 import BreweriesIndexContainer from "./breweries/breweries_index_container";
 import BreweryBeerShow from "./breweries/brewery_beer_show";
 import BeersIndexContainer from "./beers/beer_index_container";
-import BeerShowContainer from "./beers/beer_show_container";
+import BeerCheckinShow from "./beers/beer_checkin_show";
 import EditBeerFormContainer from "./beers/edit_beer_form_container";
 import CreateBeerFormContainer from "./beers/create_beer_form_container";
 import BreweryCheckinShow from "./breweries/brewery_checkin_show";
@@ -20,7 +20,7 @@ const MainContent = () => (
         <ProtectedRoute path="/feed" component={CheckinsIndexContainer} />
         <ProtectedRoute exact path="/beers/new" component={CreateBeerFormContainer} />
         <Route exact path="/breweries/:breweryId/beers/:beerId/edit" component={EditBeerFormContainer} />
-        <Route exact path="/breweries/:breweryId/beers/:beerId" component={BeerShowContainer} />
+        <Route exact path="/breweries/:breweryId/beers/:beerId" component={BeerCheckinShow} />
         <Route exact path="/breweries/:breweryId/beers" component={BreweryBeerShow} />
         <Route exact path="/breweries/:breweryId" component={BreweryCheckinShow} />
         <Route exact path="/checkins/:checkinId" component={CheckinShowContainer} />

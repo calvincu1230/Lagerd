@@ -18,16 +18,16 @@ const receieveBeerErrors = errors => {
   };
 };
 
-const receiveBeer = beer => {
+const receiveBeer = payload => {
   return {
     type: RECEIVE_BEER,
-    beer
+    payload
   };
 };
 
 export const fetchBeer = beerId => dispatch => {
   return BeerUtil.fetchBeer(beerId)
-    .then(beer => dispatch(receiveBeer(beer)));
+    .then(payload => dispatch(receiveBeer(payload)));
 };
 
 export const fetchBeers = () => dispatch => {

@@ -12,8 +12,8 @@ class BreweryBeerIndex extends React.Component {
 
   componentDidMount() {
     const id = this.props.match.params.breweryId;
-    this.props.fetchBrewery(id).then((brewery) => { 
-      this.setState({ brewery })
+    this.props.fetchBrewery(id).then((breweryAction) => { 
+      this.setState({ brewery: breweryAction.payload.brewery })
     });
     // this.props.fetchBreweryBeers(id).then(beers => {
     //   this.setState({ beers })
@@ -21,9 +21,11 @@ class BreweryBeerIndex extends React.Component {
   }
 
   render() {
+    if (Object.keys(this.props.beers).length === 0) return null;
     let beerLis;
     if (Object.values(this.state.brewery).length > 0) {
-      beerLis = Object.values(this.props.brewery.beers).map(beer => {
+      beerLis = this.state.brewery.beerIds.map(id => {
+        const beer = this.props.beers[id];
         return <BeerIndexItem beer={beer} key={beer.id} />
       });
     }

@@ -56,7 +56,7 @@ class CheckinForm extends React.Component {
       .then(() => { 
         return this.props.closeCheckinModal();
       })
-      .then(() => this.props.history.push("/feed"));
+      // .then(() => this.props.history.push("/feed"));
   }
 
   render() {

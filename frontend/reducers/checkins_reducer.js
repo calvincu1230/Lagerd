@@ -12,13 +12,13 @@ const checkinsReducer = (state={}, action) => {
   let nextState = merge({}, state);
   switch (action.type) {
     case RECEIVE_ALL_CHECKINS:
-      return merge({}, state, action.checkins);
+      return action.checkins;
     case RECEIVE_BEER:
-      return merge({}, state, action.payload.checkins);
+      return action.payload.checkins || state;
     case RECEIVE_CHECKIN:
       return merge({}, state, { [action.checkin.id]: action.checkin });
     case RECEIVE_BREWERY:
-      return merge({}, state, action.payload.checkins);
+      return action.payload.checkins;
     case REMOVE_CHECKIN:
       delete nextState[action.checkinId.id];
       return nextState;
