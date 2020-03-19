@@ -1,30 +1,28 @@
 import React from "react";
 import CheckinIndexItem from "../checkins/checkins_index_item";
 
-class BreweryCheckinIndex extends React.Component {
+class BeerCheckinIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      brewery: {}
+      beer: {}
     }
   }
 
   componentDidMount() {
-    this.props.fetchBrewery(this.props.match.params.breweryId)
-      .then(breweryAction => {
-        this.setState({ brewery: breweryAction.payload.brewery })
-      }); // Why is brewery an action here? I don't really have time but I want to refactor ALOT of my site for better practices
+    this.props.fetchBeer(this.props.match.params.beerId)
+      .then((beerAction) => this.setState({ beer: beerAction.payload.beer }));
   }
 
   render() {
-    if (this.state.brewery.id === undefined) return null;
+    if (this.state.beer.id === undefined) return null;
 
     let checkinLis;
-    if (Object.values(this.state.brewery).length > 0) {
-      const sortedCheckins = this.state.brewery.checkinIds.sort((a, b) => b - a);
+    if (Object.values(this.state.beer).length > 0) {
+      const sortedCheckins = this.state.beer.checkinIds.sort((a, b) => b - a);
       checkinLis = sortedCheckins.map(id => {
         const checkin = this.props.checkins[id];
-        if (checkin === undefined) return null; // ensures post that was prev in brewery id arr is not rendered b4 it updates
+        if (checkin === undefined) return null; // ensures post that was prev in beer id arr is not rendered b4 it updates
         return (<CheckinIndexItem 
                     key={`${checkin.id}${checkin.body}`} 
                     checkin={checkin}
@@ -45,4 +43,4 @@ class BreweryCheckinIndex extends React.Component {
   }
 }
 
-export default BreweryCheckinIndex;
+export default BeerCheckinIndex;

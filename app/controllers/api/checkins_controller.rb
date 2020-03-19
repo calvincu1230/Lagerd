@@ -1,7 +1,7 @@
 class Api::CheckinsController < ApplicationController
 
   def show
-    @checkin = Checkin.with_attached_photo.find(params[:id])
+    @checkin = Checkin.includes(:beer, :author).with_attached_photo.find(params[:id])
       # .order_by()
     render :show
   end

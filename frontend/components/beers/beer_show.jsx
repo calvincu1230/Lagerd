@@ -5,16 +5,20 @@ import { displayStars } from "../../utils/checkin_api_util";
 class BeerShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      beer: {}
+    }
   }
 
   componentDidMount() {
-    this.props.fetchBeer(this.props.match.params.beerId);
-    this.props.fetchBrewery(this.props.match.params.breweryId);
+    this.props.fetchBeer(this.props.match.params.beerId)
+      .then(beerAction => this.setState({ beer: beerAction.payload.beer }));
   }
 
   render() {
-    
+    if (this.state.beer.id === undefined) return null;
     const beer = this.props.beer;
+    
     const avgRating = beer.avgRating > 0 ? (
       <p className="mid-show-item mid-border">{displayStars(beer.avgRating)} ({beer.avgRating})</p>
     ) :  (<p className="mid-show-item mid-border">No Ratings Yet!</p>);
@@ -26,7 +30,7 @@ class BeerShow extends React.Component {
           <div className="beer-info">
             <div className="show-info show-item">
               <h3 className="show-item show-title">{beer.name}</h3>
-              <p className="beer-show-brewery show-item"><Link to={`/breweries/${this.props.brewery.id}`} className="orange-link">{this.props.brewery.name}</Link></p>
+              <p className="beer-show-brewery show-item"><Link to={`/breweries/${this.props.beer.breweryId}`} className="orange-link">{this.props.brewery.name}</Link></p>
               <p className="show-style show-item">{beer.style}</p>
             </div>
           </div>

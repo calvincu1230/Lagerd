@@ -27,18 +27,15 @@ class CheckinShow extends React.Component {
   }
 
     let checkin = this.props.checkin;
-    let author = checkin.author || {};
-    let beer = checkin.beer || {};
-    let brewery = checkin.brewery || {};
   
-    let checkinImage = this.props.checkin.imgUrl ? <img className="checkin-photo" src={this.props.checkin.imgUrl} /> : null;
+    let checkinImage = checkin.imgUrl ? <img className="checkin-photo" src={checkin.imgUrl} /> : null;
 
     let deleteable;
 
     const noCheckinPicture = checkinImage ? "" : "no-picture";
 
-    if (Boolean(Object.values(this.props.checkin)) > 0) {
-      deleteable = author.id === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
+    if ((Object.values(checkin)).length > 0) {
+      deleteable = checkin.authorId === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
     }
     return (
       <div className="checkin-show-container">
@@ -47,16 +44,16 @@ class CheckinShow extends React.Component {
             <div className="orange-link return"><Link to="/feed">Return back to Feed.</Link></div>
             <section className="checkin-show-info">
               <div className="checkin-show-top">
-                <img className="checkin-user-pic" src={author.imgUrl} />
-                <p className="checkin-author-name">{author.firstName} {author.lastName}</p>
+                <img className="checkin-user-pic" src={checkin.authorImgUrl} />
+                <p className="checkin-author-name">{checkin.authorFName} {checkin.authorLName}</p>
               </div>
 
               <div className="checkin-show-mid">
                 <div className="upper-mid">
-                  <img className="checkin-show-pic" src={beer.imgUrl} />
+                  <img className="checkin-show-pic" src={checkin.beerImgUrl} />
                   <div className="checkin-beer-info">
-                    <p className="checkin-beer-name"><Link className="black-link" to={`/breweries/${brewery.id}/beers/${beer.id}`}>{beer.name}</Link></p>
-                    <p className="checkin-brewery-name" ><Link className="black-link" to={`/breweries/${brewery.id}`}>{brewery.name}</Link></p>
+                    <p className="checkin-beer-name"><Link className="black-link" to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`}>{checkin.beerName}</Link></p>
+                    <p className="checkin-brewery-name" ><Link className="black-link" to={`/breweries/${checkin.breweryId}`}>{checkin.breweryName}</Link></p>
                   </div>
                 </div>
 

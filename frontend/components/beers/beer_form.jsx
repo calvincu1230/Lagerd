@@ -34,14 +34,14 @@ class BeerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const path = this.state.id ? `/breweries/${this.state.brewery_id}/beers/${this.state.id}` : `/breweries/${this.state.brewery_id}/beers`;
+    const path = this.state.id ? `/breweries/${this.state.breweryId}/beers/${this.state.id}` : `/breweries/${this.state.breweryId}/beers`;
     const formData = new FormData();
     if (this.state.id) {
       formData.append('beer[id]', this.state.id);
     }
 
     formData.append('beer[name]', this.state.name);
-    formData.append('beer[brewery_id]', this.state.brewery_id);
+    formData.append('beer[brewery_id]', this.state.breweryId);
     formData.append('beer[style]', this.state.style);
     formData.append('beer[abv]', this.state.abv);
     formData.append('beer[ibu]', this.state.ibu);
@@ -109,7 +109,7 @@ class BeerForm extends React.Component {
                   Can't find a brewery? <a href="mailto: brewerysuggestions@lagerd.io" subject="Brewery Suggestion" className="orange-link">Suggest one here!</a>
                 </p>
               </div>
-              <select onChange={this.handleChange("brewery_id")} value={this.state.brewery_id} className="beer-form-item">
+              <select onChange={this.handleChange("breweryId")} value={this.state.breweryId} className="beer-form-item">
                 {defaultSelect}
                 {brewerySelects}
               </select>

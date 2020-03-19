@@ -6,7 +6,7 @@ import BeersIndex from "./beers_index";
 
 const mSP = (state, ownProps) => {
   return {
-    beers: Object.values(state.entities.beers)
+    beers: state.entities.beers
   };
 };
 
