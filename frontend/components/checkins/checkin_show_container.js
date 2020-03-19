@@ -4,7 +4,7 @@ import CheckinShow from "./checkin_show";
 
 const mSP = (state, ownProps) => {
   return {
-    checkin: state.entities.checkins[ownProps.match.params.checkinId] || {},
+    checkin: state.entities.checkins[ownProps.match.params.checkinId],
     currentUserId: state.session.currentUserId,
   };
 };
