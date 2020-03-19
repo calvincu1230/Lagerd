@@ -15,7 +15,7 @@ const checkinsReducer = (state={}, action) => {
     case RECEIVE_CHECKIN:
       return merge({}, state, { [action.checkin.id]: action.checkin });
     case RECEIVE_BREWERY:
-      return merge({}, state, action.checkins);
+      return merge({}, state, action.payload.checkins);
     case REMOVE_CHECKIN:
       delete nextState[action.checkinId.id];
       return nextState;
