@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetchAllCheckins, deleteCheckin } from "../../actions/checkin_actions";
 
 const mSP = state => {
-  debugger
   return {
     checkins: state.entities.checkins,
     currentUserId: state.session.currentUserId

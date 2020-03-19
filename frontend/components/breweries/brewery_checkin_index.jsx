@@ -21,7 +21,6 @@ class BreweryCheckinIndex extends React.Component {
 
     let checkinLis;
     if (Object.values(this.state.brewery).length > 0) {
-      debugger
       const sortedCheckins = this.state.brewery.checkinIds.sort((a, b) => b - a);
       checkinLis = sortedCheckins.map(id => {
         const checkin = this.props.checkins[id];
