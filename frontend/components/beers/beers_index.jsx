@@ -13,7 +13,6 @@ class BeersIndex extends React.Component {
   componentDidMount() {
     this.props.fetchBeers();
     // this.props.fetchMoreBeers();
-    this.props.fetchBreweries();
   }
 
   // fetchMoreBeers() {

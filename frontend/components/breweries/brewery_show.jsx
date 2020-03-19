@@ -13,24 +13,25 @@ class BreweryShow extends React.Component {
 
   render() {
 
-    const avgRating = this.props.brewery.avgRating > 0 ? (
-      <p className="mid-show-item brewery-mid-show-item">{displayStars(this.props.brewery.avgRating)} ({this.props.brewery.avgRating})</p>
+    const brewery = this.props.brewery;
+    const avgRating = brewery.avgRating > 0 ? (
+      <p className="mid-show-item brewery-mid-show-item">{displayStars(brewery.avgRating)} ({brewery.avgRating})</p>
     ) :  (<p className="mid-show-item brewery-mid-show-item">No Ratings Yet!</p>);
     return (
       <div className="index-feed beer-show-main">
         <div className="show-top">
-          <img className="show-img" src={this.props.brewery.imgUrl}/>
+          <img className="show-img" src={brewery.imgUrl}/>
           <div className="beer-info">
             <div className="show-info show-item">
-              <h3 className="show-item show-title">{this.props.brewery.name}</h3>
-              <p className="show-style show-item">{this.props.brewery.location}</p>
+              <h3 className="show-item show-title">{brewery.name}</h3>
+              <p className="show-style show-item">{brewery.location}</p>
             </div>
           </div>
           <div className="show-stat-box">
             <div className="left-side">
               <div className="stat top-left">
                 <h4 className="stat-title">TOTAL {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
-                <p className="stat-stat">{this.props.brewery.totalCheckins}</p> {/* REAL INFO EVENTUALLY */}
+                <p className="stat-stat">{brewery.totalCheckins}</p> {/* REAL INFO EVENTUALLY */}
               </div>
               <div className="stat bottom-left">
                 <h4 className="stat-title">MONTLY {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
@@ -40,7 +41,7 @@ class BreweryShow extends React.Component {
             <div className="right-side">
               <div className="stat top-right">
                 <h4 className="stat-title">UNIQUE {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
-                <p className="stat-stat">1,233</p>
+                <p className="stat-stat">{brewery.uniqueUsers}</p>
               </div>
               <div className="stat bottom-right">
                 <h4 className="stat-title">YOU</h4>

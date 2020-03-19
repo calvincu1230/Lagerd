@@ -16,6 +16,10 @@ class Brewery < ApplicationRecord
   
   has_many :beers
   has_many :checkins, through: :beers
+  has_many :checkin_authors, -> { distinct },
+    through: :checkins,
+    source: :author
+
   has_one_attached :photo
   
   after_create :ensure_default_photo
@@ -34,6 +38,8 @@ class Brewery < ApplicationRecord
 
   def uniq_users
     self.checkins
-      .group()
+      .group(:author_id)
+      .count
+      .size
   end
 end

@@ -13,6 +13,14 @@ export const fetchBeers = (page) => {
   });
 };
 
+export const fetchBreweryBeers = (breweryId) => {
+  return $.ajax({
+    url: `/api/breweries/${breweryId}/beers`,
+    method: "GET",
+    // data: { page }
+  });
+};
+
 export const createBeer = (formData) => {
   return $.ajax({
     url: "/api/beers",

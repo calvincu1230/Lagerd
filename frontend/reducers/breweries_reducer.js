@@ -1,13 +1,13 @@
 import { RECEIVE_BREWERY, RECEIVE_BREWERIES } from "../actions/brewery_actions";
-// import { merge }
+import { merge } from "lodash";
 
 const breweriesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_BREWERIES:
-      return action.breweries
+      return merge({}, state, action.breweries)
     case RECEIVE_BREWERY:
-      return Object.assign({}, state, { [action.brewery.id]: action.brewery });
+      return merge({}, state, { [action.payload.brewery.id]: action.payload.brewery });
     default:
       return state;
   };

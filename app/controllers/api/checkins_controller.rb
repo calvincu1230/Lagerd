@@ -7,7 +7,7 @@ class Api::CheckinsController < ApplicationController
   end
 
   def index
-    @checkins = Checkin.order('created_at DESC').with_attached_photo.all
+    @checkins = Checkin.includes(:beer, :author).order(created_at: :desc).with_attached_photo.all
     render :index
   end
   

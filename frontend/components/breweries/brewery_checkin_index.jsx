@@ -5,28 +5,31 @@ class BreweryCheckinIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      brewery: {},
+      brewery: {}
     }
   }
 
   componentDidMount() {
     this.props.fetchBrewery(this.props.match.params.breweryId)
-      .then(brewery => {
-        this.setState({ brewery: brewery.brewery })
+      .then(breweryAction => {
+        this.setState({ brewery: breweryAction.payload.brewery })
       }); // Why is brewery an action here? I don't really have time but I want to refactor ALOT of my site for better practices
   }
 
   render() {
+    if (this.state.brewery.id === undefined) return null;
 
     let checkinLis;
     if (Object.values(this.state.brewery).length > 0) {
-      checkinLis = Object.values(this.props.brewery.checkins).map(checkin => {
+      debugger
+      const sortedCheckins = this.state.brewery.checkinIds.sort((a, b) => b - a);
+      checkinLis = sortedCheckins.map(id => {
+        const checkin = this.props.checkins[id];
+        if (checkin === undefined) return null; // ensures post that was prev in brewery id arr is not rendered b4 it updates
         return (<CheckinIndexItem 
                     key={`${checkin.id}${checkin.body}`} 
-                    checkin={checkin} 
-                    beer={checkin.beer} 
+                    checkin={checkin}
                     deleteCheckin={this.props.deleteCheckin} 
-                    brewery={this.state.brewery}
                     currentUserId={this.props.currentUserId}
                 />)
       });

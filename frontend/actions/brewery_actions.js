@@ -10,10 +10,10 @@ const receiveBreweries = breweries => {
   };
 };
 
-const receiveBrewery = brewery => {
+const receiveBrewery = payload => {
   return {
     type: RECEIVE_BREWERY,
-    brewery
+    payload
   };
 };
 

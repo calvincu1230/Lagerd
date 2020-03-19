@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchBeers } from "../../actions/beer_actions";
+// import { fetchBreweryBeers } from "../../actions/beer_actions";
 import { fetchBrewery } from "../../actions/brewery_actions";
 import BreweryBeerIndex from "./brewery_beer_index";
 
@@ -13,8 +13,9 @@ const mSP = (state, ownProps) => {
 
 const mDP = dispatch => {
   return {
-    fetchBeers: () => dispatch(fetchBeers()), // MAY BE ABLE TO REDO THIS CUZ JBUILDER
-    fetchBrewery: breweryId => dispatch(fetchBrewery(breweryId))
+    // fetchBeers: () => dispatch(fetchBeers()), // MAY BE ABLE TO REDO THIS CUZ JBUILDER
+    fetchBrewery: breweryId => dispatch(fetchBrewery(breweryId)),
+    // fetchBreweryBeers: breweryId => dispatch(fetchBreweryBeers(breweryId))
   };
 };
 

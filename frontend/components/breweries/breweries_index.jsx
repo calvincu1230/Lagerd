@@ -5,7 +5,6 @@ class BreweriesIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchBreweries();
-    this.props.fetchBeers();
   }
 
   render() {

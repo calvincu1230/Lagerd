@@ -5,15 +5,19 @@ class BreweryBeerIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      brewery: {}
+      brewery: {},
+      // beers: {}
     }
   }
 
   componentDidMount() {
-    this.props.fetchBrewery(this.props.match.params.breweryId).then((brewery) => { 
+    const id = this.props.match.params.breweryId;
+    this.props.fetchBrewery(id).then((brewery) => { 
       this.setState({ brewery })
     });
-    this.props.fetchBeers();
+    // this.props.fetchBreweryBeers(id).then(beers => {
+    //   this.setState({ beers })
+    // });
   }
 
   render() {

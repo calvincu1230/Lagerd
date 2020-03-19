@@ -14,19 +14,20 @@ class BeerShow extends React.Component {
 
   render() {
     
-    const avgRating = this.props.beer.avgRating > 0 ? (
-      <p className="mid-show-item mid-border">{displayStars(this.props.beer.avgRating)} ({this.props.beer.avgRating})</p>
+    const beer = this.props.beer;
+    const avgRating = beer.avgRating > 0 ? (
+      <p className="mid-show-item mid-border">{displayStars(beer.avgRating)} ({beer.avgRating})</p>
     ) :  (<p className="mid-show-item mid-border">No Ratings Yet!</p>);
     return (
      
      <div className="index-feed beer-show-main">
         <div className="show-top">
-          <img className="show-img" src={this.props.beer.imgUrl}/>
+          <img className="show-img" src={beer.imgUrl}/>
           <div className="beer-info">
             <div className="show-info show-item">
-              <h3 className="show-item show-title">{this.props.beer.name}</h3>
+              <h3 className="show-item show-title">{beer.name}</h3>
               <p className="beer-show-brewery show-item"><Link to={`/breweries/${this.props.brewery.id}`} className="orange-link">{this.props.brewery.name}</Link></p>
-              <p className="show-style show-item">{this.props.beer.style}</p>
+              <p className="show-style show-item">{beer.style}</p>
             </div>
           </div>
 
@@ -35,7 +36,7 @@ class BeerShow extends React.Component {
             <div className="left-side">
               <div className="stat top-left">
                 <h4 className="stat-title">TOTAL</h4>
-                <p className="stat-stat">3,432</p> {/* REAL INFO EVENTUALLY */}
+                <p className="stat-stat">{beer.totalCheckins}</p> {/* REAL INFO EVENTUALLY */}
               </div>
               <div className="stat bottom-left">
                 <h4 className="stat-title">MONTLY</h4>
@@ -46,7 +47,7 @@ class BeerShow extends React.Component {
             <div className="right-side">
               <div className="stat top-right">
                 <h4 className="stat-title">UNIQUE</h4>
-                <p className="stat-stat">1,233</p>
+                <p className="stat-stat">{beer.uniqueUsers}</p>
               </div>
               <div className="stat bottom-right">
                 <h4 className="stat-title">YOU</h4>
@@ -61,16 +62,16 @@ class BeerShow extends React.Component {
         </div>
 
         <div className="show-mid">
-          <p className="mid-show-item">{this.props.beer.abv}% ABV</p>
-          <p className="mid-show-item mid-border">{this.props.beer.ibu} IBU</p>
+          <p className="mid-show-item">{beer.abv}% ABV</p>
+          <p className="mid-show-item mid-border">{beer.ibu} IBU</p>
           {avgRating}
-          <p className="mid-show-item">{this.props.beer.totalCheckins} Checkins</p>
+          <p className="mid-show-item">{beer.totalCheckins} Checkins</p>
         </div>
 
           <div className="show-bottom">
-            <p className="show-description">{this.props.beer.description}</p>
+            <p className="show-description">{beer.description}</p>
             <div className="show-btns">
-              <Link to={`/breweries/${this.props.brewery.id}/beers/${this.props.beer.id}/edit`}>
+              <Link to={`/breweries/${this.props.brewery.id}/beers/${beer.id}/edit`}>
                 <div className="btn-background">
                   <p className="edit-btn show-btn"></p>
                 </div>

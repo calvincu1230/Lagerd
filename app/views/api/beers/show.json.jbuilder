@@ -1,6 +1,7 @@
 json.extract! @beer, :id, :name, :ibu, :style, :abv, :description, :checkin_ids, :brewery_id
 json.avgRating @beer.average_rating.round(2)
 json.totalCheckins @beer.checkins.size
+json.uniqueUsers @beer.uniq_users
 json.imgUrl url_for(@beer.photo) if @beer.photo.attached?
 
 # json.checkins @beer.checkins do |checkin|
