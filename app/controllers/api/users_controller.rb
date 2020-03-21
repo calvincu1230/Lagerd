@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
             login(@user)
             render :show
         else
-            render json: @user.errors.full_messages, status: 422
+            render json: clearer_errors(@user.errors.full_messages), status: 422
         end
     end
 
@@ -46,4 +46,24 @@ class Api::UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:username, :email, :image_url, :password, :first_name, :last_name, :birth_date)
     end
+
+    def clearer_errors(errors) 
+        errors.map do |error|
+            case error
+            when "Username can't be blank"
+                "Username is required."
+            when "Email can't be blank"
+                "Email is required."
+            when "First name can't be blank"
+                "First name is required."
+            when "Last name can't be blank"
+                "Last name is required."
+            when "Password is too short (minimum is 6 characters)"
+                "Password must be at least 6 characters."
+            else
+                error
+            end
+        end
+    end
+
 end

@@ -16,7 +16,7 @@
 
 class User < ApplicationRecord
 
-    validates :username, :email, :password_digest, :session_token, presence: true
+    validates :username, :email, :first_name, :last_name, :password_digest, :session_token, presence: true
     validates :password, length: { minimum: 6 }, allow_nil: true 
     validate :birth_date, if: :over_21
 
@@ -45,6 +45,11 @@ class User < ApplicationRecord
 
     def over_21
         # based on todays date, compares with date instance of given birthday
+        if self.birth_date == ""
+            self.errors.add(:_, "Please Enter a Valid Date.")
+            return false
+        end
+
         today = Date.today
         date = Date.parse(self.birth_date)
         age = (today.year - date.year)
