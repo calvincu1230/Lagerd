@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: checkins
+# Table name: comments
 #
 #  id         :bigint           not null, primary key
+#  body       :text             not null
+#  checkin_id :integer          not null
 #  author_id  :integer          not null
-#  beer_id    :integer          not null
-#  rating     :float            not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  body       :text
 #
 
 require 'test_helper'
 
-class CheckinTest < ActiveSupport::TestCase
+class CommentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

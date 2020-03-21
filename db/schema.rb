@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_222018) do
+ActiveRecord::Schema.define(version: 2020_03_21_225903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,24 @@ ActiveRecord::Schema.define(version: 2020_02_19_222018) do
     t.text "body"
     t.index ["author_id"], name: "index_checkins_on_author_id"
     t.index ["beer_id"], name: "index_checkins_on_beer_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "checkin_id", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["checkin_id"], name: "index_comments_on_checkin_id"
+  end
+
+  create_table "toasts", force: :cascade do |t|
+    t.integer "checkin_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "checkin_id"], name: "index_toasts_on_user_id_and_checkin_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
