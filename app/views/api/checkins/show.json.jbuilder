@@ -17,17 +17,23 @@ end
 
 @checkin.comments.each do |comment|
   json.comments do 
-    json.body comment.body
-    json.checkinId comment.checkin_id
-    json.authorId comment.author_id
-    json.imgUrl url_for(comment.author.photo) if comment.author.photo.attached?
+    json.set! comment.id do
+      json.id comment.id
+      json.body comment.body
+      json.checkinId comment.checkin_id
+      json.authorId comment.author_id
+      json.imgUrl url_for(comment.author.photo) if comment.author.photo.attached?
+    end
   end
 end
 
 @checkin.toasts.each do |toast|
   json.toasts do 
-    json.toastId comment.toast_id
-    json.userId comment.user_id
-    json.imgUrl url_for(toast.user.photo) if toast.user.photo.attached?
+    json.set! toast.id do
+      json.id toast.id
+      json.checkinId toast.checkin_id
+      json.userId toast.user_id
+      json.imgUrl url_for(toast.user.photo) if toast.user.photo.attached?
+    end
   end
 end
