@@ -7,8 +7,7 @@ const toastsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type){
     case RECEIVE_CHECKIN:
-      return action.payload.toasts;
-      return merge({}, state, { [action.toast.id]: action.toast });
+      return action.payload.toasts || state;
     case RECEIVE_ALL_TOASTS:
       return action.toasts;
     case RECEIVE_TOAST:
