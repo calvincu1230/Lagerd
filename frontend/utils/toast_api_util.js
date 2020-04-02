@@ -1,3 +1,10 @@
+export const fetchAllToasts = () => {
+  return$.ajax({
+    url: "/api/toasts",
+    method: "GET"
+  });
+};
+
 export const createToast = toast => {
   return$.ajax({
     url: "/api/toasts",
