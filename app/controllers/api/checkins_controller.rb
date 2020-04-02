@@ -1,13 +1,13 @@
 class Api::CheckinsController < ApplicationController
 
   def show
-    @checkin = Checkin.includes(:beer, :author).with_attached_photo.find(params[:id])
+    @checkin = Checkin.includes(:beer, :author, :comments, :toasts).with_attached_photo.find(params[:id])
       # .order_by()
     render :show
   end
 
   def index
-    @checkins = Checkin.includes(:beer, :author).order(created_at: :desc).with_attached_photo.all
+    @checkins = Checkin.includes(:beer, :author, :toasts).order(created_at: :desc).with_attached_photo.all
     render :index
   end
   

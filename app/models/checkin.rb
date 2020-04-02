@@ -21,9 +21,9 @@ class Checkin < ApplicationRecord
   
   belongs_to :beer
   belongs_to :author,
-      primary_key: :id,
-      foreign_key: :author_id,
-      class_name: :User
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: :User
 
   def self.order_by_created
     Checkin.order('created_at DESC').all
