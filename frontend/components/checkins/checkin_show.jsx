@@ -7,6 +7,7 @@ class CheckinShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      checkin: null
     };
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -18,7 +19,7 @@ class CheckinShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchCheckin(this.props.match.params.checkinId)
-      .then(checkin => this.setState({ checkin }))
+      .then(checkin => this.setState({ checkin: checkin.payload.checkin }))
   }
 
   render() {
@@ -26,7 +27,7 @@ class CheckinShow extends React.Component {
       return <div />
   }
 
-    let checkin = this.props.checkin;
+    let checkin = this.state.checkin;
   
     let checkinImage = checkin.imgUrl ? <img className="checkin-photo" src={checkin.imgUrl} /> : null;
 

@@ -8,6 +8,7 @@ class CheckinsIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllCheckins();
+    this.props.fetchAllToasts();
   }
 
   render() {
@@ -20,12 +21,17 @@ class CheckinsIndex extends React.Component {
     const checkinLis = checkinIdOrder.map(id => {
       const checkin = this.props.checkins[id];
 
-      return (<CheckinsIndexItem 
-                key={`${checkin.id}${checkin.body}`} 
-                checkin={checkin} 
-                deleteCheckin={this.props.deleteCheckin} 
-                currentUserId={this.props.currentUserId}
-                />)
+      return (
+        <CheckinsIndexItem 
+          key={`${checkin.id}${checkin.body}`} 
+          checkin={checkin}
+          toasts={this.props.toasts}
+          fetchCheckin={this.props.fetchCheckin}
+          deleteCheckin={this.props.deleteCheckin} 
+          currentUserId={this.props.currentUserId}
+          deleteToast={this.props.deleteToast}
+          createToast={this.props.createToast}
+        />)
     });
     
     return (

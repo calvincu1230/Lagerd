@@ -1,5 +1,5 @@
 import React from "react";
-import CheckinIndexItem from "../checkins/checkins_index_item";
+import CheckinsIndexItem from "../checkins/checkins_index_item";
 
 class BreweryCheckinIndex extends React.Component {
   constructor(props) {
@@ -25,12 +25,17 @@ class BreweryCheckinIndex extends React.Component {
       checkinLis = sortedCheckins.map(id => {
         const checkin = this.props.checkins[id];
         if (checkin === undefined) return null; // ensures post that was prev in brewery id arr is not rendered b4 it updates
-        return (<CheckinIndexItem 
-                    key={`${checkin.id}${checkin.body}`} 
-                    checkin={checkin}
-                    deleteCheckin={this.props.deleteCheckin} 
-                    currentUserId={this.props.currentUserId}
-                />)
+        return (
+          <CheckinsIndexItem 
+            key={`${checkin.id}${checkin.body}`} 
+            checkin={checkin}
+            toasts={this.props.toasts}
+            fetchCheckin={this.props.fetchCheckin}
+            deleteCheckin={this.props.deleteCheckin} 
+            currentUserId={this.props.currentUserId}
+            deleteToast={this.props.deleteToast}
+            createToast={this.props.createToast}
+          />)
       });
     }
     return (
