@@ -19,10 +19,10 @@ const receiveAllToast = (toasts) => {
   };
 };
 
-const removeToast = toastId => {
+const removeToast = toast => {
   return {
     type: REMOVE_TOAST,
-    toastId
+    toast
   };
 };
 
@@ -40,13 +40,13 @@ export const fetchAllToasts = () => dispatch => {
 };
 
 export const createToast = toast => dispatch => {
-  ToastAPI.createToast(toast)
+  return ToastAPI.createToast(toast)
     .then(toast => dispatch(receiveToast(toast)),
     errors => dispatch(receieveToastErrors(errors)));
 };
 
 export const deleteToast = toastId => dispatch => {
-  ToastAPI.deleteToast(toastId)
+  return ToastAPI.deleteToast(toastId)
     .then(toastId => dispatch(removeToast(toastId)),
     errors => dispatch(receieveToastErrors(errors)));
 };
