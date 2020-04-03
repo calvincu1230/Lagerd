@@ -12,10 +12,10 @@ const receiveAllCheckins = checkins => {
   };
 };
 
-const receiveCheckin = checkin => {
+const receiveCheckin = payload => {
   return {
     type: RECEIVE_CHECKIN,
-    checkin
+    payload
   };
 };
 
@@ -42,7 +42,7 @@ export const fetchAllCheckins = () => dispatch => {
 
 export const fetchCheckin = checkinId => dispatch => {
   return CheckinApiUtil.fetchCheckin(checkinId)
-    .then(checkin => dispatch(receiveCheckin(checkin)), errors => { 
+    .then(payload => dispatch(receiveCheckin(payload)), errors => { 
       return dispatch(receiveCheckinErrors(errors))
     });
 };
