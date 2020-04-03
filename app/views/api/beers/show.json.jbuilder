@@ -19,6 +19,7 @@ end
       json.extract! checkin, :id, :body, :rating
       json.createdAt checkin.created_at
       json.beerId checkin.beer_id
+      json.toastIds checkin.toast_ids
       json.beerName checkin.beer.name
       json.beerImgUrl url_for(checkin.beer.photo)
       json.breweryId checkin.beer.brewery_id
@@ -28,6 +29,17 @@ end
       json.authorLName checkin.author.last_name
       json.authorImgUrl url_for(checkin.author.photo)
       json.imgUrl url_for(checkin.photo) if checkin.photo.attached?
+    end
+  end
+end
+
+@beer.toasts.each do |toast|
+  json.toasts do 
+    json.set! toast.id do
+      json.id toast.id
+      json.checkinId toast.checkin_id
+      json.userId toast.user_id
+      json.imgUrl url_for(toast.user.photo) if toast.user.photo.attached?
     end
   end
 end
