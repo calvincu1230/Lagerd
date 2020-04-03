@@ -55,15 +55,6 @@ export default class CheckinsIndexItem extends React.Component {
     }
   }
 
-  handleToastArr(toastIds) {
-    const toasts = toastIds.slice(0,8);
-    if (this.state.toasted && !toasts.includes(this.state.currentUserToastId)) { 
-      toasts.unshift(this.props.currentUserToastId); 
-    }
-
-    return toasts;
-  }
-
   componentDidMount() {
     this.checkToasted(this.props.checkin);
   }
@@ -84,15 +75,15 @@ export default class CheckinsIndexItem extends React.Component {
 
     let toastImgs;
     if (this.state.toastIds.length > 0) {
-      toastImgs = checkin.toastIds.slice(0,8).map(id => {
+      toastImgs = this.state.toastIds.slice(0,10).map(id => {
         const toast = this.props.toasts[id];
         if (toast === undefined) return;
         return (
-          <img className="toast-item" src={toast.imgUrl} alt={`Toast Img ${id}`} key={`${id}${checkin.id}`}/>
+          <img className="toast-item" src={toast.imgUrl} alt={`Toast Img ${id}`} key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}/>
         )
       });
     }
-    const toasts = this.handleToastArr(this.state.toastIds);
+    const toasts = this.state.toastIds;
 
     const toastsSection = toasts.length === 0 ? null : (
       <section className="toasts">
@@ -110,10 +101,10 @@ export default class CheckinsIndexItem extends React.Component {
 
     const buttons = (
       <section className="checkin-buttons">
-        <button className="checkin-button">Comment</button>
-        <button className={`checkin-button ${buttonClass}`} onClick={this.handleToast}>Toast</button>
+        <button className="checkin-button comment-btn"><span className="btn-icon"><i className="far fa-comment"></i></span>Comment</button>
+        <button className={`checkin-button ${buttonClass}`} onClick={this.handleToast}><span className="btn-icon"><i className="fas fa-beer"></i></span>Toast</button>
       </section>
-    )
+    );
   
     return (
       <div className="outer-checkin-item">
