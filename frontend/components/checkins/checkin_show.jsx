@@ -7,19 +7,62 @@ class CheckinShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkin: null
+      checkin: null,
+      toasted: false,
+      currentUserToastId: null
     };
     this.handleDelete = this.handleDelete.bind(this);
+    this.checkToasted = this.checkToasted.bind(this);
+    this.handleToast = this.handleToast.bind(this);
+  }
+
+  checkToasted(checkin) {
+    let currentUserToastId = null;
+    let toasted = false;
+
+    checkin.toastIds.forEach(id => {
+      const toast = this.props.toasts[id];
+      if (toast === undefined) return;
+      if (toast.userId === this.props.currentUserId) {
+        toasted = true;
+        currentUserToastId = toast.id;
+      }
+    });
+
+    this.setState({
+      checkin,
+      toasted,
+      currentUserToastId
+    }); // if toasted, save toast id for later deletion ability
+  }
+
+  handleToast(e) {
+    e.preventDefault();
+    const checkToasted = this.checkToasted;
+    if (this.state.toasted) {
+      this.props.deleteToast(this.state.currentUserToastId)
+        .then((toastAction) => this.props.fetchCheckin(toastAction.toast.checkinId))
+        .then((checkinAction) => checkToasted(checkinAction.payload.checkin));
+      } else {
+        const toastData = {
+          user_id: this.props.currentUserId,
+          checkin_id: this.state.checkin.id
+        };
+
+        this.props.createToast(toastData)
+          .then((toastAction) => this.props.fetchCheckin(toastAction.toast.checkinId))
+          .then((checkinAction) => checkToasted(checkinAction.payload.checkin));
+    }
   }
 
   handleDelete() {
-    this.props.deleteCheckin(this.props.checkin.id)
+    this.props.deleteCheckin(this.state.checkin.id)
       .then(() => this.props.history.push("/feed"));
   }
 
   componentDidMount() {
     this.props.fetchCheckin(this.props.match.params.checkinId)
-      .then(checkin => this.setState({ checkin: checkin.payload.checkin }))
+      .then(checkinAction => this.checkToasted(checkinAction.payload.checkin));
   }
 
   render() {
@@ -36,8 +79,43 @@ class CheckinShow extends React.Component {
     const noCheckinPicture = checkinImage ? "" : "no-picture";
 
     if ((Object.values(checkin)).length > 0) {
-      deleteable = checkin.authorId === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
+      deleteable = checkin.authorId === this.props.currentUserId ? <p className="orange-quitlink checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
     }
+
+    let toastImgs;
+    if (checkin.toastIds.length > 0) {
+      toastImgs = checkin.toastIds.slice(0,10).map(id => {
+        const toast = this.props.toasts[id];
+        if (toast === undefined) return;
+        return (
+          <img className="toast-item" src={toast.imgUrl} alt={`Toast Img ${id}`} key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}/>
+        )
+      });
+    }
+
+    const toasts = checkin.toastIds;
+
+    const toastsSection = toasts.length === 0 ? null : (
+      <section className="toasts">
+        <div className="toast-count">
+          <p className="toast-item">{checkin.toastIds.length}</p>
+          <i className="fas fa-beer toast-item"></i>
+        </div>
+        <div className="toast-imgs">
+          {toastImgs}
+        </div>
+      </section>
+    );
+
+    const buttonClass = this.state.toasted ? "toasted" : "";
+
+    const buttons = (
+      <section className="checkin-buttons">
+        <button className="checkin-button comment-btn"><span className="btn-icon"><i className="far fa-comment"></i></span>Comment</button>
+        <button className={`checkin-button ${buttonClass}`} onClick={this.handleToast}><span className="btn-icon"><i className="fas fa-beer"></i></span>Toast</button>
+      </section>
+    )
+    
     return (
       <div className="checkin-show-container">
         <div className="checkin-show-main" id={noCheckinPicture}>
@@ -57,10 +135,12 @@ class CheckinShow extends React.Component {
                     <p className="checkin-brewery-name" ><Link className="black-link" to={`/breweries/${checkin.breweryId}`}>{checkin.breweryName}</Link></p>
                   </div>
                 </div>
-
+                <div className="checkin-body-show">{checkin.body}</div>
                 <div className="checkin-rating show-rating" >
                   {displayStars(checkin.rating)}
                 </div>
+                {buttons}
+                {toastsSection}
               </div>
 
               <div className="checkin-show-bottom">

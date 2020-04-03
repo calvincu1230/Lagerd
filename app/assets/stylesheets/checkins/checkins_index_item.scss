@@ -54,7 +54,7 @@
 .checkin-rating-body {
   height: fit-content;
   border: 1px solid #EEEEEE;
-  margin: 10px 10px 0 0;
+  margin-top: 10px;
   border-radius: 4px;
   padding: 8px;
 }
@@ -92,7 +92,6 @@
   margin: 10px 0;
   background-color: #F9F9F9;
   padding: 2px;
-  margin-right: 10px;
 }
 
 .toast-count, .toast-imgs {
@@ -120,4 +119,40 @@
   width: 20px;
   border-radius: 50%;
   padding: none;
+}
+
+.checkin-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.checkin-button {
+  background-color: #A7A7A7;
+  font-size: 12px;
+  width: 45%;
+  border: none;
+  border-radius: 6px;
+  display: inline-block;
+  font-family: inherit;
+  padding: 5px 0;
+  color: white;
+  font-weight: 600;
+}
+
+.checkin-button:hover {
+  background-color: #858787;
+}
+
+.toasted {
+  background-color: #FFCC00;
+  color: #ffffff;
+}
+
+.toasted:hover {
+  background-color: #FFCC00;
+}
+
+.btn-icon {
+  padding-right: 5px;
 }
