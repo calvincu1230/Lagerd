@@ -79,7 +79,7 @@ class CheckinShow extends React.Component {
     const noCheckinPicture = checkinImage ? "" : "no-picture";
 
     if ((Object.values(checkin)).length > 0) {
-      deleteable = checkin.authorId === this.props.currentUserId ? <p className="orange-quitlink checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
+      deleteable = checkin.authorId === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
     }
 
     let toastImgs;
