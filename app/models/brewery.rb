@@ -19,7 +19,8 @@ class Brewery < ApplicationRecord
   has_many :checkin_authors, -> { distinct },
     through: :checkins,
     source: :author
-
+  has_many :toasts, through: :checkins
+  has_many :comments, through: :checkins
   has_one_attached :photo
   
   after_create :ensure_default_photo

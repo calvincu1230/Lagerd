@@ -19,6 +19,8 @@ class Beer < ApplicationRecord
   validates :name, :brewery_id, :abv, :ibu, :style, :description, presence: true
 
   has_many :checkins, dependent: :destroy
+  has_many :toasts, through: :checkins
+  has_many :comments, through: :checkins
   # has_many :posters,
   #   through :checkins,
   #   source 
