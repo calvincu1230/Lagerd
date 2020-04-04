@@ -79,14 +79,15 @@ export default class CheckinsIndexItem extends React.Component {
         const toast = this.props.toasts[id];
         if (toast === undefined) return;
         return (
-          <img className="toast-item" src={toast.imgUrl} alt={`Toast Img ${id}`} key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}/>
+          <img className="toast-item toast-index" src={toast.imgUrl} alt={`Toast Img ${id}`} key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}/>
         )
       });
     }
+
     const toasts = this.state.toastIds;
 
     const toastsSection = toasts.length === 0 ? null : (
-      <section className="toasts">
+      <section className="toasts-index">
         <div className="toast-count">
           <p className="toast-item">{this.state.toastIds.length}</p>
           <i className="fas fa-beer toast-item"></i>
@@ -128,7 +129,7 @@ export default class CheckinsIndexItem extends React.Component {
           </div>
   
           <div className="checkin-rating-body">
-            <div className="checkin-body">{checkin.body}</div>
+            <div className="checkin-body-index">{checkin.body}</div>
             <div className="checkin-rating">
               {displayStars(checkin.rating)}
             </div>
