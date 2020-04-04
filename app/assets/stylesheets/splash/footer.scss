@@ -16,11 +16,6 @@
   // align-items: center;
 }
 
-.foot-name {
-  align-self: center;
-  font-weight: 800;
-}
-
 .link-list, .foot-name {
   display: flex;
   justify-content: center;
@@ -28,8 +23,9 @@
   margin-right: 30px;
 }
 
-.github-link a, .linkedin-link a, .foot-name {
+.social-link a, .foot-name {
   font-family: 'Arvo', serif;
+  font-size: 30px;
   color: #FFF;
   text-decoration: none;
   padding-left: 20px;
@@ -39,10 +35,8 @@
   color: gray;
 }
 
-.foot-link {
-  font-size: 18px;
-}
-
-.github-foot-link, .linkedin-foot-link {
-  padding-left: 20px;
+.foot-name {
+  align-self: center;
+  font-weight: 800;
+  font-size: 16px;
 }
