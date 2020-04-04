@@ -68,7 +68,7 @@ class CheckinShow extends React.Component {
   render() {
     if (!this.state.checkin) {
       return <div />
-  }
+    }
 
     let checkin = this.state.checkin;
   
@@ -82,24 +82,33 @@ class CheckinShow extends React.Component {
       deleteable = checkin.authorId === this.props.currentUserId ? <p className="orange-link checkin-show-delete" onClick={this.handleDelete}>Delete Check-in</p> : null;
     }
 
-    let toastImgs;
-    if (checkin.toastIds.length > 0) {
-      toastImgs = checkin.toastIds.slice(0,10).map(id => {
+    const toastImgs = checkin.toastIds.length > 0 ? (
+      checkin.toastIds.slice(0,7).map(id => {
         const toast = this.props.toasts[id];
         if (toast === undefined) return;
         return (
-          <img className="toast-item" src={toast.imgUrl} alt={`Toast Img ${id}`} key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}/>
+          <img 
+            className="toast-item toast-show" 
+            src={toast.imgUrl} 
+            alt={`Toast Img ${id}`} 
+            key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}
+          />
         )
-      });
-    }
+      })
+    ) : (
+      <p className="no-toasts">Be the first to give a Toast!</p>
+    )
 
-    const toasts = checkin.toastIds;
+    const buttonClass = this.state.toasted ? "toasted" : "";
 
-    const toastsSection = toasts.length === 0 ? null : (
-      <section className="toasts">
-        <div className="toast-count">
+    const toastsSection = (
+      <section className="toasts-show">
+        <button className={`checkin-show-button ${buttonClass}`} onClick={this.handleToast}>
+          <span className="btn-icon"><i className="fas fa-beer toast-item"></i></span>
+          <p>Toast</p>
+        </button>
+        <div className="toast-count-show">
           <p className="toast-item">{checkin.toastIds.length}</p>
-          <i className="fas fa-beer toast-item"></i>
         </div>
         <div className="toast-imgs">
           {toastImgs}
@@ -107,16 +116,8 @@ class CheckinShow extends React.Component {
       </section>
     );
 
-    const buttonClass = this.state.toasted ? "toasted" : "";
-
-    const buttons = (
-      <section className="checkin-buttons">
-        <button className="checkin-button comment-btn"><span className="btn-icon"><i className="far fa-comment"></i></span>Comment</button>
-        <button className={`checkin-button ${buttonClass}`} onClick={this.handleToast}><span className="btn-icon"><i className="fas fa-beer"></i></span>Toast</button>
-      </section>
-    )
-    
     return (
+
       <div className="checkin-show-container">
         <div className="checkin-show-main" id={noCheckinPicture}>
           <div className="inner-checkin-show">
@@ -139,21 +140,22 @@ class CheckinShow extends React.Component {
                 <div className="checkin-rating show-rating" >
                   {displayStars(checkin.rating)}
                 </div>
-                {buttons}
-                {toastsSection}
               </div>
 
               <div className="checkin-show-bottom">
                 <p className="checkin-show-date">{formatDate(checkin.createdAt)}</p>
                 {deleteable}
               </div>
-              {/* Comments and Toasts will go down here */}
               <div className="checkin-show-photo">
                 {checkinImage}
               </div>
             </section>
           </div>
 
+          <div className="checkin-show-socials">
+            {toastsSection}
+            {/* {commentsSection} */}
+          </div>
         </div>
       </div>
     )
