@@ -71,7 +71,7 @@ class CheckinShow extends React.Component {
     }
 
     let checkin = this.state.checkin;
-  
+    debugger
     let checkinImage = checkin.imgUrl ? <img className="checkin-photo" src={checkin.imgUrl} /> : null;
 
     let deleteable;
