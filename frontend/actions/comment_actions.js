@@ -2,6 +2,7 @@ import * as CommentAPI from "../utils/comment_api_util";
 
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
+export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 
 const receiveComment = comment => {
   return {
@@ -19,13 +20,19 @@ const removeComment = commentId => {
 
 const receieveCommentErrors = errors => {
   return {
-    type: RECEIVE_TOAST_ERRORS,
+    type: RECEIVE_COMMENT_ERRORS,
     errors
   };
 };
 
 export const createComment = comment => dispatch => {
   CommentAPI.createComment(comment)
+    .then(comment => dispatch(receiveComment(comment)))
+    .catch(errors => dispatch(receieveCommentErrors(errors)));
+};
+
+export const updateComment = comment => dispatch => {
+  CommentAPI.updateComment(comment)
     .then(comment => dispatch(receiveComment(comment)))
     .catch(errors => dispatch(receieveCommentErrors(errors)));
 };
