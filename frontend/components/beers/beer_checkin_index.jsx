@@ -7,11 +7,21 @@ class BeerCheckinIndex extends React.Component {
     this.state = {
       beer: {}
     }
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(checkinId) {
+    this.props.deleteCheckin(checkinId)
+      .then(() => this.props.fetchBeer(this.state.beer.id))
+      .then(beerAction => this.setState({ beer: beerAction.payload.beer }))
   }
 
   componentDidMount() {
     this.props.fetchBeer(this.props.match.params.beerId)
-      .then((beerAction) => this.setState({ beer: beerAction.payload.beer }));
+      .then((beerAction) => this.setState({ 
+        beer: beerAction.payload.beer
+      }));
   }
 
   render() {
@@ -29,7 +39,7 @@ class BeerCheckinIndex extends React.Component {
             checkin={checkin}
             toasts={this.props.toasts}
             fetchCheckin={this.props.fetchCheckin}
-            deleteCheckin={this.props.deleteCheckin} 
+            deleteCheckin={this.handleDelete} 
             currentUserId={this.props.currentUserId}
             deleteToast={this.props.deleteToast}
             createToast={this.props.createToast}

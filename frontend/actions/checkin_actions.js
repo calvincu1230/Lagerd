@@ -63,7 +63,7 @@ export const updateCheckin = checkin => dispatch => {
 
 export const deleteCheckin = checkinId => dispatch => {
   return CheckinApiUtil.deleteCheckin(checkinId)
-    .then(checkinId => dispatch(removeCheckin(checkinId)), errors => { 
+    .then(res => dispatch(removeCheckin(res.checkin.id)), errors => { 
       return dispatch(receiveCheckinErrors(errors))
     });
 };

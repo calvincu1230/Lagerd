@@ -69,7 +69,7 @@ class BeerShow extends React.Component {
           <p className="mid-show-item">{beer.abv}% ABV</p>
           <p className="mid-show-item mid-border">{beer.ibu} IBU</p>
           {avgRating}
-          <p className="mid-show-item">{beer.totalCheckins} Checkins</p>
+          <p className="mid-show-item">{beer.totalCheckins} Ratings</p>
         </div>
 
           <div className="show-bottom">

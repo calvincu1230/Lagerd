@@ -17,6 +17,7 @@ class CheckinForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearErrors();
+    this.props.fetchBeer(this.state.beerId);
   }
 
   handleChange(field) {
@@ -57,6 +58,8 @@ class CheckinForm extends React.Component {
         return this.props.closeCheckinModal();
       })
       .then(() => this.props.history.push("/feed"));
+      // this is not ideal, re work to listen for all changes 
+      // may require changing modal to local state rather than store
   }
 
   render() {

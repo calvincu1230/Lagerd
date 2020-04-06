@@ -9,6 +9,7 @@ const mSP = (state, ownProps) => {
     beer: state.entities.beers[ownProps.match.params.beerId],
     brewery: state.entities.breweries[ownProps.match.params.breweryId],
     currentUserId: state.session.currentUserId,
+    checkins: state.entities.checkins,
     ui: state.ui.modal
   };
 };

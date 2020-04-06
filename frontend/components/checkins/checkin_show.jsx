@@ -57,7 +57,7 @@ class CheckinShow extends React.Component {
 
   handleDelete() {
     this.props.deleteCheckin(this.state.checkin.id)
-      .then(() => this.props.history.push("/feed"));
+      // .then(() => this.props.history.push("/feed"));
   }
 
   componentDidMount() {
@@ -71,7 +71,7 @@ class CheckinShow extends React.Component {
     }
 
     let checkin = this.state.checkin;
-    debugger
+
     let checkinImage = checkin.imgUrl ? <img className="checkin-photo" src={checkin.imgUrl} /> : null;
 
     let deleteable;
@@ -154,7 +154,7 @@ class CheckinShow extends React.Component {
 
           <div className="checkin-show-socials">
             {toastsSection}
-            {/* {commentsSection} */}
+            {/* {checkinIndexContainer} */}
           </div>
         </div>
       </div>

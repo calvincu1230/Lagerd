@@ -7,7 +7,7 @@ import { fetchAllToasts, deleteToast, createToast } from "../../actions/toast_ac
 
 const mSP = (state, ownProps) => {
   return {
-    beer: state.entities.breweries[ownProps.match.params.beerId],
+    beer: state.entities.beers[ownProps.match.params.beerId],
     checkins: state.entities.checkins,
     toasts: state.entities.toasts,
     currentUserId: state.session.currentUserId

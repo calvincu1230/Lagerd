@@ -5,30 +5,34 @@ import { clearErrors } from "../../actions/session_actions";
 import { connect } from 'react-redux';
 import CheckinForm from "./checkin_form";
 import { withRouter } from "react-router-dom";
+import { fetchBeer } from '../../actions/beer_actions';
 
 const CheckinModal = ({
-                        modal, 
-                        closeCheckinModal, 
-                        userId, 
-                        beerId,
-                        clearErrors,
-                        createCheckin,
-                        errors
-                      }) => {
+  modal, 
+  closeCheckinModal, 
+  userId, 
+  beerId,
+  clearErrors,
+  fetchBeer,
+  createCheckin,
+  errors
+}) => {
   if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
     case 'checkin':
-      component = <CheckinForm 
-                      beerId={beerId} 
-                      userId={userId} 
-                      clearErrors={clearErrors}
-                      closeCheckinModal={closeCheckinModal}
-                      createCheckin={createCheckin}
-                      errors={errors}
-                    />;
+      component = (
+      <CheckinForm 
+        beerId={beerId} 
+        userId={userId} 
+        clearErrors={clearErrors}
+        closeCheckinModal={closeCheckinModal}
+        createCheckin={createCheckin}
+        errors={errors}
+        fetchBeer={fetchBeer}
+      />);
       break;
     default:
       return null;
@@ -56,7 +60,8 @@ const mapDispatchToProps = dispatch => {
   return {
     closeCheckinModal: () => dispatch(closeCheckinModal()),
     clearErrors: () => dispatch(clearErrors()),
-    createCheckin: formData => dispatch(createCheckin(formData))
+    createCheckin: formData => dispatch(createCheckin(formData)),
+    fetchBeer: beerId => dispatch(fetchBeer(beerId))
   };
 };
 
