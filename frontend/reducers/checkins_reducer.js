@@ -14,13 +14,13 @@ const checkinsReducer = (state={}, action) => {
     case RECEIVE_ALL_CHECKINS:
       return action.checkins;
     case RECEIVE_BEER:
-      return action.payload.checkins || state;
+      return action.payload.checkins || {};
     case RECEIVE_CHECKIN:
       return merge({}, state, { [action.payload.checkin.id]: action.payload.checkin });
     case RECEIVE_BREWERY:
-      return action.payload.checkins;
+      return action.payload.checkins || {};
     case REMOVE_CHECKIN:
-      delete nextState[action.checkinId.id];
+      delete nextState[action.checkinId];
       return nextState;
     default:
       return state;
