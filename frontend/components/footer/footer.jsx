@@ -22,7 +22,7 @@ export default () => {
               </li>
               
               <li className="social-link foot-link">
-                <a href="https://angel.co/u/calvin-curnuck"><i class="fab fa-angellist"></i></a>
+                <a href="https://angel.co/u/calvin-curnuck"><i className="fab fa-angellist"></i></a>
               </li>
 
             </ul>
