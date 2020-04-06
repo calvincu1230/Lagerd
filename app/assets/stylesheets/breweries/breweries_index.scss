@@ -7,6 +7,7 @@
   padding-bottom: 30px;
   width: 52%;
   max-width: 60%;
+  min-width: 500px;
   box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
 }
 
@@ -25,3 +26,14 @@
   position: relative;
   padding: 0 24px 24px
 }
+
+/* TESTING MEDIA QUERIES */
+
+// @media screen and (max-width: 500px) {
+//   .index-feed {
+//     width: 100%;
+//     max-width: 100%;
+//     margin-left: 0;
+//     margin-right: 0;
+//   }
+// }
