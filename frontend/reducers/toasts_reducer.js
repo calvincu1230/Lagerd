@@ -5,7 +5,6 @@ import { RECEIVE_BREWERY } from "../actions/brewery_actions";
 import { RECEIVE_BEER } from "../actions/beer_actions";
 
 const toastsReducer = (state = {}, action) => {
-  const newState = merge({}, state);
   Object.freeze(state);
   switch (action.type){
     case RECEIVE_CHECKIN:
@@ -19,6 +18,7 @@ const toastsReducer = (state = {}, action) => {
     case RECEIVE_TOAST:
       return merge({}, state, { [action.toast.id]: action.toast });
     case REMOVE_TOAST:
+      const newState = merge({}, state);
       delete newState[action.toast.id];
       return newState;
     default:
