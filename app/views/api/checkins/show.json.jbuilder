@@ -18,8 +18,7 @@ end
 @checkin.comments.each do |comment|
   json.comments do 
     json.set! comment.id do
-      json.id comment.id
-      json.body comment.body
+      json.extract! comment, :id, :body
       json.checkinId comment.checkin_id
       json.authorId comment.author_id
       json.imgUrl url_for(comment.author.photo) if comment.author.photo.attached?
