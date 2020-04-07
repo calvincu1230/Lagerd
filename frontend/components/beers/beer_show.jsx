@@ -44,7 +44,7 @@ class BeerShow extends React.Component {
               </div>
               <div className="stat bottom-left">
                 <h4 className="stat-title">MONTLY</h4>
-                <p className="stat-stat">234</p>
+                <p className="stat-stat">{beer.monthlyCheckins}</p>
               </div>
             </div>
 
