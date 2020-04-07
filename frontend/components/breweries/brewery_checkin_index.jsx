@@ -7,13 +7,22 @@ class BreweryCheckinIndex extends React.Component {
     this.state = {
       brewery: {}
     }
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(checkinId) {
+    debugger
+    this.props.deleteCheckin(checkinId)
+      .then(() => this.props.fetchBrewery(this.state.brewery.id))
+      .then(breweryAction => this.setState({ brewery: breweryAction.payload.brewery }))
   }
 
   componentDidMount() {
     this.props.fetchBrewery(this.props.match.params.breweryId)
       .then(breweryAction => {
         this.setState({ brewery: breweryAction.payload.brewery })
-      }); // Why is brewery an action here? I don't really have time but I want to refactor ALOT of my site for better practices
+      });
   }
 
   render() {
@@ -31,7 +40,7 @@ class BreweryCheckinIndex extends React.Component {
             checkin={checkin}
             toasts={this.props.toasts}
             fetchCheckin={this.props.fetchCheckin}
-            deleteCheckin={this.props.deleteCheckin} 
+            deleteCheckin={this.handleDelete} 
             currentUserId={this.props.currentUserId}
             deleteToast={this.props.deleteToast}
             createToast={this.props.createToast}
