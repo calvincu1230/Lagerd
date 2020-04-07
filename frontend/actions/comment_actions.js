@@ -26,19 +26,22 @@ const receieveCommentErrors = errors => {
 };
 
 export const createComment = comment => dispatch => {
-  CommentAPI.createComment(comment)
-    .then(comment => dispatch(receiveComment(comment)))
-    .catch(errors => dispatch(receieveCommentErrors(errors)));
+  return CommentAPI.createComment(comment)
+    .then(comment => dispatch(receiveComment(comment)), errors => {
+      return dispatch(receieveCommentErrors(errors))
+    });
 };
 
 export const updateComment = comment => dispatch => {
-  CommentAPI.updateComment(comment)
-    .then(comment => dispatch(receiveComment(comment)))
-    .catch(errors => dispatch(receieveCommentErrors(errors)));
+  return CommentAPI.updateComment(comment)
+    .then(comment => dispatch(receiveComment(comment)), errors => {
+      return dispatch(receieveCommentErrors(errors))
+    });
 };
 
 export const deleteComment = commentId => dispatch => {
-  CommentAPI.deleteComment(commentId)
-    .then(commentId => dispatch(removeComment(commentId)))
-    .catch(errors => dispatch(receieveCommentErrors(errors)));
+  return CommentAPI.deleteComment(commentId)
+    .then(comment => dispatch(removeComment(comment.id)), errors => {
+      return dispatch(receieveCommentErrors(errors))
+    });
 };

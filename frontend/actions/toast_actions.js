@@ -34,7 +34,7 @@ const receieveToastErrors = errors => {
 };
 
 export const fetchAllToasts = () => dispatch => {
-  ToastAPI.fetchAllToasts()
+  return ToastAPI.fetchAllToasts()
     .then(toasts => dispatch(receiveAllToast(toasts)),
     errors => dispatch(receieveToastErrors(errors)));
 };
