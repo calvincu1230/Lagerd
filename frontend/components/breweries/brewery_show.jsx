@@ -5,13 +5,18 @@ import { displayStars } from "../../utils/checkin_api_util";
 class BreweryShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      brewery: {}
+    }
   }
 
   componentDidMount() {
-    this.props.fetchBrewery(this.props.match.params.breweryId);
+    this.props.fetchBrewery(this.props.match.params.breweryId)
+      .then(breweryAction => this.setState({ brewery: breweryAction.payload.brewery }));
   };
 
   render() {
+    if (this.state.brewery.id === undefined) return null;
 
     const brewery = this.props.brewery;
     const avgRating = brewery.avgRating > 0 ? (
@@ -35,7 +40,7 @@ class BreweryShow extends React.Component {
               </div>
               <div className="stat bottom-left">
                 <h4 className="stat-title">MONTLY {/*(<span className="orange-link info-hover">?</span>)*/}</h4>
-                <p className="stat-stat">234</p>
+                <p className="stat-stat">{brewery.monthlyCheckins}</p>
               </div>
             </div>
             <div className="right-side">

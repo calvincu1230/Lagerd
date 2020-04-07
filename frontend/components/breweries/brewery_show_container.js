@@ -6,8 +6,9 @@ import BreweryShow from "./brewery_show";
 
 const mSP = (state, ownProps) => {
   return {
-    brewery: state.entities.breweries[ownProps.match.params.breweryId] || {},
-    currentUserId: state.session.currentUserId
+    brewery: state.entities.breweries[ownProps.match.params.breweryId],
+    currentUserId: state.session.currentUserId,
+    checkins: state.entities.checkins
   };
 };
 
