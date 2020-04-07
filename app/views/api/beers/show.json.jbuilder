@@ -1,6 +1,7 @@
 json.beer do
   json.extract! @beer, :id, :name, :ibu, :style, :abv, :description
   json.avgRating @beer.average_rating.round(2)
+  json.monthlyCheckins @beer.checkins_this_month
   json.totalCheckins @beer.checkins.size
   json.breweryId @beer.brewery_id
   json.checkinIds @beer.checkin_ids

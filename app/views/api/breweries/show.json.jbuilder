@@ -1,6 +1,7 @@
 json.brewery do 
   json.extract! @brewery, :id, :name, :location, :description
   json.beerCount @brewery.beers.length
+  json.monthlyCheckins @brewery.checkins_this_month
   json.checkinIds @brewery.checkin_ids
   json.beerIds @brewery.beer_ids
   json.avgRating @brewery.average_rating.round(2)
@@ -51,19 +52,23 @@ end
 end
 
 @brewery.toasts.each do |toast|
-  json.set! toast.id do
-    json.id toast.id
-    json.checkinId toast.checkin_id
-    json.userId toast.user_id
-    json.imgUrl url_for(toast.user.photo) if toast.user.photo.attached?
+  json.toasts do
+    json.set! toast.id do
+      json.id toast.id
+      json.checkinId toast.checkin_id
+      json.userId toast.user_id
+      json.imgUrl url_for(toast.user.photo) if toast.user.photo.attached?
+    end
   end
 end
 
-# @brewery.comments.each do |comment|
-#   json.set! comment.id do
-#     json.id comment.id
-#     json.checkinId comment.checkin_id
-#     json.userId comment.user_id
-#     json.imgUrl url_for(comment.user.photo) if comment.user.photo.attached?
-#   end
-# end
+@brewery.comments.each do |comment|
+  json.comments do
+    json.set! comment.id do
+      json.id comment.id
+      json.checkinId comment.checkin_id
+      json.authorId comment.author_id
+      json.imgUrl url_for(comment.author.photo) if comment.author.photo.attached?
+    end
+  end
+end
