@@ -5,6 +5,7 @@
     json.beerId checkin.beer_id
     json.beerName checkin.beer.name
     json.toastIds checkin.toast_ids
+    json.commentIds checkin.comment_ids
     json.beerImgUrl url_for(checkin.beer.photo)
     json.breweryId checkin.beer.brewery_id
     json.breweryName checkin.beer.brewery.name

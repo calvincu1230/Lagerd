@@ -20,6 +20,9 @@ end
     json.set! comment.id do
       json.extract! comment, :id, :body
       json.checkinId comment.checkin_id
+      json.authorFName comment.author.first_name
+      json.authorLName comment.author.last_name
+      json.createdAt comment.created_at
       json.authorId comment.author_id
       json.imgUrl url_for(comment.author.photo) if comment.author.photo.attached?
     end
