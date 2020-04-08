@@ -17,8 +17,8 @@
 }
 
 .comment-photo {
-  height: 20px;
-  width: 20px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   margin-right: 5px;
 }
@@ -58,4 +58,32 @@
 .post-btn-wrap {
   display: flex;
   justify-content: flex-end;
+}
+
+.photo-wrap {
+  display: inline;
+  vertical-align: top;
+  padding: 0;
+}
+
+.comment-main {
+  display: inline-block;
+  vertical-align: top;
+  width: 88%;
+  font-size: 14px;
+}
+
+.edit-comment-ta {
+  height: 50px;
+  width: 95%;
+  border: 1px solid #E2E2E2;
+  border-radius: 5px;
+  padding: 6px;
+}::placeholder {
+    color: #999999;
+  }
+
+.edit-comment {
+  display: inline-block;
+  width: 88%;
 }
