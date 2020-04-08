@@ -43,6 +43,8 @@ class BeerCheckinIndex extends React.Component {
             currentUserId={this.props.currentUserId}
             deleteToast={this.props.deleteToast}
             createToast={this.props.createToast}
+            createComment={this.props.createComment}
+            deleteComment={this.props.deleteComment}
           />)
       });
     }
