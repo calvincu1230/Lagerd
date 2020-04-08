@@ -4,29 +4,25 @@ import CommmentsIndexItem from "./comments_index_item";
 class CommentsIndex extends React.Component {
   constructor(props) {
     super(props);
-    
-    this.state = {
-      checkin: this.props.checkin
-    }
   }
 
-  componentDidMount() {
-    this.setState({ commentIds: this.props.commentIds })
-  }
+  // componentDidMount() {
+  //   this.setState({ commentIds: this.props.commentIds })
+  // }
 
-  static getDerivedStateFromProps(nextProps, prevState){
-    // commentId vals are always unique
-    const nextPropArr = nextProps.checkin.commentIds;
-    const prevStateArr = prevState.checkin.commentIds;
-    const bool = nextPropArr.length === prevStateArr.length && nextPropArr.every(function(value, index) { 
-      return value === prevStateArr[index]
-    }); // compares array of ids to check if update is needed
+  // static getDerivedStateFromProps(nextProps, prevState){
+  //   // commentId vals are always unique
+  //   const nextPropArr = nextProps.checkin.commentIds;
+  //   const prevStateArr = prevState.checkin.commentIds;
+  //   const bool = nextPropArr.length === prevStateArr.length && nextPropArr.every(function(value, index) { 
+  //     return value === prevStateArr[index]
+  //   }); // compares array of ids to check if update is needed
 
-    if(!bool) {
-      return { checkin: nextProps.checkin }; 
-      // sets state to newly passed in checkin, forcing re-render
-    } else return null;
-  }
+  //   if(!bool) {
+  //     return { checkin: nextProps.checkin }; 
+  //     // sets state to newly passed in checkin, forcing re-render
+  //   } else return null;
+  // }
   
   // tested without and still works but want to leave it in case it is needed
   // componentDidUpdate(prevProps, prevState) {
@@ -42,7 +38,7 @@ class CommentsIndex extends React.Component {
   // }
 
   render() {
-    const commentIds = this.state.checkin.commentIds;
+    const commentIds = this.props.checkin.commentIds;
     
     if (commentIds.length === 0) {
       return null;
