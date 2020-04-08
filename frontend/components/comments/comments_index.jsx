@@ -7,6 +7,8 @@ class CommentsIndex extends React.Component {
   }
 
   render() {
+    if (!this.props.checkin.id) return null;
+
     const commentIds = this.props.checkin.commentIds;
     
     if (commentIds.length === 0) {

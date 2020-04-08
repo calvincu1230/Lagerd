@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import CommentsIndex from "./comments_index";
-import { updateComment, deleteComment } from "../../actions/comment_actions";
+import { updateComment } from "../../actions/comment_actions";
 
 const mSP = (state, ownProps) => {
   return {
     comments: state.entities.comments,
-    checkin: state.entities.checkins[ownProps.checkinId],
+    checkin: ownProps.checkin || {},
     currentUserId: state.session.currentUserId
   };
 };
