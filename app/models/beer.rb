@@ -36,9 +36,21 @@ class Beer < ApplicationRecord
   end
 
   def average_rating # average of ratings counting zeros 
-    self.checkins
+    result = self.checkins
       .average(:rating)
       # .where("rating >= ?", 0) # in case I change table to str if no rating given
+    result = 0 if result == nil
+    result
+  end
+
+  def user_checkin_count(user_id)
+    self.checkins
+      .where("checkins.author_id = ?", user_id)
+      .size
+  end
+
+  def total_checkins
+    self.checkins.size
   end
 
   def uniq_users # counts num of unique users that have checked in a beer by brewery

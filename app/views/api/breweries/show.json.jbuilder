@@ -1,11 +1,12 @@
 json.brewery do 
   json.extract! @brewery, :id, :name, :location, :description
-  json.beerCount @brewery.beers.length
+  json.beerCount @brewery.beer_count
   json.monthlyCheckins @brewery.checkins_this_month
+  json.currentUserCheckins @brewery.user_checkin_count(current_user.id)
   json.checkinIds @brewery.checkin_ids
   json.beerIds @brewery.beer_ids
-  json.avgRating @brewery.average_rating.round(2)
-  json.totalCheckins @brewery.checkins.size
+  json.avgRating @brewery.average_rating
+  json.totalCheckins @brewery.total_checkins
   json.uniqueUsers @brewery.uniq_users
   json.imgUrl url_for(@brewery.photo) if @brewery.photo.attached?
 end
