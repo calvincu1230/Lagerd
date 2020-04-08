@@ -28,9 +28,11 @@ class BeerCheckinIndex extends React.Component {
     if (this.state.beer.id === undefined) return null;
 
     let checkinLis;
+
     if (Object.values(this.state.beer).length > 0) {
       const sortedCheckins = this.state.beer.checkinIds.sort((a, b) => b - a);
       checkinLis = sortedCheckins.map(id => {
+
         const checkin = this.props.checkins[id];
         if (checkin === undefined) return null; // ensures post that was prev in beer id arr is not rendered b4 it updates
         return (
