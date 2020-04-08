@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/date_util";
 import { displayStars } from "../../utils/checkin_api_util";
+import CommentsIndexContainer from "../comments/comments_index_container";
 
 export default class CheckinsIndexItem extends React.Component {
   constructor(props){
@@ -9,11 +10,19 @@ export default class CheckinsIndexItem extends React.Component {
     this.state = {
       toasted: false,
       toastIds: this.props.checkin.toastIds,
-      currentUserToastId: null
+      commentIds: this.props.checkin.commentIds,
+      currentUserToastId: null,
+      commenting: false,
+      comment: ""
     };
 
     this.handleToast = this.handleToast.bind(this);
     this.checkToasted = this.checkToasted.bind(this);
+    this.handleCommentClick = this.handleCommentClick.bind(this);
+    this.handleCommentClick = this.handleCommentClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   checkToasted(checkin) {
@@ -27,13 +36,50 @@ export default class CheckinsIndexItem extends React.Component {
         toasted = true;
         currentUserToastId = toast.id;
       }
-    });
+  });
 
     this.setState({
       toasted,
       currentUserToastId,
-      toastIds: checkin.toastIds
+      toastIds: checkin.toastIds,
+      comments: checkin.commentIds || []
     }); // if toasted, save toast id for later deletion ability
+  }
+
+  handleCommentClick(e) {
+    e.preventDefault();
+    if (this.state.commenting) {
+      this.setState({ commenting: false });
+    } else {
+      this.props.fetchCheckin(this.props.checkin.id)
+        .then(checkinAction => {
+          this.setState({
+            commenting: true,
+            commentIds: checkinAction.payload.checkin.commentIds
+        });
+      });
+    }
+  }
+
+  handleCommentSubmit(e) {
+    e.preventDefault();
+    const checkinId = this.props.checkin.id
+    const commentData = {
+      body: this.state.comment,
+      checkin_id: checkinId,
+      author_id: this.props.currentUserId
+    };
+
+    this.props.createComment(commentData)
+      .then(commentAction => this.props.fetchCheckin(commentAction.comment.checkinId))
+      .then(checkinAction => this.setState({
+          comment: "",
+          commentIds: checkinAction.payload.checkin.commentIds
+        }));
+  }
+
+  handleChange(e) {
+    this.setState({ comment: e.target.value });
   }
 
   handleToast(e) {
@@ -55,11 +101,18 @@ export default class CheckinsIndexItem extends React.Component {
     }
   }
 
+  handleDelete(commentId) {
+    this.props.deleteComment(commentId)
+      .then(commentAction => this.props.fetchCheckin(commentAction.comment.checkinId))
+      .then(checkinAction => this.setState({ commentIds: checkinAction.payload.checkin.commentIds }));
+  }
+
   componentDidMount() {
     this.checkToasted(this.props.checkin);
   }
 
   render() {
+    debugger
     const checkin = this.props.checkin;
     const fName = checkin.authorFName[0].toUpperCase() + checkin.authorFName.slice(1).toLowerCase();
 
@@ -69,27 +122,38 @@ export default class CheckinsIndexItem extends React.Component {
   
     const checkinPhoto = checkin.imgUrl ? (
       <div className="checkin-photo-container">
-        <Link to={`/checkins/${checkin.id}`}><img className="star" same="checkin-photo" src={checkin.imgUrl}className="checkin-photo"/></Link>
+        <Link to={`/checkins/${checkin.id}`}>
+          <img className="star" 
+            same="checkin-photo" 
+            src={checkin.imgUrl}
+            className="checkin-photo"
+          />
+        </Link>
       </div>
      ) : null;
 
+    const toasts = this.state.toastIds;
     let toastImgs;
-    if (this.state.toastIds.length > 0) {
-      toastImgs = this.state.toastIds.slice(0,10).map(id => {
+
+    if (toasts.length > 0) {
+      toastImgs = toasts.slice(0,10).map(id => {
         const toast = this.props.toasts[id];
         if (toast === undefined) return;
         return (
-          <img className="toast-item toast-index" src={toast.imgUrl} alt={`Toast Img ${id}`} key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}/>
+          <img 
+            className="toast-item toast-index" 
+            src={toast.imgUrl} 
+            alt={`Toast Img ${id}`} 
+            key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}
+          />
         )
       });
     }
 
-    const toasts = this.state.toastIds;
-
     const toastsSection = toasts.length === 0 ? null : (
       <section className="toasts-index">
         <div className="toast-count">
-          <p className="toast-item">{this.state.toastIds.length}</p>
+          <p className="toast-item">{toasts.length}</p>
           <i className="fas fa-beer toast-item"></i>
         </div>
         <div className="toast-imgs">
@@ -102,16 +166,55 @@ export default class CheckinsIndexItem extends React.Component {
 
     const buttons = (
       <section className="checkin-buttons">
-        <button className="checkin-button comment-btn"><span className="btn-icon"><i className="far fa-comment"></i></span>Comment</button>
-        <button className={`checkin-button ${buttonClass}`} onClick={this.handleToast}><span className="btn-icon"><i className="fas fa-beer"></i></span>Toast</button>
+
+        <button className="checkin-button comment-btn" onClick={this.handleCommentClick}>
+          <span className="btn-icon">
+            <i className="far fa-comment"></i>
+          </span>Comment
+        </button>
+
+        <button className={`checkin-button ${buttonClass}`} onClick={this.handleToast}>
+          <span className="btn-icon">
+            <i className="fas fa-beer"></i>
+          </span>Toast
+        </button>
       </section>
     );
+
+    // const comments = this.state.commentIds;
+
+    const commentForm = !this.state.commenting ? null : (
+      <form className="new-comment" onSubmit={this.handleCommentSubmit}>
+
+        <textarea 
+          className="comment-ta" 
+          onChange={this.handleChange} 
+          value={this.state.comment} 
+          maxLength="140"
+          spellCheck="true"
+          placeholder="Leave a Comment.."
+          required
+        />
+
+        <button className="post-btn">Post</button>
+
+      </form>
+    );
+    
+    const commentsSection = this.state.commentIds.length === 0 || !this.state.commenting ? null : (
+      <CommentsIndexContainer 
+        checkinId={checkin.id} 
+        deleteComment={this.handleDelete}
+      />
+    );
+    
+    const commentsClass = commentsSection ? "comment-index" : "";
   
     return (
       <div className="outer-checkin-item">
         <div className="beer-pic-container">
           {/* <Link to={`/users/${checkin.authorId}`}> */}
-            <img src={checkin.authorImgUrl} alt="User Photo" className="checkin-user-pic"/>
+            <img src={checkin.authorImgUrl} className="checkin-user-pic"/>
           {/* </Link> */}
         </div>
         <div className="checkin-main">
@@ -152,16 +255,20 @@ export default class CheckinsIndexItem extends React.Component {
               </div> 
             </div>
             {toastsSection}
+            <section className={commentsClass}>
+              {commentsSection}
+              {commentForm}
+            </section>
           </div>
         </div>
   
         <div className="beer-pic-container">
           <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`}>
-            <img src={checkin.beerImgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
+            <img src={checkin.beerImgUrl} className="checkin-beer-pic"/>
           </Link>
         </div>
         {/* <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`}>
-          <img src={checkin.beerImgUrl} alt="Beer Photo" className="checkin-beer-pic"/>
+          <img src={checkin.beerImgUrl} className="checkin-beer-pic"/>
         </Link> */}
       </div>
     );
