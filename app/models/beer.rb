@@ -40,7 +40,7 @@ class Beer < ApplicationRecord
       .average(:rating)
       # .where("rating >= ?", 0) # in case I change table to str if no rating given
     result = 0 if result == nil
-    result
+    result.round(2)
   end
 
   def user_checkin_count(user_id)

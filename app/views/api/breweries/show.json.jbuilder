@@ -28,6 +28,7 @@ end
       json.createdAt checkin.created_at
       json.beerId checkin.beer_id
       json.toastIds checkin.toast_ids
+      json.commentIds checkin.comment_ids
       json.beerName checkin.beer.name
       json.beerImgUrl url_for(checkin.beer.photo)
       json.breweryId checkin.beer.brewery_id
