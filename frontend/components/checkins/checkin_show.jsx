@@ -2,16 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../utils/date_util";
 import { displayStars } from "../../utils/checkin_api_util";
+import CommentsIndexContainer from "../../components/comments/comments_index_container";
 
 class CheckinShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkin: null,
+      checkin: this.props.checkin,
       toasted: false,
-      currentUserToastId: null
+      currentUserToastId: null,
+      comment: ""
     };
+
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleCommentDelete = this.handleCommentDelete.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.checkToasted = this.checkToasted.bind(this);
     this.handleToast = this.handleToast.bind(this);
   }
@@ -32,7 +38,8 @@ class CheckinShow extends React.Component {
     this.setState({
       checkin,
       toasted,
-      currentUserToastId
+      currentUserToastId,
+      toastIds: checkin.toastIds
     }); // if toasted, save toast id for later deletion ability
   }
 
@@ -57,7 +64,37 @@ class CheckinShow extends React.Component {
 
   handleDelete() {
     this.props.deleteCheckin(this.state.checkin.id)
-      // .then(() => this.props.history.push("/feed"));
+  }
+
+  handleCommentDelete(commentId) {
+    this.props.deleteComment(commentId)
+      .then(commentAction => {
+        return this.props.fetchCheckin(commentAction.comment.checkinId)
+      })
+      .then(checkinAction => {
+        return this.setState({ checkin: checkinAction.payload.checkin })
+      });
+  }
+
+  handleCommentSubmit(e) {
+    e.preventDefault();
+    const checkinId = this.state.checkin.id
+    const commentData = {
+      body: this.state.comment,
+      checkin_id: checkinId,
+      author_id: this.props.currentUserId
+    };
+
+    this.props.createComment(commentData)
+      .then(commentAction => this.props.fetchCheckin(commentAction.comment.checkinId))
+      .then(checkinAction => this.setState({
+          comment: "",
+          checkin: checkinAction.payload.checkin
+        }));
+  }
+
+  handleChange(e) {
+    this.setState({ comment: e.target.value });
   }
 
   componentDidMount() {
@@ -66,11 +103,9 @@ class CheckinShow extends React.Component {
   }
 
   render() {
-    if (!this.state.checkin) {
-      return <div />
-    }
-
     let checkin = this.state.checkin;
+    if (checkin.id === undefined) return null;
+
 
     let checkinImage = checkin.imgUrl ? <img className="checkin-photo" src={checkin.imgUrl} /> : null;
 
@@ -89,8 +124,7 @@ class CheckinShow extends React.Component {
         return (
           <img 
             className="toast-item toast-show" 
-            src={toast.imgUrl} 
-            alt={`Toast Img ${id}`} 
+            src={toast.imgUrl}
             key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}
           />
         )
@@ -154,7 +188,30 @@ class CheckinShow extends React.Component {
 
           <div className="checkin-show-socials">
             {toastsSection}
-            {/* {checkinIndexContainer} */}
+          </div>
+          <div className="checkin-show-socials comment-index-show">
+            <div className="comment-wrap">
+              <CommentsIndexContainer 
+                checkin={checkin} 
+                deleteComment={this.handleCommentDelete}
+              />
+            </div>
+            <form className="comments-form" onSubmit={this.handleCommentSubmit}>
+
+              <textarea 
+                className="comment-ta-show" 
+                onChange={this.handleChange} 
+                value={this.state.comment} 
+                maxLength="140"
+                spellCheck="true"
+                placeholder="Leave a Comment.."
+                required
+              />
+              <div className="post-btn-wrap">
+                <button className="checkin-button post-btn post-btn-show">Post</button>
+              </div>
+
+            </form>
           </div>
         </div>
       </div>

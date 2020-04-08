@@ -42,7 +42,7 @@ export default class CheckinsIndexItem extends React.Component {
       toasted,
       currentUserToastId,
       toastIds: checkin.toastIds,
-      comments: checkin.commentIds || []
+      commentIds: checkin.commentIds || []
     }); // if toasted, save toast id for later deletion ability
   }
 
@@ -141,8 +141,7 @@ export default class CheckinsIndexItem extends React.Component {
         return (
           <img 
             className="toast-item toast-index" 
-            src={toast.imgUrl} 
-            alt={`Toast Img ${id}`} 
+            src={toast.imgUrl}
             key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}
           />
         )
@@ -198,10 +197,10 @@ export default class CheckinsIndexItem extends React.Component {
 
       </form>
     );
-    
+
     const commentsSection = !this.state.commenting ? null : (
       <CommentsIndexContainer 
-        checkinId={checkin.id} 
+        checkin={checkin} 
         deleteComment={this.handleDelete}
       />
     );
