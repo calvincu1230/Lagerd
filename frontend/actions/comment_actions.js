@@ -11,10 +11,10 @@ const receiveComment = comment => {
   };
 };
 
-const removeComment = commentId => {
+const removeComment = comment => {
   return {
     type: REMOVE_COMMENT,
-    commentId
+    comment
   };
 };
 
@@ -41,7 +41,7 @@ export const updateComment = comment => dispatch => {
 
 export const deleteComment = commentId => dispatch => {
   return CommentAPI.deleteComment(commentId)
-    .then(comment => dispatch(removeComment(comment.id)), errors => {
+    .then(comment => dispatch(removeComment(comment)), errors => {
       return dispatch(receieveCommentErrors(errors))
     });
 };

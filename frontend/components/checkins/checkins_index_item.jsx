@@ -195,13 +195,14 @@ export default class CheckinsIndexItem extends React.Component {
           placeholder="Leave a Comment.."
           required
         />
-
-        <button className="post-btn">Post</button>
+        <div className="post-btn-wrap">
+          <button className="checkin-button post-btn">Post</button>
+        </div>
 
       </form>
     );
     
-    const commentsSection = this.state.commentIds.length === 0 || !this.state.commenting ? null : (
+    const commentsSection = !this.state.commenting ? null : (
       <CommentsIndexContainer 
         checkinId={checkin.id} 
         deleteComment={this.handleDelete}

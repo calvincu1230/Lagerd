@@ -28,15 +28,15 @@
   margin-bottom: 10px;
   font-size: 10px;
 } p {
-  padding-right: 10px;
-}
+    padding-right: 10px;
+  }
 
 .comment-ta {
   height: 50px;
-  width: 98%;
+  width: 96%;
   border: 1px solid #E2E2E2;
   border-radius: 5px;
-  padding: 2px;
+  padding: 6px;
 }::placeholder {
     color: #999999;
   }
@@ -48,4 +48,14 @@
 .comment-item {
   margin-top: 5px;
   border-bottom: 1px solid #E2E2E2;
+}
+
+.post-btn {
+  width: 100px;
+  margin: 5px 5px 0 5px;
+}
+
+.post-btn-wrap {
+  display: flex;
+  justify-content: flex-end;
 }

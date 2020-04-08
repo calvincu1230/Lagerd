@@ -52,7 +52,7 @@ class BeerCheckinIndex extends React.Component {
         <div className="index-body">
           <ul>{checkinLis}</ul>
         </div>
-        {/* <button className="more-beer-btn" onClick={this.fetchMoreBeers}>Show More Beers</button> */}
+        {/* <button className="more-beer-btn" onClick={this.props.fetchMoreBeers}>Show More Beers</button> */}
       </div>
     );
   }
