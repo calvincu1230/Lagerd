@@ -52,7 +52,7 @@ class BreweryShow extends React.Component {
                 <h4 className="stat-title">YOU</h4>
                 <p className="stat-stat">
                   {/* <Link to={`/users/${this.props.currentUserId}`}> */}
-                    0 {/*(<span className="orange-link info-hover">?</span>)*/}
+                  {brewery.currentUserCheckins} {/*(<span className="orange-link info-hover">?</span>)*/}
                     {/* </Link> */}
                     </p>
               </div>

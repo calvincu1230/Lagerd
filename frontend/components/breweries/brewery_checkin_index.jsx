@@ -12,7 +12,6 @@ class BreweryCheckinIndex extends React.Component {
   }
 
   handleDelete(checkinId) {
-    debugger
     this.props.deleteCheckin(checkinId)
       .then(() => this.props.fetchBrewery(this.state.brewery.id))
       .then(breweryAction => this.setState({ brewery: breweryAction.payload.brewery }))
@@ -44,6 +43,8 @@ class BreweryCheckinIndex extends React.Component {
             currentUserId={this.props.currentUserId}
             deleteToast={this.props.deleteToast}
             createToast={this.props.createToast}
+            createComment={this.props.createComment}
+            deleteComment={this.props.deleteComment}
           />)
       });
     }
