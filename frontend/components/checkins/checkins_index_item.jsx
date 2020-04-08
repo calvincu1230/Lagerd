@@ -112,7 +112,6 @@ export default class CheckinsIndexItem extends React.Component {
   }
 
   render() {
-    debugger
     const checkin = this.props.checkin;
     const fName = checkin.authorFName[0].toUpperCase() + checkin.authorFName.slice(1).toLowerCase();
 
@@ -180,8 +179,6 @@ export default class CheckinsIndexItem extends React.Component {
         </button>
       </section>
     );
-
-    // const comments = this.state.commentIds;
 
     const commentForm = !this.state.commenting ? null : (
       <form className="new-comment" onSubmit={this.handleCommentSubmit}>
