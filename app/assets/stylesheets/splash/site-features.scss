@@ -13,7 +13,7 @@
   border-bottom: #FFBF01 solid 5px;
   align-self: center;
   width: 50px;
-  margin: 50px;
+  margin: 30px;
 }
 
 .feature-item {
@@ -45,4 +45,13 @@
   justify-content: space-evenly;
   padding: 15px;
   margin-top: 10px;
+
+  i {
+    display: block;
+    color: #FFBF01;
+    font-size: 50px;
+    text-align: center;
+    display: block;
+    margin-bottom: 15px;
+  }
 }
