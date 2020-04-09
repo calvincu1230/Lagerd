@@ -211,18 +211,15 @@ export default class CheckinsIndexItem extends React.Component {
     return (
       <div className="outer-checkin-item">
         <div className="beer-pic-container">
-          {/* <Link to={`/users/${checkin.authorId}`}> */}
+          <Link to={`/users/${checkin.authorId}`}>
             <img src={checkin.authorImgUrl} className="checkin-user-pic"/>
-          {/* </Link> */}
+          </Link>
         </div>
         <div className="checkin-main">
           <div className="upper-checkin-content">
             <div className="upper-main">
               <p className="checkin-text">
-                {/* <Link to={`/users/${checkin.authorId}`} className="orange-link">{fName} {checkin.authorLName[0].toUpperCase()}.</Link> is drinking a
-                <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`} className="orange-link"> {checkin.beerName}</Link> by 
-                <Link to={`/breweries/${checkin.breweryId}`} className="orange-link"> {checkin.breweryName}</Link> */}
-                {fName} {checkin.authorLName[0].toUpperCase()}. is drinking a
+                <Link to={`/users/${checkin.authorId}`} className="orange-link">{fName} {checkin.authorLName[0].toUpperCase()}.</Link> is drinking a
                 <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`} className="orange-link"> {checkin.beerName}</Link> by 
                 <Link to={`/breweries/${checkin.breweryId}`} className="orange-link"> {checkin.breweryName}</Link>
               </p>
@@ -265,9 +262,6 @@ export default class CheckinsIndexItem extends React.Component {
             <img src={checkin.beerImgUrl} className="checkin-beer-pic"/>
           </Link>
         </div>
-        {/* <Link to={`/breweries/${checkin.breweryId}/beers/${checkin.beerId}`}>
-          <img src={checkin.beerImgUrl} className="checkin-beer-pic"/>
-        </Link> */}
       </div>
     );
   }
