@@ -2,10 +2,10 @@ import * as UserUtil from "../utils/user_api_util";
 
 export const RECEIVE_USER = "RECEIVE_USER";
 
-const receiveUser = user => {
+const receiveUser = payload => {
   return {
     type: RECEIVE_USER,
-    user
+    payload
   }
 };
 

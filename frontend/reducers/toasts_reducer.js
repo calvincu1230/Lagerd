@@ -3,6 +3,7 @@ import { RECEIVE_TOAST, REMOVE_TOAST, RECEIVE_ALL_TOASTS } from "../actions/toas
 import { merge } from "lodash";
 import { RECEIVE_BREWERY } from "../actions/brewery_actions";
 import { RECEIVE_BEER } from "../actions/beer_actions";
+import { RECEIVE_USER } from "../actions/user_actions";
 
 const toastsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -12,6 +13,8 @@ const toastsReducer = (state = {}, action) => {
     case RECEIVE_ALL_TOASTS:
       return action.toasts;
     case RECEIVE_BREWERY:
+      return merge({}, state, action.payload.toasts);
+    case RECEIVE_USER:
       return merge({}, state, action.payload.toasts);
     case RECEIVE_BEER:
       return merge({}, state, action.payload.toasts);
