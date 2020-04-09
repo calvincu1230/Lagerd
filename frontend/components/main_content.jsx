@@ -11,6 +11,7 @@ import CreateBeerFormContainer from "./beers/create_beer_form_container";
 import BreweryCheckinShow from "./breweries/brewery_checkin_show";
 import CheckinsIndexContainer from "./checkins/checkins_index_container";
 import CheckinShowContainer from "./checkins/checkin_show_container";
+import UserShowContainer from "./user/user_show_container";
 
 const MainContent = () => (
   <div className="main-content-main">
@@ -24,6 +25,7 @@ const MainContent = () => (
         <Route exact path="/breweries/:breweryId/beers" component={BreweryBeerShow} />
         <Route exact path="/breweries/:breweryId" component={BreweryCheckinShow} />
         <Route exact path="/checkins/:checkinId" component={CheckinShowContainer} />
+        <Route exact path="/users/:userId" component={UserShowContainer} />
         <ProtectedRoute path="/breweries" component={BreweriesIndexContainer} /> 
         <ProtectedRoute path="/beers" component={BeersIndexContainer} />
         <ProtectedRoute path="/" component={BreweriesIndexContainer} />
