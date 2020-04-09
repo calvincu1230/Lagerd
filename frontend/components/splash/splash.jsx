@@ -2,7 +2,6 @@ import React from "react";
 import SiteFeatures from "./site_features";
 import { Link } from "react-router-dom";
 import LoginFormContainer from "../sessionFormComponents/login_form_container";
-import Footer from "../footer/footer";
 
 class Splash extends React.Component {
 
