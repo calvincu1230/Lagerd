@@ -75,7 +75,7 @@ class CommentsIndexItem extends React.Component {
           {"  " + comment.body}
         </p>
         <div className="comment-bot">
-          <p className="date item">{formatDate(comment.createdAt)}</p>
+          <p className="date item">{formatDate(comment.updatedAt)}</p>
           {editable}
         </div>
       </div>
