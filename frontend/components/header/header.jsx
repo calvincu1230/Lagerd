@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = props => {
-    // const logoutBtn = <button onClick={props.logout}>Log Out!</button>
-    // const logoutLink = props.currentUser ? logoutBtn : null;
+
     return (
         <header className="header-main sticky">
 
@@ -40,7 +39,7 @@ const Header = props => {
                 <img className="current-user-photo" src={props.user.imgUrl} />
                 <div className="dropdown-arrow"></div>
                 <ul className="header-dropdown">
-                    {/* <li>My Profile</li> */}
+                    <Link to={`/users/${props.currentUser}`}><li>My Profile</li></Link>
                     <li onClick={props.logout}>Logout</li>
                 </ul>
             </div>

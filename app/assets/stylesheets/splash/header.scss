@@ -77,12 +77,12 @@
     z-index: 12;
     min-width: 125px;
     width: fit-content;
-}
 
-.header-dropdown > li {
-    cursor: pointer;
-    padding: 12px;
-    border-bottom: #444444 solid 1px;
+    li {
+        cursor: pointer;
+        padding: 12px;
+        border-bottom: #444444 solid 1px;
+    }
 }
 
 .profile-pic:hover .header-dropdown {
