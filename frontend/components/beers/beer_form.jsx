@@ -124,12 +124,12 @@ class BeerForm extends React.Component {
           <div className="beer-form-section beer-info-line">
             <div className="beer-form-abv">
               <p className="beer-form-category">ABV</p>
-              <input className="beer-form-item beer-form-select-effect" type="number" value={this.state.abv} onChange={this.handleChange("abv")}/>
+              <input className="beer-form-item beer-form-select-effect" type="number" value={this.state.abv} onChange={this.handleChange("abv")} min="0" max="67"/>
             </div>
 
             <div className="beer-form-ibu">
               <p className="beer-form-category">IBU</p>
-              <input className="beer-form-item beer-form-select-effect" type="number" value={this.state.ibu} onChange={this.handleChange("ibu")}/>
+              <input className="beer-form-item beer-form-select-effect" type="number" value={this.state.ibu} onChange={this.handleChange("ibu")} min="0" max="100"/>
             </div>
 
             <div className="beer-form-style">
