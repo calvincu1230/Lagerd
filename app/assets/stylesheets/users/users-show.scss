@@ -1,0 +1,57 @@
+.user-show-main {
+  position: relative;
+}
+
+.info-header {
+  background: image_url("beer-background.jpg");
+  margin: 0 17% 40px;
+  height: 250px;
+  width: 55%;
+  max-width: 60%;
+  min-width: 530px;
+  color: white;
+  background-size: cover;
+  position: relative;
+}
+
+.profile-img-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.profile-img {
+  position: absolute;
+  top: 130px;
+  left: 20px;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  border: 2px solid white;
+}
+
+.user-info {
+  position: absolute;
+  top: 150px;
+  left: 130px;
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+.user-stats, .user-name {
+  margin-bottom: 6px;
+}
+
+.user-stat {
+  display: inline-block;
+  font-size: 18px;
+
+  span {
+    font-size: 14px;
+  }
+}

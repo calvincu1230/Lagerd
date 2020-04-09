@@ -139,11 +139,12 @@ export default class CheckinsIndexItem extends React.Component {
         const toast = this.props.toasts[id];
         if (toast === undefined) return;
         return (
-          <img 
-            className="toast-item toast-index" 
-            src={toast.imgUrl}
-            key={`${id}${checkin.id}${Date.now() / (Math.random() * 300)}`}
-          />
+          <Link to={`/users/${toast.userId}`} key={`${id}${checkin.id}${Date.now() / (Math.random() * 3000)}`}>
+            <img 
+              className="toast-item toast-index" 
+              src={toast.imgUrl}
+            />
+          </Link>
         )
       });
     }
