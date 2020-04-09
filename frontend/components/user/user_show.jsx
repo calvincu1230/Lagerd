@@ -10,6 +10,14 @@ class UserShow extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    // checkins if route wildcard has changed to trigger update
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.props.fetchUser(this.props.match.params.userId)
+      .then(userAction => this.setState({ user: userAction.payload.user }))
+    }
+  }
+
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
       .then(userAction => this.setState({ user: userAction.payload.user }))
@@ -45,8 +53,7 @@ class UserShow extends React.Component {
           </div>
           
         </section>
-
-        <UserCheckinIndexContainer />
+        <UserCheckinIndexContainer user={this.props.user}/>
       </div>
     )
   }

@@ -17,6 +17,14 @@ class UserCheckinIndex extends React.Component {
       .then(userAction => this.setState({ user: userAction.payload.user }))
   }
 
+  componentDidUpdate(prevProps) {
+    // checkins if route wildcard has changed to trigger update
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.props.fetchUser(this.props.match.params.userId)
+      .then(userAction => this.setState({ user: userAction.payload.user }))
+    }
+  }
+
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
       .then((userAction) => this.setState({ 
@@ -25,8 +33,9 @@ class UserCheckinIndex extends React.Component {
   }
 
   render() {
-    if (this.state.user.id === undefined) return null;
 
+    if (this.state.user.id === undefined) return null;
+    debugger
     let checkinLis;
     const user = this.state.user;
 
