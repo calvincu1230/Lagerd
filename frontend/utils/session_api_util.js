@@ -30,5 +30,5 @@ export const loginDemoUser = () => {
         url: "/api/session",
         method: "POST",
         data: { user: { username: "tommy", password: "hunter2" } }
-    }); // MAKE SURE THIS MATCHES IF DB IS DROPPED ^^^
+    });
 }; 

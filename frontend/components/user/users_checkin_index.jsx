@@ -35,7 +35,7 @@ class UserCheckinIndex extends React.Component {
   render() {
 
     if (this.state.user.id === undefined) return null;
-    debugger
+  
     let checkinLis;
     const user = this.state.user;
 
