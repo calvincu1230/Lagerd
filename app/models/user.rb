@@ -26,6 +26,10 @@ class User < ApplicationRecord
         class_name: :Checkin,
         dependent: :destroy
 
+    has_many :checkin_toasts, 
+        through: :checkins,
+        source: :toasts
+
     has_many :comments, dependent: :destroy
     has_many :toasts, dependent: :destroy
     has_many :friends,
@@ -33,6 +37,10 @@ class User < ApplicationRecord
         primary_key: :id,
         foreign_key: :id
     has_one_attached :photo
+
+    has_many :checkedin_beers, -> { distinct },
+    through: :checkins,
+    source: :beer
 
     after_initialize :ensure_session_token
     after_create :ensure_default_photo
@@ -42,6 +50,14 @@ class User < ApplicationRecord
     def ensure_default_photo
         self.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_user_img.png')), filename: 'default_user_img.png') unless self.photo.attached?
     end
+
+    def total_checkins
+        self.checkins.size
+    end
+
+    def uniq_checkins # counts num of unique users that have checked in a beer by brewery
+        self.checkedin_beers.size
+      end
 
     def over_21
         # based on todays date, compares with date instance of given birthday

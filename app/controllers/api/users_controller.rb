@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = User.includes(:checkins).find(params[:id])
+        @user = User.includes(:checkins, :toasts).with_attached_photo.find(params[:id])
         render :show
     end
 
