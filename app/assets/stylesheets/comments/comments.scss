@@ -10,10 +10,12 @@
 
 .author {
   font-size: 14px;
+  text-transform: capitalize;
 }
 
 .comment-body {
   padding-left: 5px;
+  width: 100%;
 }
 
 .comment-photo {
@@ -69,7 +71,7 @@
 .comment-main {
   display: inline-block;
   vertical-align: top;
-  width: 88%;
+  width: 82%;
   font-size: 14px;
 }
 
@@ -85,5 +87,5 @@
 
 .edit-comment {
   display: inline-block;
-  width: 88%;
+  width: 87%;
 }

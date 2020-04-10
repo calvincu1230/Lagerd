@@ -51,15 +51,16 @@ class CommentsIndexItem extends React.Component {
 
     const commentBody = this.state.editing ? (
       <form className="edit-comment" onSubmit={this.handleUpdate}>
-
-        <textarea 
-          className="edit-comment-ta" 
-          onChange={this.handleChange} 
-          value={this.state.body} 
-          maxLength="140"
-          spellCheck="true"
-          required
-        />
+        <div className="edit-container">
+          <textarea 
+            className="edit-comment-ta" 
+            onChange={this.handleChange} 
+            value={this.state.body} 
+            maxLength="140"
+            spellCheck="true"
+            required
+          />
+        </div>
 
         <div className="comment-bot">
           <p className="orange-link item" onClick={this.handleUpdate}>Update</p>
