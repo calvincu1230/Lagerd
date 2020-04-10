@@ -129,7 +129,7 @@ class BeerForm extends React.Component {
 
             <div className="beer-form-ibu">
               <p className="beer-form-category">IBU</p>
-              <input className="beer-form-item beer-form-select-effect" type="number" value={this.state.ibu} onChange={this.handleChange("ibu")} min="0" max="100"/>
+              <input className="beer-form-item beer-form-select-effect" type="number" value={this.state.ibu} onChange={this.handleChange("ibu")} min="0" max="200"/>
             </div>
 
             <div className="beer-form-style">
