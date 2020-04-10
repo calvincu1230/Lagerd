@@ -135,7 +135,7 @@ class BeerForm extends React.Component {
             <div className="beer-form-style">
               <p className="beer-form-category style-title">STYLE</p>
               <select className="style-option" onChange={this.handleChange("style")} value={this.state.style} className="beer-form-item">
-                <option value="style-option" key="select">Choose A Style</option>
+                <option value="style-option" key="select" value="">Choose A Style</option>
                 {beerStyles}
               </select>
             </div>

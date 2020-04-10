@@ -26,7 +26,7 @@ class Api::BeersController < ApplicationController
     elsif !@beer
       render json: ['Could not find beer'], status: 400
     else
-      render json: @beer.errors.full_messages, status: 401
+      render json: clearer_errors(@beer.errors.full_messages), status: 401
     end
   end
 
