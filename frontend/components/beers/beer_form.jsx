@@ -106,7 +106,7 @@ class BeerForm extends React.Component {
               <div className="suggest-brewery">
                 <p className="beer-form-category">BREWERY NAME</p>
                 <p className="email-text">
-                  Can't find a brewery? <a href="mailto: brewerysuggestions@lagerd.io" subject="Brewery Suggestion" className="orange-link">Suggest one here!</a>
+                  {/* Can't find a brewery? <a href="mailto: brewerysuggestions@lagerd.io" subject="Brewery Suggestion" className="orange-link">Suggest one here!</a> */}
                 </p>
               </div>
               <select onChange={this.handleChange("breweryId")} value={this.state.breweryId} className="beer-form-item">
@@ -124,7 +124,7 @@ class BeerForm extends React.Component {
           <div className="beer-form-section beer-info-line">
             <div className="beer-form-abv">
               <p className="beer-form-category">ABV</p>
-              <input className="beer-form-item beer-form-select-effect" type="number" value={this.state.abv} onChange={this.handleChange("abv")} min="0" max="67"/>
+              <input className="beer-form-item beer-form-select-effect" type="number" step="0.01" value={this.state.abv} onChange={this.handleChange("abv")} min="0" max="67.5"/>
             </div>
 
             <div className="beer-form-ibu">
