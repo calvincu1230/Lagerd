@@ -60,6 +60,10 @@ class Api::UsersController < ApplicationController
                 "Last name is required."
             when "Password is too short (minimum is 6 characters)"
                 "Password must be at least 6 characters."
+            when "Username has already been taken"
+                "An account with that username already exists."
+            when "Email has already been taken"
+                "An account with that email already exists."
             else
                 error
             end
