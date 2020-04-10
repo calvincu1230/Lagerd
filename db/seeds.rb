@@ -9,6 +9,8 @@
 
 # require 'open-uri'
 
+Comment.destroy_all
+Toast.destroy_all
 Checkin.destroy_all
 Beer.destroy_all
 Brewery.destroy_all
