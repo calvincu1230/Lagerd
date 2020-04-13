@@ -4,6 +4,12 @@
     <title>Lagerd</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <meta property="og:title" content="Lagerd.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Lagerd is a beer-focused social media app inspired by Untappd.  It allows for community and beer tracking with a clean, easy to use interface." />
+    <meta property="og:image" content="<%= image_url("lagerd_feed.png") %>" />
+
     <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
