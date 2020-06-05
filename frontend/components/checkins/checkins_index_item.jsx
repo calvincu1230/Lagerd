@@ -162,6 +162,7 @@ export default class CheckinsIndexItem extends React.Component {
     );
 
     const buttonClass = this.state.toasted ? "toasted" : "";
+    const commentText = this.state.commenting ? "Hide Comments" : "Show Comments";
 
     const buttons = (
       <section className="checkin-buttons">
@@ -169,7 +170,7 @@ export default class CheckinsIndexItem extends React.Component {
         <button className="checkin-button comment-btn" onClick={this.handleCommentClick}>
           <span className="btn-icon">
             <i className="far fa-comment"></i>
-          </span>Comment
+          </span>{commentText}
         </button>
 
         <button className={`checkin-button ${buttonClass}`} onClick={this.handleToast}>
