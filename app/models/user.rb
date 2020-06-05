@@ -58,25 +58,26 @@ class User < ApplicationRecord
 
     def uniq_checkins # counts num of unique users that have checked in a beer by brewery
         self.checkedin_beers.size
-      end
+    end
 
     def over_21
-        # based on todays date, compares with date instance of given birthday
         if self.birth_date == ""
-            self.errors.add(:_, "Please Enter a Valid Date.")
+            self.errors.add(:_, "Please Enter a Valid Date.") # No date was entered
             return false
         end
 
+        # based on todays date, compares with date instance of given birthday
         today = Date.today
         date = Date.parse(self.birth_date)
-        age = (today.year - date.year)
+        age = (today.year - date.year) # checks total years since given birth date
         age -= 1 if [date.day, date.month, today.year].join('/').to_date > Date.today
-            # checks if specific date birthdate has passed
+            # checks if specific date birth date has passed
         if age >= 21
             true
         else
             # adds error that will be render with errors.full_messages
             self.errors.add(:_, "Must be 21 or older to make an account.")
+            false
         end
     end
 
